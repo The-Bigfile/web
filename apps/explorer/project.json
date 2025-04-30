@@ -1,0 +1,121 @@
+{
+  "name": "explorer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/explorer",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/explorer",
+        "postcssConfig": "apps/explorer/postcss.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "development-testnet-zen": {
+          "outputPath": "dist/apps/explorer-testnet-zen",
+          "fileReplacements": [
+            {
+              "replace": "apps/explorer/config/index.ts",
+              "with": "apps/explorer/config/testnet-zen.ts"
+            }
+          ]
+        },
+        "local": {},
+        "local-testnet-zen": {
+          "outputPath": "dist/apps/explorer-testnet-zen",
+          "fileReplacements": [
+            {
+              "replace": "apps/explorer/config/index.ts",
+              "with": "apps/explorer/config/testnet-zen.ts"
+            }
+          ]
+        },
+        "production": {},
+        "production-testnet-zen": {
+          "outputPath": "dist/apps/explorer-testnet-zen",
+          "fileReplacements": [
+            {
+              "replace": "apps/explorer/config/index.ts",
+              "with": "apps/explorer/config/testnet-zen.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "explorer:build",
+        "port": 3003
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "explorer:build:development",
+          "dev": true
+        },
+        "development-testnet-zen": {
+          "buildTarget": "explorer:build:development-testnet-zen",
+          "dev": true,
+          "port": 3005
+        },
+        "production": {
+          "buildTarget": "explorer:build:production",
+          "dev": false
+        },
+        "production-testnet-zen": {
+          "buildTarget": "explorer:build:production-testnet-zen",
+          "dev": false,
+          "port": 3005
+        }
+      }
+    },
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": ["build"],
+      "defaultConfiguration": "local",
+      "options": {
+        "engine": "docker",
+        "context": "./",
+        "file": "apps/explorer/Dockerfile"
+      },
+      "configurations": {
+        "local": {
+          "tags": ["siafoundation/web-explorer:latest"],
+          "file": "apps/explorer/Dockerfile",
+          "push": false
+        },
+        "local-testnet-zen": {
+          "tags": ["siafoundation/web-explorer-testnet-zen:latest"],
+          "file": "apps/explorer/Dockerfile.zen",
+          "push": false
+        },
+        "production": {
+          "tags": ["ghcr.io/siafoundation/web-explorer:latest"],
+          "file": "apps/explorer/Dockerfile",
+          "push": true
+        },
+        "production-testnet-zen": {
+          "tags": ["ghcr.io/siafoundation/web-explorer-testnet-zen:latest"],
+          "file": "apps/explorer/Dockerfile.zen",
+          "push": true
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/explorer"],
+      "options": {
+        "jestConfig": "apps/explorer/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": []
+}

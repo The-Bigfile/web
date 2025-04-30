@@ -1,0 +1,10 @@
+{
+  "/releases": {
+    "target": "https://sia.tech",
+    "secure": false
+  },
+  "/transparency": {
+    "target": "https://sia.tech",
+    "secure": false
+  }
+}

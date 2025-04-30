@@ -1,0 +1,62 @@
+name: Release Go modules
+
+concurrency: commits-to-main
+
+on:
+  repository_dispatch:
+    types: [release-go]
+  # Enable manual trigger
+  workflow_dispatch:
+
+jobs:
+  release-go:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout all commits
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PAT_REPOSITORY_DISPATCH }}
+      - name: Setup
+        uses: ./.github/actions/setup-all
+        with:
+          node_version: 20.10.0
+          go_version: 1.23.0
+      - name: Release
+        run: ./scripts/release-go.sh
+      - name: Commit
+        shell: bash
+        run: |
+          # check out the commit as a new branch
+          git checkout -b release
+          # sync up the main branch in case something has been merged
+          # since the action started
+          git fetch origin main
+          # checkout the main branch and merge in the release branch
+          # this will be a fast forward merge unless something went wrong
+          git checkout main
+          git merge release
+          # push the main branch
+          git push origin main --tags
+          # cleanup
+          git branch -D release
+      # Disabled in favor of Dependabot.
+      # Leaving here in case we ever want to re-enable.
+      # - name: Create UI PR on renterd repo
+      #   uses: peter-evans/repository-dispatch@v3
+      #   with:
+      #     token: ${{ secrets.PAT_REPOSITORY_DISPATCH }}
+      #     repository: siafoundation/renterd
+      #     event-type: update-ui
+      # - name: Create UI PR on hostd repo
+      #   uses: peter-evans/repository-dispatch@v3
+      #   with:
+      #     token: ${{ secrets.PAT_REPOSITORY_DISPATCH }}
+      #     repository: siafoundation/hostd
+      #     event-type: update-ui
+      # - name: Create UI PR on walletd repo
+      #   uses: peter-evans/repository-dispatch@v3
+      #   with:
+      #     token: ${{ secrets.PAT_REPOSITORY_DISPATCH }}
+      #     repository: siafoundation/walletd
+      #     event-type: update-ui

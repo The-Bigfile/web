@@ -1,0 +1,42 @@
+{
+  "name": "react-core",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/react-core/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/react-core",
+        "tsConfig": "libs/react-core/tsconfig.lib.json",
+        "project": "libs/react-core/package.json",
+        "entryFile": "libs/react-core/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "compiler": "tsc",
+        "outputFileName": "index.js",
+        "rollupConfig": "libs/react-core/rollup.config.js",
+        "assets": [
+          {
+            "glob": "libs/react-core/*.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      },
+      "configurations": {}
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/react-core"],
+      "options": {
+        "jestConfig": "libs/react-core/jest.config.ts"
+      }
+    }
+  }
+}

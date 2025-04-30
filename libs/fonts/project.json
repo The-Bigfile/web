@@ -1,0 +1,52 @@
+{
+  "name": "fonts",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/fonts/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/fonts",
+        "tsConfig": "libs/fonts/tsconfig.lib.json",
+        "project": "libs/fonts/package.json",
+        "entryFile": "libs/fonts/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "compiler": "tsc",
+        "outputFileName": "index.js",
+        "rollupConfig": "libs/fonts/rollup.config.js",
+        "assets": [
+          {
+            "glob": "libs/fonts/*.md",
+            "input": ".",
+            "output": "."
+          },
+          {
+            "glob": "libs/fonts/src/fonts/IBM_Plex_Sans/*",
+            "input": ".",
+            "output": "fonts/IBM_Plex_Sans"
+          },
+          {
+            "glob": "libs/fonts/src/fonts/IBM_Plex_Mono/*",
+            "input": ".",
+            "output": "fonts/IBM_Plex_Mono"
+          }
+        ]
+      },
+      "configurations": {}
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/fonts"],
+      "options": {
+        "jestConfig": "libs/fonts/jest.config.ts"
+      }
+    }
+  }
+}

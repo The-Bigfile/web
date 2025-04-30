@@ -1,0 +1,13 @@
+{
+  "name": "@siafoundation/sdk",
+  "description": "SDK for interacting directly with the Sia network from browsers and web clients.",
+  "version": "0.3.3",
+  "license": "MIT",
+  "dependencies": {
+    "@siafoundation/types": "0.10.0"
+  },
+  "devDependencies": {
+    "undici": "5.28.3"
+  },
+  "types": "./src/index.d.ts"
+}

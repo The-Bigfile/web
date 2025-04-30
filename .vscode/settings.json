@@ -1,0 +1,17 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "gopls": {
+    "build.env": {
+      "GOOS": "js",
+      "GOARCH": "wasm"
+    }
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
