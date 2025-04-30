@@ -1,4 +1,4 @@
-module go.sia.tech/web/cluster
+module go.thebigfile.com/web/cluster
 
 go 1.23.2
 
@@ -6,8 +6,8 @@ toolchain go1.23.4
 
 require (
 	go.sia.tech/cluster v0.1.3-0.20250428123059-c02be2f76b8a
-	go.sia.tech/core v0.11.0
-	go.sia.tech/coreutils v0.13.1
+	go.thebigfile.com/core v0.0.6
+	go.thebigfile.com/coreutils v0.0.5
 	go.sia.tech/explored v0.0.0-20250428115627-282104a23b4d
 	go.uber.org/zap v1.27.0
 )

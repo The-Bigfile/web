@@ -1,4 +1,4 @@
-module go.sia.tech/web/hostd
+module go.thebigfile.com/web/hostd
 
 go 1.23.0
 

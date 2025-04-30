@@ -1,12 +1,12 @@
-module go.sia.tech/web/sdk
+module go.thebigfile.com/web/sdk
 
 go 1.23.1
 
 toolchain go1.23.3
 
 require (
-	go.sia.tech/core v0.9.1
-	go.sia.tech/coreutils v0.9.1
+	go.thebigfile.com/core v0.0.6
+	go.thebigfile.com/coreutils v0.0.5
 )
 
 require (

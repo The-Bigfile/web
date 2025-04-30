@@ -1,4 +1,4 @@
-module go.sia.tech/web/renterd
+module go.thebigfile.com/web/renterd
 
 go 1.23.0
 
