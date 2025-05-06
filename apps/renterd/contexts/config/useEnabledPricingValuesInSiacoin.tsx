@@ -1,12 +1,12 @@
-import { fiatToSiacoin } from '@siafoundation/units'
+import { fiatToBigFile } from '@siafoundation/units'
 import { useMemo } from 'react'
 import { UseFormReturn } from 'react-hook-form'
 import { InputValues } from './types'
 import { useFormExchangeRate } from './useFormExchangeRate'
 
-// Return each pricing value as siacoin. The siacoin value is converted from the
+// Return each pricing value as bigfile. The bigfile value is converted from the
 // pinned or non-pinned value depending on which is enabled on a per-field basis.
-export function useEnabledPricingValuesInSiacoin({
+export function useEnabledPricingValuesInBigFile({
   form,
 }: {
   form: UseFormReturn<InputValues>
@@ -49,15 +49,15 @@ export function useEnabledPricingValuesInSiacoin({
     return {
       maxStoragePriceTBMonth:
         shouldPinMaxStoragePrice && maxStoragePriceTBMonthPinned && rate
-          ? fiatToSiacoin(maxStoragePriceTBMonthPinned, rate)
+          ? fiatToBigFile(maxStoragePriceTBMonthPinned, rate)
           : maxStoragePriceTBMonth,
       maxDownloadPriceTB:
         shouldPinMaxDownloadPrice && maxDownloadPriceTBPinned && rate
-          ? fiatToSiacoin(maxDownloadPriceTBPinned, rate)
+          ? fiatToBigFile(maxDownloadPriceTBPinned, rate)
           : maxDownloadPriceTB,
       maxUploadPriceTB:
         shouldPinMaxUploadPrice && maxUploadPriceTBPinned && rate
-          ? fiatToSiacoin(maxUploadPriceTBPinned, rate)
+          ? fiatToBigFile(maxUploadPriceTBPinned, rate)
           : maxUploadPriceTB,
     }
   }, [

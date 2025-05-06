@@ -170,7 +170,7 @@ export const menuSections = [
       },
       {
         link: routes.community.index + '?software=exchanges#software',
-        title: 'Get Siacoin',
+        title: 'Get BigFile',
       },
     ],
   },

@@ -1,4 +1,4 @@
-import { SiacoinField } from '../core/SiacoinField'
+import { BigFileField } from '../core/BigFileField'
 import { FieldValues, Path, PathValue } from 'react-hook-form'
 import { FieldGroup } from '../components/Form'
 import {
@@ -9,7 +9,7 @@ import {
 import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
 
-export function FieldSiacoin<
+export function FieldBigFile<
   Values extends FieldValues,
   Categories extends string
 >({
@@ -19,7 +19,7 @@ export function FieldSiacoin<
   size = 'small',
   group = true,
 }: FieldProps<Values, Categories> & {
-  size?: React.ComponentProps<typeof SiacoinField>['size']
+  size?: React.ComponentProps<typeof BigFileField>['size']
   group?: boolean
 }) {
   const field = fields[name]
@@ -51,7 +51,7 @@ export function FieldSiacoin<
   )
 
   const el = (
-    <SiacoinField
+    <BigFileField
       name={name}
       size={size}
       sc={value}

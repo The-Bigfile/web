@@ -1,6 +1,6 @@
 import { Warning16 } from '@siafoundation/react-icons'
 import { Panel, Separator, Text, Tooltip } from '@siafoundation/design-system'
-import { humanSiacoin, humanSiafund } from '@siafoundation/units'
+import { humanBigFile, humanSiafund } from '@siafoundation/units'
 import BigNumber from 'bignumber.js'
 import { cx } from 'class-variance-authority'
 
@@ -19,12 +19,12 @@ export function WalletBalanceWithSf({
     <>
       <Tooltip
         side="bottom"
-        content={humanSiacoin(sc, {
+        content={humanBigFile(sc, {
           dynamicUnits: false,
         })}
       >
         <Text size="12" weight="semibold" className="flex items-center h-full">
-          {humanSiacoin(sc)}
+          {humanBigFile(sc)}
         </Text>
       </Tooltip>
       {!!sf && (

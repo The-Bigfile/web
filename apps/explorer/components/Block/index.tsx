@@ -25,7 +25,7 @@ export function Block({ block, blockID, currentHeight }: Props) {
     // Grab the miner payout address
     const minerPayoutAddress = block.minerPayouts.find(
       (payout) => payout.source === 'miner_payout'
-    )?.siacoinOutput.address
+    )?.bigfileOutput.address
     // Trim "bid:" from the incoming blockID
     const strippedBlockID = stripPrefix(blockID)
 

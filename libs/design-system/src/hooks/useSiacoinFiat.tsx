@@ -7,7 +7,7 @@ type Props = {
   sc?: BigNumber
 }
 
-export function useSiacoinFiat({ sc }: Props):
+export function useBigFileFiat({ sc }: Props):
   | {
       fiat: BigNumber
       currency: CurrencyOption

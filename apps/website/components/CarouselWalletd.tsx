@@ -15,7 +15,7 @@ const images = [
     image: getAssetUrl('assets/walletd/add-wallet.png'),
   },
   {
-    title: 'Send & receive Siacoin',
+    title: 'Send & receive BigFile',
     key: 'send',
     image: getAssetUrl('assets/walletd/send.png'),
   },

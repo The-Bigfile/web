@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"syscall/js"
 
-	proto4 "go.sia.tech/core/rhp/v4"
-	"go.sia.tech/core/types"
+	proto4 "go.thebigfile.com/core/rhp/v4"
+	"go.thebigfile.com/core/types"
 )
 
 func encodeRPCRequest(rpcID types.Specifier, data js.Value, req proto4.Object) result {

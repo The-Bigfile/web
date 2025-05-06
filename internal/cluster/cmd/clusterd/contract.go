@@ -55,7 +55,7 @@ func setupV1Contracts(nm *nodes.Manager, w *swallet, cm *chain.Manager) error {
 			WindowSize: 1,
 			Address:    types.StandardUnlockHash(hk),
 		}
-		sc := types.Siacoins(1)
+		sc := types.BigFiles(1)
 		fc := proto2.PrepareContractFormation(rk, hk, sc.Mul64(5), sc.Mul64(5), endHeight, hs, rAddr)
 		fc.UnlockHash = w.Address()
 		return fc
@@ -207,9 +207,9 @@ func setupV2Contracts(nm *nodes.Manager, e *api.Client, w *swallet, cm *chain.Ma
 	prepareContract := func(proofHeight uint64) types.V2FileContract {
 		fc, _ := proto4.NewContract(proto4.HostPrices{}, proto4.RPCFormContractParams{
 			ProofHeight:     proofHeight,
-			Allowance:       types.Siacoins(5),
+			Allowance:       types.BigFiles(5),
 			RenterAddress:   renterAddr,
-			Collateral:      types.Siacoins(5),
+			Collateral:      types.BigFiles(5),
 			RenterPublicKey: renterPrivateKey.PublicKey(),
 		}, hostPrivateKey.PublicKey(), hostAddr)
 		fc.ExpirationHeight = fc.ProofHeight + 1

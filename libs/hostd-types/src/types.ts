@@ -1,5 +1,5 @@
 import {
-  SiacoinOutput,
+  BigFileOutput,
   UnlockConditions,
   Hash256,
   Signature,
@@ -32,8 +32,8 @@ export type Contract = {
     fileMerkleRoot: Hash256
     windowStart: number
     windowEnd: number
-    validProofOutputs: SiacoinOutput[]
-    missedProofOutputs: SiacoinOutput[]
+    validProofOutputs: BigFileOutput[]
+    missedProofOutputs: BigFileOutput[]
     unlockHash: Hash256
     revisionNumber: number
   }

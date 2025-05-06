@@ -39,7 +39,7 @@
 
 ### Minor Changes
 
-- 5ba5edac: Added siafund initial address support.
+- 5ba5edac: Added bigfund initial address support.
 - 3949f94d: Added transition network mode.
 - 3949f94d: Added mineToHeight and getCurrentHeight APIs.
 - 5ba5edac: Added explored support.

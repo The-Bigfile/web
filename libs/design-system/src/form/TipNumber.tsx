@@ -9,7 +9,7 @@ import { cx } from 'class-variance-authority'
 import { ValueScFiat } from '../components/ValueScFiat'
 
 type Props = {
-  type: 'siacoin' | 'number'
+  type: 'bigfile' | 'number'
   label: string
   link?: string
   icon?: React.ReactNode
@@ -60,7 +60,7 @@ export function TipNumber({
           }
         }}
       >
-        {type === 'siacoin' ? (
+        {type === 'bigfile' ? (
           <ValueScFiat
             value={value}
             variant="value"

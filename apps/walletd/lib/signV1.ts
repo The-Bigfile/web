@@ -1,7 +1,7 @@
 import {
-  SiacoinElement,
-  SiacoinInput,
-  SiafundElement,
+  BigFileElement,
+  BigFileInput,
+  BigfundElement,
   SiafundInput,
   Transaction,
 } from '@siafoundation/types'
@@ -12,19 +12,19 @@ export function addUnlockConditionsAndSignaturesV1({
   transaction,
   toSign,
   addresses,
-  siacoinOutputs,
-  siafundOutputs,
+  bigfileOutputs,
+  bigfundOutputs,
 }: {
   transaction: Transaction
   toSign: string[]
   addresses: AddressData[]
-  siafundOutputs: SiafundElement[]
-  siacoinOutputs: SiacoinElement[]
+  bigfundOutputs: BigfundElement[]
+  bigfileOutputs: BigFileElement[]
 }): { transaction?: Transaction; error?: string } {
   if (!addresses) {
     return { error: 'No addresses' }
   }
-  if (!siacoinOutputs) {
+  if (!bigfileOutputs) {
     return { error: 'No outputs' }
   }
 
@@ -35,16 +35,16 @@ export function addUnlockConditionsAndSignaturesV1({
     // find the parent utxo funding element for each input
     const {
       address,
-      siacoinUtxo,
-      siafundUtxo,
-      siacoinInput,
-      siafundInput,
+      bigfileUtxo,
+      bigfundUtxo,
+      bigfileInput,
+      bigfundInput,
       error,
     } = getToSignMetadataV1({
       toSignId,
       addresses,
-      siacoinOutputs,
-      siafundOutputs,
+      bigfileOutputs,
+      bigfundOutputs,
       transaction,
     })
 
@@ -52,12 +52,12 @@ export function addUnlockConditionsAndSignaturesV1({
       return { error }
     }
 
-    if (siacoinUtxo) {
-      siacoinInput.unlockConditions = address.spendPolicy.policy
+    if (bigfileUtxo) {
+      bigfileInput.unlockConditions = address.spendPolicy.policy
     }
 
-    if (siafundUtxo) {
-      siafundInput.unlockConditions = address.spendPolicy.policy
+    if (bigfundUtxo) {
+      bigfundInput.unlockConditions = address.spendPolicy.policy
     }
 
     if (!transaction.signatures) {
@@ -78,19 +78,19 @@ export function addUnlockConditionsAndSignaturesV1({
   return {}
 }
 
-function getSiacoinUtxoAndAddressV1({
+function getBigFileUtxoAndAddressV1({
   id: idPrefixed,
   addresses,
-  siacoinOutputs,
+  bigfileOutputs,
 }: {
   id: string
   addresses: AddressData[]
-  siacoinOutputs: SiacoinElement[]
-}): { utxo?: SiacoinElement; address?: AddressData; error?: string } {
+  bigfileOutputs: BigFileElement[]
+}): { utxo?: BigFileElement; address?: AddressData; error?: string } {
   const id = stripPrefix(idPrefixed)
 
   // find the utxo by toSign ID
-  const utxo = siacoinOutputs?.find((sco) => stripPrefix(sco.id) === id)
+  const utxo = bigfileOutputs?.find((sco) => stripPrefix(sco.id) === id)
   if (!utxo) {
     return { error: 'Missing utxo' }
   }
@@ -98,7 +98,7 @@ function getSiacoinUtxoAndAddressV1({
   // find the utxo's address metadata which has the index and public key saved
   // the public key was computed and saved when the address was generated
   const addressData = addresses?.find(
-    (a) => stripPrefix(a.address) === stripPrefix(utxo.siacoinOutput.address)
+    (a) => stripPrefix(a.address) === stripPrefix(utxo.bigfileOutput.address)
   )
 
   if (!addressData) {
@@ -126,16 +126,16 @@ function getSiacoinUtxoAndAddressV1({
 function getSiafundUtxoAndAddressV1({
   id: idPrefixed,
   addresses,
-  siafundOutputs,
+  bigfundOutputs,
 }: {
   id: string
   addresses: AddressData[]
-  siafundOutputs: SiafundElement[]
-}): { utxo?: SiafundElement; address?: AddressData; error?: string } {
+  bigfundOutputs: BigfundElement[]
+}): { utxo?: BigfundElement; address?: AddressData; error?: string } {
   const id = stripPrefix(idPrefixed)
 
   // find the utxo by toSign ID
-  const utxo = siafundOutputs?.find((sfo) => stripPrefix(sfo.id) === id)
+  const utxo = bigfundOutputs?.find((sfo) => stripPrefix(sfo.id) === id)
   if (!utxo) {
     return { error: 'Missing utxo' }
   }
@@ -143,7 +143,7 @@ function getSiafundUtxoAndAddressV1({
   // find the utxo's address metadata which has the index and public key saved
   // the public key was computed and saved when the address was generated
   const addressData = addresses?.find(
-    (a) => stripPrefix(a.address) === stripPrefix(utxo.siafundOutput.address)
+    (a) => stripPrefix(a.address) === stripPrefix(utxo.bigfundOutput.address)
   )
 
   if (!addressData) {
@@ -172,33 +172,33 @@ export function getToSignMetadataV1({
   toSignId: idPrefixed,
   transaction,
   addresses,
-  siacoinOutputs,
-  siafundOutputs,
+  bigfileOutputs,
+  bigfundOutputs,
 }: {
   toSignId: string
   transaction: Transaction
   addresses: AddressData[]
-  siacoinOutputs: SiacoinElement[]
-  siafundOutputs: SiafundElement[]
+  bigfileOutputs: BigFileElement[]
+  bigfundOutputs: BigfundElement[]
 }): {
   address?: AddressData
-  siacoinUtxo?: SiacoinElement
-  siafundUtxo?: SiafundElement
-  siacoinInput?: SiacoinInput
-  siafundInput?: SiafundInput
+  bigfileUtxo?: BigFileElement
+  bigfundUtxo?: BigfundElement
+  bigfileInput?: BigFileInput
+  bigfundInput?: SiafundInput
   error?: string
 } {
   const id = stripPrefix(idPrefixed)
   // find the parent utxo funding element for each input
-  const scUtxoAddr = getSiacoinUtxoAndAddressV1({
+  const scUtxoAddr = getBigFileUtxoAndAddressV1({
     id,
     addresses,
-    siacoinOutputs,
+    bigfileOutputs,
   })
 
   if (!scUtxoAddr.error) {
-    // find the siacoin input by matching the toSign ID to the siacoin input's parent ID
-    const sci = transaction.siacoinInputs?.find(
+    // find the bigfile input by matching the toSign ID to the bigfile input's parent ID
+    const sci = transaction.bigfileInputs?.find(
       (sci) => stripPrefix(sci.parentID) === stripPrefix(scUtxoAddr.utxo.id)
     )
 
@@ -208,8 +208,8 @@ export function getToSignMetadataV1({
 
     return {
       address: scUtxoAddr.address,
-      siacoinUtxo: scUtxoAddr.utxo,
-      siacoinInput: sci,
+      bigfileUtxo: scUtxoAddr.utxo,
+      bigfileInput: sci,
     }
   }
 
@@ -217,12 +217,12 @@ export function getToSignMetadataV1({
   const sfUtxoAddr = getSiafundUtxoAndAddressV1({
     id,
     addresses,
-    siafundOutputs,
+    bigfundOutputs,
   })
 
   if (!sfUtxoAddr.error) {
-    // find the siacoin input by matching the toSign ID to the saifund input's parent ID
-    const sfi = transaction.siafundInputs?.find(
+    // find the bigfile input by matching the toSign ID to the saifund input's parent ID
+    const sfi = transaction.bigfundInputs?.find(
       (sfi) => stripPrefix(sfi.parentID) === stripPrefix(sfUtxoAddr.utxo.id)
     )
 
@@ -232,12 +232,12 @@ export function getToSignMetadataV1({
 
     return {
       address: sfUtxoAddr.address,
-      siafundUtxo: sfUtxoAddr.utxo,
-      siafundInput: sfi,
+      bigfundUtxo: sfUtxoAddr.utxo,
+      bigfundInput: sfi,
     }
   }
 
-  // if it found a siafund utxo then its a siafund error
+  // if it found a bigfund utxo then its a bigfund error
   if (sfUtxoAddr.error && sfUtxoAddr.error !== 'Missing utxo') {
     return {
       error: sfUtxoAddr.error,

@@ -1,4 +1,4 @@
-import { ConfigurationSiacoin } from './ConfigurationSiacoin'
+import { ConfigurationBigFile } from './ConfigurationBigFile'
 import { ConfigurationNumber } from './ConfigurationNumber'
 import { ConfigurationText } from './ConfigurationText'
 import { ConfigurationSwitch } from './ConfigurationSwitch'
@@ -16,8 +16,8 @@ export function ConfigurationControl<
     <Custom form={form} name={name} fields={fields} />
   ) : field.type === 'number' ? (
     <ConfigurationNumber form={form} name={name} fields={fields} />
-  ) : field.type === 'siacoin' ? (
-    <ConfigurationSiacoin form={form} name={name} fields={fields} />
+  ) : field.type === 'bigfile' ? (
+    <ConfigurationBigFile form={form} name={name} fields={fields} />
   ) : field.type === 'text' ? (
     <ConfigurationText form={form} name={name} fields={fields} />
   ) : field.type === 'password' ? (

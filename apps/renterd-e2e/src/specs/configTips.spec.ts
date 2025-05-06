@@ -10,7 +10,7 @@ import {
 import {
   configResetBasicSettings,
   configFillEstimatesFiat,
-  configFillEstimatesSiacoin,
+  configFillEstimatesBigFile,
 } from '../fixtures/configResetSettings'
 import { rebalancePrices } from '../fixtures/config'
 
@@ -25,7 +25,7 @@ test.afterEach(async () => {
 })
 
 test('field tips for storage', async ({ page }) => {
-  // Storage siacoin.
+  // Storage bigfile.
   await setCurrencyDisplay(page, 'bothPreferSc', 'usd')
   let storageNetworkAverage = page
     .getByTestId('maxStoragePriceTBMonthGroup')
@@ -37,7 +37,7 @@ test('field tips for storage', async ({ page }) => {
   await rebalancePrices(page)
   await expectTextInputByName(page, 'maxStoragePriceTBMonth', '2,604.6')
 
-  await configFillEstimatesSiacoin(page)
+  await configFillEstimatesBigFile(page)
   await setCurrencyDisplay(page, 'bothPreferFiat', 'usd')
   let storageNetworkAverageFiat = page
     .getByTestId('maxStoragePriceTBMonthGroup')
@@ -49,7 +49,7 @@ test('field tips for storage', async ({ page }) => {
   await rebalancePrices(page)
   await expectTextInputByName(page, 'maxStoragePriceTBMonth', '2,604.6')
 
-  await configFillEstimatesSiacoin(page)
+  await configFillEstimatesBigFile(page)
   await setCurrencyDisplay(page, 'bothPreferFiat', 'jpy')
   let storageNetworkAverageFiatJPY = page
     .getByTestId('maxStoragePriceTBMonthGroup')
@@ -105,7 +105,7 @@ test('field tips for storage', async ({ page }) => {
 })
 
 test('field tips for upload', async ({ page }) => {
-  // Upload siacoin.
+  // Upload bigfile.
   await setCurrencyDisplay(page, 'bothPreferSc', 'usd')
   let uploadNetworkAverage = page
     .getByTestId('maxUploadPriceTBGroup')
@@ -117,7 +117,7 @@ test('field tips for upload', async ({ page }) => {
   await rebalancePrices(page)
   await expectTextInputByName(page, 'maxUploadPriceTB', '611.4')
 
-  await configFillEstimatesSiacoin(page)
+  await configFillEstimatesBigFile(page)
   await setCurrencyDisplay(page, 'bothPreferFiat', 'usd')
   let uploadNetworkAverageFiat = page
     .getByTestId('maxUploadPriceTBGroup')
@@ -129,7 +129,7 @@ test('field tips for upload', async ({ page }) => {
   await rebalancePrices(page)
   await expectTextInputByName(page, 'maxUploadPriceTB', '611.4')
 
-  await configFillEstimatesSiacoin(page)
+  await configFillEstimatesBigFile(page)
   await setCurrencyDisplay(page, 'bothPreferFiat', 'jpy')
   let uploadNetworkAverageFiatJPY = page
     .getByTestId('maxUploadPriceTBGroup')
@@ -185,7 +185,7 @@ test('field tips for upload', async ({ page }) => {
 })
 
 test('field tips for download', async ({ page }) => {
-  // Download siacoin.
+  // Download bigfile.
   await setCurrencyDisplay(page, 'bothPreferSc', 'usd')
   let downloadNetworkAverage = page
     .getByTestId('maxDownloadPriceTBGroup')
@@ -197,7 +197,7 @@ test('field tips for download', async ({ page }) => {
   await rebalancePrices(page)
   await expectTextInputByName(page, 'maxDownloadPriceTB', '4,724.732143')
 
-  await configFillEstimatesSiacoin(page)
+  await configFillEstimatesBigFile(page)
   await setCurrencyDisplay(page, 'bothPreferFiat', 'usd')
   let downloadNetworkAverageFiat = page
     .getByTestId('maxDownloadPriceTBGroup')
@@ -209,7 +209,7 @@ test('field tips for download', async ({ page }) => {
   await rebalancePrices(page)
   await expectTextInputByName(page, 'maxDownloadPriceTB', '4,724.732143')
 
-  await configFillEstimatesSiacoin(page)
+  await configFillEstimatesBigFile(page)
   await setCurrencyDisplay(page, 'bothPreferFiat', 'jpy')
   let downloadNetworkAverageFiatJPY = page
     .getByTestId('maxDownloadPriceTBGroup')

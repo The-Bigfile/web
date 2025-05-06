@@ -71,7 +71,7 @@ export function SettingsDialog({
                 </div>
                 <Paragraph size="14">
                   Select whether you would like to see currency values in
-                  siacoin, fiat, or both. Fiat requires a third-party API
+                  bigfile, fiat, or both. Fiat requires a third-party API
                   enabled under Privacy.
                 </Paragraph>
               </div>
@@ -88,7 +88,7 @@ export function SettingsDialog({
                   <CurrencyFiatSelector />
                 </div>
                 <Paragraph size="14">
-                  Select a fiat currency for price conversions from Siacoin.
+                  Select a fiat currency for price conversions from BigFile.
                   Requires a third-party API enabled under Privacy.
                 </Paragraph>
               </div>

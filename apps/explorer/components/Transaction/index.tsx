@@ -41,27 +41,27 @@ export function Transaction({
       return []
     }
     const list: OutputItem[] = []
-    transaction.siacoinInputs?.forEach((o) => {
+    transaction.bigfileInputs?.forEach((o) => {
       list.push({
-        label: 'siacoin input',
+        label: 'bigfile input',
         addressHref: routes.address.view.replace(
           ':id',
-          stripPrefix(o.address || o.parent.siacoinOutput.address)
+          stripPrefix(o.address || o.parent.bigfileOutput.address)
         ),
-        address: o.address || o.parent.siacoinOutput.address,
-        sc: new BigNumber(o.value || o.parent.siacoinOutput.value),
+        address: o.address || o.parent.bigfileOutput.address,
+        sc: new BigNumber(o.value || o.parent.bigfileOutput.value),
         outputId: o.parentID || o.parent.id,
       })
     })
-    transaction.siafundInputs?.forEach((o) => {
+    transaction.bigfundInputs?.forEach((o) => {
       list.push({
-        label: 'siafund input',
+        label: 'bigfund input',
         addressHref: routes.address.view.replace(
           ':id',
-          stripPrefix(o.address || o.parent.siafundOutput.address)
+          stripPrefix(o.address || o.parent.bigfundOutput.address)
         ),
-        address: o.address || o.parent.siafundOutput.address,
-        sc: new BigNumber(o.value || o.parent.siafundOutput.value),
+        address: o.address || o.parent.bigfundOutput.address,
+        sc: new BigNumber(o.value || o.parent.bigfundOutput.value),
         outputId: o.parentID || o.parent.id,
       })
     })
@@ -73,30 +73,30 @@ export function Transaction({
       return []
     }
     const list: OutputItem[] = []
-    transaction.siacoinOutputs?.forEach((o) => {
+    transaction.bigfileOutputs?.forEach((o) => {
       list.push({
         label:
           o.source === 'transaction'
-            ? 'siacoin output'
+            ? 'bigfile output'
             : o.source.replace(/_/g, ' '),
         addressHref: routes.address.view.replace(
           ':id',
-          stripPrefix(o.siacoinOutput.address)
+          stripPrefix(o.bigfileOutput.address)
         ),
-        address: o.siacoinOutput.address,
-        sc: new BigNumber(o.siacoinOutput.value),
+        address: o.bigfileOutput.address,
+        sc: new BigNumber(o.bigfileOutput.value),
         outputId: o.id,
       })
     })
-    transaction.siafundOutputs?.forEach((o) => {
+    transaction.bigfundOutputs?.forEach((o) => {
       list.push({
-        label: 'siafund output',
+        label: 'bigfund output',
         addressHref: routes.address.view.replace(
           ':id',
-          stripPrefix(o.siafundOutput.address)
+          stripPrefix(o.bigfundOutput.address)
         ),
-        address: o.siafundOutput.address,
-        sf: Number(o.siafundOutput.value),
+        address: o.bigfundOutput.address,
+        sf: Number(o.bigfundOutput.value),
         outputId: o.id,
       })
     })

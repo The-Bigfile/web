@@ -4,7 +4,7 @@ import (
 	"encoding/hex"
 	"syscall/js"
 
-	proto4 "go.sia.tech/core/rhp/v4"
+	proto4 "go.thebigfile.com/core/rhp/v4"
 )
 
 func generateAccount(this js.Value, args []js.Value) result {

@@ -69,7 +69,7 @@ export function ConfigurationFiat<
           />
           {averageSc && (
             <TipNumber
-              type="siacoin"
+              type="bigfile"
               label="Network average"
               tip={averageTip || 'Averages provided by Sia Central.'}
               value={averageSc}
@@ -81,7 +81,7 @@ export function ConfigurationFiat<
           )}
           {suggestionSc && suggestionTip && (
             <TipNumber
-              type="siacoin"
+              type="bigfile"
               label={suggestionLabel || 'Suggestion'}
               tip={suggestionTip}
               decimalsLimit={0}

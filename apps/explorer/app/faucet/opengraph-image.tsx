@@ -12,7 +12,7 @@ export default async function Image() {
   return getOGImage(
     {
       title: 'Zen faucet',
-      subtitle: 'Zen testnet siacoin faucet.',
+      subtitle: 'Zen testnet bigfile faucet.',
     },
     size
   )

@@ -207,11 +207,11 @@ export default function Learn({ getStarted }: Props) {
                 ),
               },
               {
-                title: 'Renters and hosts pay with Siacoin',
+                title: 'Renters and hosts pay with BigFile',
                 icon: 'Wallet',
                 subtitle: (
                   <>
-                    Renters pay hosts in Siacoin, the native cryptocurrency of
+                    Renters pay hosts in BigFile, the native cryptocurrency of
                     the Sia blockchain. Instead of transferring the entire
                     payment up-front, storage is purchased in a rapid sequence
                     of micropayments that flows alongside the data being
@@ -224,7 +224,7 @@ export default function Learn({ getStarted }: Props) {
                     </Link>
                     , the same technology used in Bitcoin's Lightning Network.
                     Furthermore, most contracts require the host to lock up some
-                    of their own siacoins as collateral, giving them a strong
+                    of their own bigfiles as collateral, giving them a strong
                     incentive to stay online and fulfill the terms of the
                     contract.
                   </>
@@ -236,11 +236,11 @@ export default function Learn({ getStarted }: Props) {
                 subtitle: (
                   <>
                     Renters prepay for storage within file contracts, setting
-                    aside a fixed amount of Siacoin to be spent on storing and
+                    aside a fixed amount of BigFile to be spent on storing and
                     transferring data. File contracts typically last 90 days.
                     The renter software automatically renews contracts when they
                     are within a certain window of expiring. If contracts are
-                    not renewed, any unused siacoins are returned to the renter.
+                    not renewed, any unused bigfiles are returned to the renter.
                     The renter software also detect when hosts go offline, and
                     automatically migrates your data to new hosts.
                   </>

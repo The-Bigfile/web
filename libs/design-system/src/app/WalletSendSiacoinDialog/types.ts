@@ -2,7 +2,7 @@
 
 import BigNumber from 'bignumber.js'
 
-export type SendSiacoinParams = {
+export type SendBigFileParams = {
   address: string
   hastings: BigNumber
 }

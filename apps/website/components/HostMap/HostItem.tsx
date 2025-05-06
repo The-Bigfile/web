@@ -16,7 +16,7 @@ import {
   monthsToBlocks,
   TBToBytes,
   humanBytes,
-  humanSiacoin,
+  humanBigFile,
 } from '@siafoundation/units'
 
 type Props = {
@@ -43,7 +43,7 @@ export function HostItem({
           .div(1e24)
           .times(rateUsd)
           .toFixed(2)}/TB`
-      : `${humanSiacoin(
+      : `${humanBigFile(
           new BigNumber(host.storagePrice)
             .times(TBToBytes(1))
             .times(monthsToBlocks(1)),
@@ -59,7 +59,7 @@ export function HostItem({
             .div(1e24)
             .times(rateUsd)
             .toFixed(2)}/TB`
-        : `${humanSiacoin(
+        : `${humanBigFile(
             new BigNumber(host.downloadPrice).times(TBToBytes(1)),
             { fixed: 0 }
           )}/TB`,
@@ -74,7 +74,7 @@ export function HostItem({
             .div(1e24)
             .times(rateUsd)
             .toFixed(2)}/TB`
-        : `${humanSiacoin(new BigNumber(host.uploadPrice).times(TBToBytes(1)), {
+        : `${humanBigFile(new BigNumber(host.uploadPrice).times(TBToBytes(1)), {
             fixed: 0,
           })}/TB`,
     [rateUsd, host]

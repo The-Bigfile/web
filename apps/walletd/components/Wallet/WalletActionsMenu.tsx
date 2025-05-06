@@ -38,8 +38,8 @@ export function WalletActionsMenu() {
   return (
     <div className="flex gap-2">
       <WalletBalanceWithSf
-        sc={new BigNumber(balance.data?.siacoins || 0)}
-        sf={balance.data?.siafunds || 0}
+        sc={new BigNumber(balance.data?.bigfiles || 0)}
+        sf={balance.data?.bigfunds || 0}
         isSynced={status.isSynced}
       />
       <AddressesButton />

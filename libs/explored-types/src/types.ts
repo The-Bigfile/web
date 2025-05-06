@@ -11,13 +11,13 @@ import type {
   HostSettings,
   HostPriceTable,
   PublicKey,
-  SiacoinElement,
-  SiacoinInput,
-  SiacoinOutput,
-  SiacoinOutputID,
-  SiafundElement,
+  BigFileElement,
+  BigFileInput,
+  BigFileOutput,
+  BigFileOutputID,
+  BigfundElement,
   SiafundInput,
-  SiafundOutputID,
+  BigfundOutputID,
   UnlockConditions,
   StorageProof,
   Transaction,
@@ -44,10 +44,10 @@ export {
   FileContractID,
   Hash256,
   PublicKey,
-  SiacoinOutput,
-  SiacoinOutputID,
-  SiafundElement,
-  SiafundOutputID,
+  BigFileOutput,
+  BigFileOutputID,
+  BigfundElement,
+  BigfundOutputID,
   Transaction,
   TransactionID,
   V2FileContractElement,
@@ -58,13 +58,13 @@ export {
 // Types based only on core types (@siafoundation/types) or primitives.
 
 export type AddressBalance = {
-  unspentSiacoins: Currency
-  immatureSiacoins: Currency
-  unspentSiafunds: number
+  unspentBigFiles: Currency
+  immatureBigFiles: Currency
+  unspentBigfunds: number
 }
 
 export type EventPayout = {
-  siacoinElement: ExplorerSiacoinOutput
+  bigfileElement: ExplorerBigFileOutput
 }
 
 export type EventV1Transaction = {
@@ -73,13 +73,13 @@ export type EventV1Transaction = {
 
 export type EventV1ContractResolution = {
   parent: ExplorerFileContract
-  siacoinElement: ExplorerSiacoinOutput
+  bigfileElement: ExplorerBigFileOutput
   missed: boolean
 }
 
 export type EventV2ContractResolution = {
   resolution: V2FileContractResolution
-  siacoinElement: ExplorerSiacoinOutput
+  bigfileElement: ExplorerBigFileOutput
   missed: boolean
 }
 
@@ -95,7 +95,7 @@ type ExplorerEventBase = {
 }
 
 type ExplorerMinerPayoutEvent = ExplorerEventBase & {
-  type: 'miner' | 'foundation' | 'siafundClaim'
+  type: 'miner' | 'foundation' | 'bigfundClaim'
   data: EventPayout
 }
 
@@ -155,8 +155,8 @@ export type SearchResultType =
   | 'contract'
   | 'host'
   | 'invalid'
-  | 'siacoinElement'
-  | 'siafundElement'
+  | 'bigfileElement'
+  | 'bigfundElement'
   | 'transaction'
   | 'v2Contract'
   | 'v2Transaction'
@@ -243,29 +243,29 @@ type HostAnnouncement = {
 }
 
 /**
- * The origin of a `SiacoinOutput`--whether it came from a miner or a transaction.
+ * The origin of a `BigFileOutput`--whether it came from a miner or a transaction.
  */
 type Source = string
 
 /**
- * An `ExplorerSiacoinInput` is a core type SiacoinInput with added `address` and `value` keys.
+ * An `ExplorerBigFileInput` is a core type BigFileInput with added `address` and `value` keys.
  */
-export type ExplorerSiacoinInput = SiacoinInput & {
+export type ExplorerBigFileInput = BigFileInput & {
   address: string
   value: string
 }
 
 /**
- * An `ExplorerSiacoinOutput` is a core type `SiacoinElement` with added `source` and
+ * An `ExplorerBigFileOutput` is a core type `BigFileElement` with added `source` and
  * `spentIndex` keys.
  */
-export type ExplorerSiacoinOutput = SiacoinElement & {
+export type ExplorerBigFileOutput = BigFileElement & {
   source: Source
   spentIndex: ChainIndex
 }
 
 /**
- * An `ExplorerSiafundInput` is a core type SiacoinInput with added `address` and `value` keys.
+ * An `ExplorerSiafundInput` is a core type BigFileInput with added `address` and `value` keys.
  */
 export type ExplorerSiafundInput = SiafundInput & {
   address: string
@@ -273,9 +273,9 @@ export type ExplorerSiafundInput = SiafundInput & {
 }
 
 /**
- * An `ExplorerSiafundOutput` is a core type `SiafundElement` with added `spentIndex` keys.
+ * An `ExplorerSiafundOutput` is a core type `BigfundElement` with added `spentIndex` keys.
  */
-export type ExplorerSiafundOutput = SiafundElement & { spentIndex: ChainIndex }
+export type ExplorerSiafundOutput = BigfundElement & { spentIndex: ChainIndex }
 
 /**
  * An `ExplorerFileContract` is a core type FileContractElement with added resolved/
@@ -299,8 +299,8 @@ export type ExplorerFileContract = {
   windowStart: number
   windowEnd: number
   payout: Currency
-  validProofOutputs: SiacoinOutput[]
-  missedProofOutputs: SiacoinOutput[]
+  validProofOutputs: BigFileOutput[]
+  missedProofOutputs: BigFileOutput[]
   unlockHash: Hash256
   revisionNumber: number
 }
@@ -315,16 +315,16 @@ export type ExplorerFileContractRevision = ExplorerFileContract & {
 }
 
 /**
- * An `ExplorerTransaction` differs from a core type `Transaction` in the `siacoinOutputs`,
- * `siafundOutputs`,`fileContracts`, and `fileContractRevisions` key values, which are custom
+ * An `ExplorerTransaction` differs from a core type `Transaction` in the `bigfileOutputs`,
+ * `bigfundOutputs`,`fileContracts`, and `fileContractRevisions` key values, which are custom
  * to explorerd.
  */
 export type ExplorerTransaction = {
   id: string
-  siacoinInputs?: ExplorerSiacoinInput[]
-  siacoinOutputs?: ExplorerSiacoinOutput[]
-  siafundInputs?: ExplorerSiafundInput[]
-  siafundOutputs?: ExplorerSiafundOutput[]
+  bigfileInputs?: ExplorerBigFileInput[]
+  bigfileOutputs?: ExplorerBigFileOutput[]
+  bigfundInputs?: ExplorerSiafundInput[]
+  bigfundOutputs?: ExplorerSiafundOutput[]
   fileContracts?: ExplorerFileContract[]
   fileContractRevisions?: ExplorerFileContractRevision[]
   storageProofs?: StorageProof[]
@@ -336,14 +336,14 @@ export type ExplorerTransaction = {
 
 /**
  * An `ExplorerBlock` differs from a core type `Block` with the addition of the height
- * key and the use of the `ExplorerSiacoinOutput` and `ExplorerTransaction` values.
+ * key and the use of the `ExplorerBigFileOutput` and `ExplorerTransaction` values.
  */
 export type ExplorerBlock = {
   height: number
   parentID: BlockID
   nonce: number
   timestamp: string
-  minerPayouts: ExplorerSiacoinOutput[]
+  minerPayouts: ExplorerBigFileOutput[]
   transactions: ExplorerTransaction[]
 
   v2?: V2BlockData
@@ -438,8 +438,8 @@ export type ExplorerV2FileContractRevision = {
 }
 
 export type ExplorerV2FileContractRenewal = {
-  finalRenterOutput: SiacoinOutput
-  finalHostOutput: SiacoinOutput
+  finalRenterOutput: BigFileOutput
+  finalHostOutput: BigFileOutput
   renterRollover: Currency
   hostRollover: Currency
   newContract: ExplorerV2FileContract

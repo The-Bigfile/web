@@ -145,19 +145,19 @@ export function getFields({
       description: (
         <>
           The host's storage price per TB per month. Choose whether to set your
-          storage price in siacoin per TB per month or to pin the siacoin price
+          storage price in bigfile per TB per month or to pin the bigfile price
           to a fixed fiat value per TB per month.
         </>
       ),
-      type: 'siacoin',
+      type: 'bigfile',
       category: 'pricing',
-      units: 'SC/TB/month',
+      units: 'BIG/TB/month',
       decimalsLimitSc: scDecimalPlaces,
       suggestion: exchangeRateUSD
         ? usdInScRoundedToNearestTen(1, exchangeRateUSD)
         : undefined,
       suggestionTip:
-        'The suggested storage price in siacoins per TB per month.',
+        'The suggested storage price in bigfiles per TB per month.',
       validation: {
         required: 'required',
       },
@@ -202,19 +202,19 @@ export function getFields({
         <>
           The host's egress price per TB per month. Egress means bandwidth usage
           by outgoing download traffic. Choose whether to set your egress price
-          in siacoin per TB or to pin the siacoin price to a fixed fiat value
+          in bigfile per TB or to pin the bigfile price to a fixed fiat value
           per TB.
         </>
       ),
-      type: 'siacoin',
+      type: 'bigfile',
       category: 'pricing',
-      units: 'SC/TB',
+      units: 'BIG/TB',
       decimalsLimitSc: scDecimalPlaces,
       suggestion: exchangeRateUSD
         ? usdInScRoundedToNearestTen(10, exchangeRateUSD)
         : undefined,
       suggestionTip:
-        'The suggested egress price in siacoins for egress per TB.',
+        'The suggested egress price in bigfiles for egress per TB.',
       validation: {
         required: 'required',
       },
@@ -259,17 +259,17 @@ export function getFields({
         <>
           The host's ingress price per TB per month. Ingress means bandwidth
           usage by incoming upload traffic. Choose whether to set your ingress
-          price in siacoin per TB or to pin the siacoin price to a fixed fiat
+          price in bigfile per TB or to pin the bigfile price to a fixed fiat
           value per TB.
         </>
       ),
-      type: 'siacoin',
+      type: 'bigfile',
       category: 'pricing',
-      units: 'SC/TB',
+      units: 'BIG/TB',
       suggestion: exchangeRateUSD
         ? usdInScRoundedToNearestTen(0.05, exchangeRateUSD)
         : undefined,
-      suggestionTip: 'The suggested ingress price in siacoins per TB.',
+      suggestionTip: 'The suggested ingress price in bigfiles per TB.',
       decimalsLimitSc: scDecimalPlaces,
       validation: {
         required: 'required',
@@ -331,11 +331,11 @@ export function getFields({
       description: (
         <>
           The host's maximum collateral. Choose whether to set your max
-          collateral price in siacoin or to pin the max collateral to a fixed
+          collateral price in bigfile or to pin the max collateral to a fixed
           fiat value.
         </>
       ),
-      type: 'siacoin',
+      type: 'bigfile',
       category: 'pricing',
       decimalsLimitSc: scDecimalPlaces,
       suggestion:
@@ -374,13 +374,13 @@ export function getFields({
     },
     contractPrice: {
       title: 'Contract price',
-      type: 'siacoin',
+      type: 'bigfile',
       category: 'pricing',
       decimalsLimitSc: scDecimalPlaces,
       suggestionTip: 'The suggested contract price.',
       tipsDecimalsLimitSc: 1,
       suggestion: new BigNumber(0.2),
-      description: <>{`The host's contract price in siacoins.`}</>,
+      description: <>{`The host's contract price in bigfiles.`}</>,
       hidden: configViewMode === 'basic',
       validation: {
         required: 'required',
@@ -388,15 +388,15 @@ export function getFields({
     },
     baseRPCPrice: {
       title: 'Base RPC price',
-      type: 'siacoin',
+      type: 'bigfile',
       category: 'pricing',
-      units: 'SC/million',
+      units: 'BIG/million',
       suggestion: new BigNumber(1),
       suggestionTip:
-        'The suggested base RPC price in siacoins per million calls.',
+        'The suggested base RPC price in bigfiles per million calls.',
       decimalsLimitSc: scDecimalPlaces,
       description: (
-        <>{`The host's base RPC price in siacoins per million calls.`}</>
+        <>{`The host's base RPC price in bigfiles per million calls.`}</>
       ),
       hidden: configViewMode === 'basic',
       validation: {
@@ -405,15 +405,15 @@ export function getFields({
     },
     sectorAccessPrice: {
       title: 'Sector access price',
-      type: 'siacoin',
+      type: 'bigfile',
       category: 'pricing',
-      units: 'SC/million',
+      units: 'BIG/million',
       decimalsLimitSc: scDecimalPlaces,
       suggestion: new BigNumber(1),
       suggestionTip:
-        'The suggested sector access price in siacoins per million sectors.',
+        'The suggested sector access price in bigfiles per million sectors.',
       description: (
-        <>{`The host's sector access price in siacoins per million sectors.`}</>
+        <>{`The host's sector access price in bigfiles per million sectors.`}</>
       ),
       hidden: configViewMode === 'basic',
       validation: {
@@ -459,7 +459,7 @@ export function getFields({
     },
     maxAccountBalance: {
       title: 'Maximum balance',
-      type: 'siacoin',
+      type: 'bigfile',
       category: 'RHP3',
       suggestion: new BigNumber(10),
       suggestionTip: 'The suggested maximum account balance.',
@@ -471,7 +471,7 @@ export function getFields({
         required: 'required',
         validate: {
           min: (value) =>
-            new BigNumber(value as BigNumber).gte(1) || `must be at least 1 SC`,
+            new BigNumber(value as BigNumber).gte(1) || `must be at least 1 BIG`,
         },
       },
     },

@@ -45,7 +45,7 @@ export const webLinks = {
   twitter: 'https://twitter.com/sia__foundation',
   bluesky: 'https://bsky.app/profile/sia.tech',
   twitterHandle: '@sia__foundation',
-  reddit: 'https://reddit.com/r/siacoin',
+  reddit: 'https://reddit.com/r/bigfile',
   forum: 'https://forum.sia.tech/',
   forumGrants: 'https://forum.sia.tech/c/grants/',
   forumGrantsProposed: 'https://forum.sia.tech/c/grants/proposed/',
@@ -54,6 +54,6 @@ export const webLinks = {
   benchmarks: 'https://benchmarks.sia.tech',
   storageStats: 'https://hosts.siacentral.com/',
   hostTroubleshoot: 'https://troubleshoot.siacentral.com/',
-  coinmarketcap: 'https://coinmarketcap.com/currencies/siacoin/',
+  coinmarketcap: 'https://coinmarketcap.com/currencies/bigfile/',
   jobs: 'https://jobs.lever.co/the-sia-foundation',
 }

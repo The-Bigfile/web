@@ -11,7 +11,7 @@ export default function LoadingCurrency({ type }: Props) {
     case 'perMillion':
       return <div className="animate-pulse">0.00/million</div>
     case 'perSCMillion':
-      return <div className="animate-pulse">0.00 SC/million</div>
+      return <div className="animate-pulse">0.00 BIG/million</div>
     default:
       return <div className="animate-pulse">0.00</div>
   }

@@ -7,7 +7,7 @@ import {
   ValueSc,
   FieldSwitch,
   ConfigFields,
-  FieldSiacoin,
+  FieldBigFile,
   FieldText,
   FieldNumber,
   FieldSelect,
@@ -26,9 +26,9 @@ const defaultValues = {
   receiveAddress: '',
   changeAddress: '',
   customChangeAddress: false,
-  mode: 'siacoin' as 'siacoin' | 'siafund',
-  siacoin: undefined as BigNumber,
-  siafund: undefined as BigNumber,
+  mode: 'bigfile' as 'bigfile' | 'bigfund',
+  bigfile: undefined as BigNumber,
+  bigfund: undefined as BigNumber,
   includeFee: false,
 }
 
@@ -61,33 +61,33 @@ function getFields({
       type: 'select',
       title: 'Action',
       options: [
-        { value: 'siacoin', label: 'Send siacoins' },
-        { value: 'siafund', label: 'Send siafunds' },
+        { value: 'bigfile', label: 'Send bigfiles' },
+        { value: 'bigfund', label: 'Send bigfunds' },
       ],
       validation: {
         required: 'required',
       },
     },
-    siacoin: {
-      type: 'siacoin',
-      title: 'Siacoin',
+    bigfile: {
+      type: 'bigfile',
+      title: 'BigFile',
       placeholder: '100',
       validation: {
         validate: {
           required: (value: Maybe<BigNumber>, values) =>
-            values.mode !== 'siacoin' || !!value || 'required',
+            values.mode !== 'bigfile' || !!value || 'required',
           gtz: (value: Maybe<BigNumber>, values) =>
-            values.mode !== 'siacoin' ||
+            values.mode !== 'bigfile' ||
             !new BigNumber(value || 0).isZero() ||
             'must be greater than zero',
           balance: (value: Maybe<BigNumber>, values) =>
-            values.mode !== 'siacoin' ||
+            values.mode !== 'bigfile' ||
             balanceSc.gte(toHastings(value || 0).plus(fee)) ||
             'not enough funds in wallet',
         },
       },
     },
-    siafund: {
+    bigfund: {
       type: 'number',
       title: 'Siafunds',
       decimalsLimit: 0,
@@ -95,13 +95,13 @@ function getFields({
       validation: {
         validate: {
           required: (value, values) =>
-            values.mode !== 'siafund' || !!value || 'required',
+            values.mode !== 'bigfund' || !!value || 'required',
           gtz: (value: Maybe<BigNumber>, values) =>
-            values.mode !== 'siafund' ||
+            values.mode !== 'bigfund' ||
             value?.gt(0) ||
             'must be greater than zero',
           balance: (value: Maybe<BigNumber>, values) =>
-            values.mode !== 'siafund' ||
+            values.mode !== 'bigfund' ||
             (balanceSc?.gte(fee) && balanceSf?.gte(value)) ||
             'not enough funds in wallet',
         },
@@ -184,22 +184,22 @@ export function useComposeFormV2({
 
   const onValid = useCallback(
     async (values: typeof defaultValues) => {
-      const sc = new BigNumber(values.siacoin || 0)
-      const sf = new BigNumber(values.siafund || 0)
+      const sc = new BigNumber(values.bigfile || 0)
+      const sf = new BigNumber(values.bigfund || 0)
 
-      const siacoin = values.includeFee
+      const bigfile = values.includeFee
         ? toHastings(sc).minus(fee)
         : toHastings(sc)
 
-      const siafund = sf.toNumber()
+      const bigfund = sf.toNumber()
 
       onComplete({
         receiveAddress: values.receiveAddress,
         changeAddress: values.customChangeAddress
           ? values.changeAddress
           : defaultChangeAddress,
-        siacoin,
-        siafund,
+        bigfile,
+        bigfund,
         mode: values.mode,
         fee,
       })
@@ -212,19 +212,19 @@ export function useComposeFormV2({
     [form, onValid]
   )
 
-  const siacoin = form.watch('siacoin')
+  const bigfile = form.watch('bigfile')
   const mode = form.watch('mode')
   const customChangeAddress = form.watch('customChangeAddress')
   const includeFee = form.watch('includeFee')
-  const sc = toHastings(siacoin || 0)
+  const sc = toHastings(bigfile || 0)
 
-  // Reset the siacoin or siafund field when the mode changes.
+  // Reset the bigfile or bigfund field when the mode changes.
   useEffect(() => {
-    if (mode === 'siafund') {
-      form.resetField('siacoin')
+    if (mode === 'bigfund') {
+      form.resetField('bigfile')
     }
-    if (mode === 'siacoin') {
-      form.resetField('siafund')
+    if (mode === 'bigfile') {
+      form.resetField('bigfund')
     }
   }, [mode, form])
 
@@ -265,13 +265,13 @@ export function useComposeFormV2({
           autoComplete="off"
         />
       )}
-      {mode === 'siacoin' ? (
+      {mode === 'bigfile' ? (
         <>
-          <FieldSiacoin
+          <FieldBigFile
             size="medium"
             form={form}
             fields={fields}
-            name="siacoin"
+            name="bigfile"
           />
           <div className="flex items-center">
             <FieldSwitch
@@ -290,7 +290,7 @@ export function useComposeFormV2({
           </div>
         </>
       ) : (
-        <FieldNumber size="medium" form={form} fields={fields} name="siafund" />
+        <FieldNumber size="medium" form={form} fields={fields} name="bigfund" />
       )}
       <div className="flex flex-col gap-2 my-1">
         <div className="flex gap-2 justify-between items-center">
@@ -304,7 +304,7 @@ export function useComposeFormV2({
             />
           </div>
         </div>
-        {mode === 'siacoin' && fee && (
+        {mode === 'bigfile' && fee && (
           <div className="flex justify-between gap-2 items-center">
             <Text color="verySubtle">Total</Text>
             <div className="flex relative top-[-0.5px]">

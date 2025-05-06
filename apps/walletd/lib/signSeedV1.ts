@@ -1,7 +1,7 @@
 import {
-  SiacoinElement,
+  BigFileElement,
   Transaction,
-  SiafundElement,
+  BigfundElement,
   ConsensusState,
   ConsensusNetwork,
 } from '@siafoundation/types'
@@ -19,8 +19,8 @@ export function signTransactionSeedV1({
   consensusState,
   consensusNetwork,
   addresses,
-  siacoinOutputs,
-  siafundOutputs,
+  bigfileOutputs,
+  bigfundOutputs,
 }: {
   mnemonic: string
   consensusState: ConsensusState
@@ -28,8 +28,8 @@ export function signTransactionSeedV1({
   transaction: Transaction
   toSign: string[]
   addresses: AddressData[]
-  siacoinOutputs: SiacoinElement[]
-  siafundOutputs: SiafundElement[]
+  bigfileOutputs: BigFileElement[]
+  bigfundOutputs: BigfundElement[]
 }): { signedTransaction?: Transaction; error?: string } {
   if (!consensusState) {
     return { error: 'No consensus state' }
@@ -37,7 +37,7 @@ export function signTransactionSeedV1({
   if (!addresses) {
     return { error: 'No addresses' }
   }
-  if (!siacoinOutputs) {
+  if (!bigfileOutputs) {
     return { error: 'No outputs' }
   }
 
@@ -45,8 +45,8 @@ export function signTransactionSeedV1({
     toSign,
     transaction,
     addresses,
-    siacoinOutputs,
-    siafundOutputs,
+    bigfileOutputs,
+    bigfundOutputs,
   })
 
   if (error) {
@@ -60,8 +60,8 @@ export function signTransactionSeedV1({
       toSignId,
       transaction,
       addresses,
-      siacoinOutputs,
-      siafundOutputs,
+      bigfileOutputs,
+      bigfundOutputs,
     })
 
     if (utxoAddressError) {

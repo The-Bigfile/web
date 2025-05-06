@@ -6,7 +6,7 @@ import {
   renterdWaitForContracts,
   teardownCluster,
 } from '@siafoundation/clusterd'
-import { addWalletToWalletd, sendSiacoinFromRenterd } from '../fixtures/walletd'
+import { addWalletToWalletd, sendBigFileFromRenterd } from '../fixtures/walletd'
 import { Cluster } from '../fixtures/cluster'
 import { toHastings } from '@siafoundation/units'
 import { exploredStabilization } from '../helpers/exploredStabilization'
@@ -54,7 +54,7 @@ test('address can be directly navigated to by id', async ({ page }) => {
 test('address displays the intended data', async ({ page }) => {
   const walletd = cluster.daemons.walletds[0]
   const { wallet, address } = await addWalletToWalletd(walletd.api)
-  await sendSiacoinFromRenterd(
+  await sendBigFileFromRenterd(
     cluster.daemons.renterds[0],
     address,
     toHastings(1_000_000).toString()
@@ -67,7 +67,7 @@ test('address displays the intended data', async ({ page }) => {
       offset: 0,
     },
   })
-  const outputs = await walletd.api.walletOutputsSiacoin({
+  const outputs = await walletd.api.walletOutputsBigFile({
     params: {
       id: wallet.id,
     },
@@ -77,7 +77,7 @@ test('address displays the intended data', async ({ page }) => {
   await expect(page.getByText(events.data[0].id.slice(0, 5))).toBeVisible()
   await expect(page.getByText(`${events.data.length} events`)).toBeVisible()
   await page.getByRole('tab').getByText('Unspent outputs').click()
-  await expect(page.getByText('Siacoin output').first()).toBeVisible()
+  await expect(page.getByText('BigFile output').first()).toBeVisible()
   await expect(
     page.getByText(outputs.data.outputs[0].id.slice(0, 5))
   ).toBeVisible()

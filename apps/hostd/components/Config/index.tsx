@@ -7,7 +7,7 @@ import {
   ConfigurationPanelSetting,
   shouldShowField,
   Tooltip,
-  ConfigurationSiacoin,
+  ConfigurationBigFile,
   ConfigurationFiat,
 } from '@siafoundation/design-system'
 import { useConfig } from '../../contexts/config'
@@ -84,7 +84,7 @@ export function Config() {
                   currency={pinnedCurrency || undefined}
                 />
               ) : (
-                <ConfigurationSiacoin
+                <ConfigurationBigFile
                   name="storagePrice"
                   form={form}
                   fields={fields}
@@ -134,7 +134,7 @@ export function Config() {
                   currency={pinnedCurrency}
                 />
               ) : (
-                <ConfigurationSiacoin
+                <ConfigurationBigFile
                   name="egressPrice"
                   form={form}
                   fields={fields}
@@ -184,7 +184,7 @@ export function Config() {
                   currency={pinnedCurrency}
                 />
               ) : (
-                <ConfigurationSiacoin
+                <ConfigurationBigFile
                   name="ingressPrice"
                   form={form}
                   fields={fields}
@@ -244,7 +244,7 @@ export function Config() {
                     currency={pinnedCurrency}
                   />
                 ) : (
-                  <ConfigurationSiacoin
+                  <ConfigurationBigFile
                     name="maxCollateral"
                     form={form}
                     fields={fields}

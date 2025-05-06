@@ -305,7 +305,7 @@ test('contract timeline displays correct heights for v1 and v2 contracts', async
   await expect(rowV2.getByLabel('proof window 122517 - 122661')).toBeVisible()
   await expect(rowV2.getByLabel('payout 122662')).toBeVisible()
   await expect(
-    rowV2.getByTestId('payout').getByText('+15.747 SC')
+    rowV2.getByTestId('payout').getByText('+15.747 BIG')
   ).toBeVisible()
 
   // v1

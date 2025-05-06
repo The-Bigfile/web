@@ -224,7 +224,7 @@ export function ChartXYGraph<Key extends string, Cat extends string>({
         })}
         label={
           stackOffset == null
-            ? 'SC'
+            ? 'BIG'
             : stackOffset === 'expand'
             ? 'Fraction of total'
             : ''

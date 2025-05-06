@@ -4,7 +4,7 @@ import (
 	"io/fs"
 	"testing"
 
-	"go.sia.tech/web/internal/nextjs"
+	"go.thebigfile.com/web/internal/nextjs"
 )
 
 func TestRouter(t *testing.T) {

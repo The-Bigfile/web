@@ -30,7 +30,7 @@ export type ConfigField<
 > = {
   type:
     | 'number'
-    | 'siacoin'
+    | 'bigfile'
     | 'fiat'
     | 'text'
     | 'password'

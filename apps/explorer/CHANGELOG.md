@@ -180,7 +180,7 @@
 ### Minor Changes
 
 - 23f4fb47: Copyable entity values now have a context menu with support for opening Siascan pages.
-- 2c80becf: The faucet validation now allows up to 50,000 SC.
+- 2c80becf: The faucet validation now allows up to 50,000 BIG.
 
 ## 0.9.0
 
@@ -247,7 +247,7 @@
 - a7bfe11: The explorer homepage now features host and storage metrics.
 - 1397784: The Explorer now supports switching between networks, this was added to provide explorer functionality to the Zen Testnet.
 - ff5abd5: Fixed an issue where the block page title was displaying non-numeric block IDs as NaN.
-- ccc7ab2: In testnet mode, the explorer now features a faucet for requesting Siacoin.
+- ccc7ab2: In testnet mode, the explorer now features a faucet for requesting BigFile.
 
 ## 0.1.0
 

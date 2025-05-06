@@ -2,7 +2,7 @@ import {
   ConfigurationFiat,
   ConfigurationPanel,
   ConfigurationPanelSetting,
-  ConfigurationSiacoin,
+  ConfigurationBigFile,
   PanelMenuSection,
   PanelMenuSetting,
   useDaemonExplorerExchangeRate,
@@ -100,7 +100,7 @@ export function Config() {
                   />
                 )
               ) : (
-                <ConfigurationSiacoin
+                <ConfigurationBigFile
                   name="maxStoragePriceTBMonth"
                   form={form}
                   fields={fields}
@@ -135,7 +135,7 @@ export function Config() {
                   />
                 )
               ) : (
-                <ConfigurationSiacoin
+                <ConfigurationBigFile
                   name="maxUploadPriceTB"
                   form={form}
                   fields={fields}
@@ -170,7 +170,7 @@ export function Config() {
                   />
                 )
               ) : (
-                <ConfigurationSiacoin
+                <ConfigurationBigFile
                   name="maxDownloadPriceTB"
                   form={form}
                   fields={fields}

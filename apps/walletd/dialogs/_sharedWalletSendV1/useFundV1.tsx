@@ -1,6 +1,6 @@
 import {
-  useWalletFundSiacoin,
-  useWalletFundSiafund,
+  useWalletFundBigFile,
+  useWalletFundBigfund,
 } from '@siafoundation/walletd-react'
 import { useWallets } from '../../contexts/wallets'
 import { useCallback } from 'react'
@@ -9,8 +9,8 @@ import { SendParamsV1 } from './typesV1'
 export function useFundV1() {
   const { wallet } = useWallets()
   const walletId = wallet?.id
-  const walletFundSc = useWalletFundSiacoin()
-  const walletFundSf = useWalletFundSiafund()
+  const walletFundSc = useWalletFundBigFile()
+  const walletFundSf = useWalletFundBigfund()
 
   const fund = useCallback(
     async ({
@@ -18,8 +18,8 @@ export function useFundV1() {
       changeAddress,
       claimAddress,
       mode,
-      siacoin,
-      siafund,
+      bigfile,
+      bigfund,
       fee,
     }: SendParamsV1) => {
       if (!receiveAddress || !changeAddress || !claimAddress) {
@@ -29,19 +29,19 @@ export function useFundV1() {
       }
 
       // fund
-      if (mode === 'siacoin') {
+      if (mode === 'bigfile') {
         const fundResponse = await walletFundSc.post({
           params: {
             id: walletId,
           },
           payload: {
-            amount: siacoin.plus(fee).toString(),
+            amount: bigfile.plus(fee).toString(),
             changeAddress,
             transaction: {
               minerFees: [fee.toString()],
-              siacoinOutputs: [
+              bigfileOutputs: [
                 {
-                  value: siacoin.toString(),
+                  value: bigfile.toString(),
                   address: receiveAddress,
                 },
               ],
@@ -60,21 +60,21 @@ export function useFundV1() {
         }
       }
 
-      if (mode === 'siafund') {
+      if (mode === 'bigfund') {
         const toSign = []
         let fundResponse = await walletFundSf.post({
           params: {
             id: walletId,
           },
           payload: {
-            amount: siafund,
+            amount: bigfund,
             changeAddress,
             claimAddress,
             transaction: {
               minerFees: [fee.toString()],
-              siafundOutputs: [
+              bigfundOutputs: [
                 {
-                  value: siafund,
+                  value: bigfund,
                   address: receiveAddress,
                 },
               ],

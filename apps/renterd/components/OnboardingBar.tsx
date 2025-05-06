@@ -21,7 +21,7 @@ import { useDialog } from '../contexts/dialog'
 import { useNotEnoughContracts } from './Files/checks/useNotEnoughContracts'
 import { useWallet } from '@siafoundation/renterd-react'
 import BigNumber from 'bignumber.js'
-import { humanSiacoin } from '@siafoundation/units'
+import { humanBigFile } from '@siafoundation/units'
 import { useAppSettings } from '@siafoundation/react-core'
 import useLocalStorageState from 'use-local-storage-state'
 import { useSpendingEstimate } from '../contexts/config/useSpendingEstimate'
@@ -151,9 +151,9 @@ export function OnboardingBar() {
                     Step 3: Fund your wallet
                   </Link>
                 }
-                description={`Fund your wallet with at least ${humanSiacoin(
+                description={`Fund your wallet with at least ${humanBigFile(
                   estimatedSpendingPerMonth || 0
-                )} siacoin to cover the estimated spending for a month.${
+                )} bigfile to cover the estimated spending for a month.${
                   syncStatus.isWalletSynced
                     ? ''
                     : ' Balance will not be accurate until wallet is finished scanning.'

@@ -1,7 +1,7 @@
 import { isValidAddress } from './address'
 
 describe('address', () => {
-  it('should return true for valid siacoin addresses', () => {
+  it('should return true for valid bigfile addresses', () => {
     expect(
       isValidAddress(
         'a9b01c85163638682b170d82de02b8bb99ba86092e9ab1b0d25111284fe618e93456915820f1'
@@ -19,7 +19,7 @@ describe('address', () => {
     ).toBeTruthy()
   })
 
-  it('should return false for invalid siacoin addresses', () => {
+  it('should return false for invalid bigfile addresses', () => {
     expect(isValidAddress('bNEMVqeUZUqTrYUxud5ehnUhtTAiWDXQ5e')).toBeFalsy()
     expect(
       isValidAddress(

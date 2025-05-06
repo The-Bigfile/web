@@ -275,17 +275,17 @@ export function getFields({
     },
     maxStoragePriceTBMonth: {
       category: 'gouging',
-      type: 'siacoin',
+      type: 'bigfile',
       title: 'Max storage price',
       description: (
         <>
           The max allowed price a host is allowed to charge to store 1 TB worth
-          of data per month. Choose whether to set the price in siacoin per TB
-          per month or to pin the siacoin price to a fixed fiat value per TB per
+          of data per month. Choose whether to set the price in bigfile per TB
+          per month or to pin the bigfile price to a fixed fiat value per TB per
           month.
         </>
       ),
-      units: 'SC/TB/month',
+      units: 'BIG/TB/month',
       decimalsLimitSc: scDecimalPlaces,
       validation: {
         required: 'required',
@@ -346,16 +346,16 @@ export function getFields({
     },
     maxUploadPriceTB: {
       category: 'gouging',
-      type: 'siacoin',
+      type: 'bigfile',
       title: 'Max upload price',
       description: (
         <>
           The max allowed price a host is allowed to charge for uploading 1 TB
-          worth of data. Choose whether to set the price in siacoin per TB or to
-          pin the siacoin price to a fixed fiat value per TB.
+          worth of data. Choose whether to set the price in bigfile per TB or to
+          pin the bigfile price to a fixed fiat value per TB.
         </>
       ),
-      units: 'SC/TB',
+      units: 'BIG/TB',
       decimalsLimitSc: scDecimalPlaces,
       validation: {
         required: 'required',
@@ -416,16 +416,16 @@ export function getFields({
     },
     maxDownloadPriceTB: {
       category: 'gouging',
-      type: 'siacoin',
+      type: 'bigfile',
       title: 'Max download price',
       description: (
         <>
           The max allowed price to download 1 TB. Choose whether to set the
-          price in siacoin per TB or to pin the siacoin price to a fixed fiat
+          price in bigfile per TB or to pin the bigfile price to a fixed fiat
           value per TB.
         </>
       ),
-      units: 'SC/TB',
+      units: 'BIG/TB',
       decimalsLimitSc: scDecimalPlaces,
       validation: {
         required: 'required',
@@ -479,11 +479,11 @@ export function getFields({
     },
     maxContractPrice: {
       category: 'gouging',
-      type: 'siacoin',
+      type: 'bigfile',
       title: 'Max contract price',
       description: <>The max allowed price to form a contract.</>,
       suggestion: new BigNumber(1),
-      suggestionTip: 'The suggested value is 1 SC.',
+      suggestionTip: 'The suggested value is 1 BIG.',
       decimalsLimitSc: scDecimalPlaces,
       tipsDecimalsLimitSc: 0,
       hidden: configViewMode === 'basic',
@@ -502,15 +502,15 @@ export function getFields({
     },
     maxRPCPriceMillion: {
       category: 'gouging',
-      type: 'siacoin',
+      type: 'bigfile',
       title: 'Max RPC price',
       description: (
-        <>The max allowed base price for RPCs in siacoins per million calls.</>
+        <>The max allowed base price for RPCs in bigfiles per million calls.</>
       ),
-      units: 'SC/million',
+      units: 'BIG/million',
       decimalsLimitSc: scDecimalPlaces,
       suggestion: new BigNumber(10),
-      suggestionTip: 'The suggested value is 10 SC.',
+      suggestionTip: 'The suggested value is 10 BIG.',
       tipsDecimalsLimitSc: 0,
       hidden: configViewMode === 'basic',
       validation: {
@@ -624,7 +624,7 @@ export function getFields({
     },
     minMaxEphemeralAccountBalance: {
       category: 'gouging',
-      type: 'siacoin',
+      type: 'bigfile',
       title: 'Min max ephemeral account balance',
       description: (
         <>
@@ -643,7 +643,7 @@ export function getFields({
           min: requiredIfAdvanced(
             validationContext,
             (value: Maybe<BigNumber>) => {
-              return new BigNumber(value || 0).gte(1) || 'must be at least 1 SC'
+              return new BigNumber(value || 0).gte(1) || 'must be at least 1 BIG'
             }
           ),
         },

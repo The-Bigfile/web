@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`signLedgerV1 siacoin builds and signs valid transaction 1`] = `
+exports[`signLedgerV1 bigfile builds and signs valid transaction 1`] = `
 Object {
   "transaction": Object {
     "minerFees": Array [
       "3930000000000000000000",
     ],
-    "siacoinInputs": Array [
+    "bigfileInputs": Array [
       Object {
         "parentID": "aa3e781330c9b3991e0141807df1327fadf114ca6c37acb9e58004f942d91dfb",
         "unlockConditions": Object {
@@ -28,7 +28,7 @@ Object {
         },
       },
     ],
-    "siacoinOutputs": Array [
+    "bigfileOutputs": Array [
       Object {
         "address": "90c6057cdd2463eca61f83796e83152dbba28b6cb9a74831a043833051ec9f422726bfff2ee8",
         "value": "1000000000000000000000000",

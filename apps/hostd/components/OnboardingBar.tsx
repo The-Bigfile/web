@@ -98,7 +98,7 @@ export function OnboardingBar() {
                     Step 1: Fund your wallet
                   </Link>
                 }
-                description={`Fund your wallet with siacoin to cover required contract collateral.${
+                description={`Fund your wallet with bigfile to cover required contract collateral.${
                   syncStatus.isWalletSynced
                     ? ''
                     : ' Balance will not be accurate until wallet is finished scanning.'

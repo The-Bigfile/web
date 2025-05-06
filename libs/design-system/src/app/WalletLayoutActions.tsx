@@ -14,8 +14,8 @@ type Props = {
     spendable: BigNumber
     immature: BigNumber
   }
-  receiveSiacoin?: () => void
-  sendSiacoin: () => void
+  receiveBigFile?: () => void
+  sendBigFile: () => void
 }
 
 export function WalletLayoutActions({
@@ -24,8 +24,8 @@ export function WalletLayoutActions({
   syncPercent,
   walletScanPercent,
   balanceSc,
-  sendSiacoin,
-  receiveSiacoin,
+  sendBigFile,
+  receiveBigFile,
 }: Props) {
   return (
     <>
@@ -40,8 +40,8 @@ export function WalletLayoutActions({
           balanceSc={balanceSc}
         />
       )}
-      {receiveSiacoin && (
-        <Button aria-label="receive" size="small" onClick={receiveSiacoin}>
+      {receiveBigFile && (
+        <Button aria-label="receive" size="small" onClick={receiveBigFile}>
           <ArrowDownLeft16 />
           Receive
         </Button>
@@ -50,7 +50,7 @@ export function WalletLayoutActions({
         aria-label="send"
         size="small"
         variant="accent"
-        onClick={sendSiacoin}
+        onClick={sendBigFile}
       >
         <ArrowUpRight16 />
         Send

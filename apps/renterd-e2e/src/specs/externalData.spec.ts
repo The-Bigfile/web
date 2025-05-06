@@ -32,7 +32,7 @@ test.afterEach(async () => {
   await afterTest()
 })
 
-test('configuration shows fiat values on siacoin fields', async ({ page }) => {
+test('configuration shows fiat values on bigfile fields', async ({ page }) => {
   await expectTextInputByName(page, 'maxStoragePriceTBMonth', '3,000')
   await expectTextInputByName(page, 'maxUploadPriceTB', '3,000')
   await expectTextInputByName(page, 'maxDownloadPriceTB', '3,000')
@@ -146,19 +146,19 @@ test('configuration does not show network averages when sia central API hangs', 
     page
       .getByTestId('maxStoragePriceTBMonthGroup')
       .getByLabel('Network average')
-      .getByText('0 SC')
+      .getByText('0 BIG')
   ).toBeHidden()
   await expect(
     page
       .getByTestId('maxUploadPriceTBGroup')
       .getByLabel('Network average')
-      .getByText('0 SC')
+      .getByText('0 BIG')
   ).toBeHidden()
   await expect(
     page
       .getByTestId('maxDownloadPriceTBGroup')
       .getByLabel('Network average')
-      .getByText('0 SC')
+      .getByText('0 BIG')
   ).toBeHidden()
   await setSwitchByLabel(page, 'shouldPinMaxStoragePrice', true)
   await setSwitchByLabel(page, 'shouldPinMaxUploadPrice', true)
@@ -178,18 +178,18 @@ test('configuration does not show network averages when sia central API hangs', 
     page
       .getByTestId('maxStoragePriceTBMonthGroup')
       .getByLabel('Network average')
-      .getByText('0 SC')
+      .getByText('0 BIG')
   ).toBeHidden()
   await expect(
     page
       .getByTestId('maxUploadPriceTBGroup')
       .getByLabel('Network average')
-      .getByText('0 SC')
+      .getByText('0 BIG')
   ).toBeHidden()
   await expect(
     page
       .getByTestId('maxDownloadPriceTBGroup')
       .getByLabel('Network average')
-      .getByText('0 SC')
+      .getByText('0 BIG')
   ).toBeHidden()
 })

@@ -125,7 +125,7 @@ test('recommendations work with pinned fields', async ({ page }) => {
     )
   ).toBeVisible()
 
-  // Set the pinned max storage price to a low USD value equivalent to 100 SC.
+  // Set the pinned max storage price to a low USD value equivalent to 100 BIG.
   await fillTextInputByName(page, 'maxStoragePriceTBMonthPinned', '0.39')
   // There are now recommendations again.
   await expect(

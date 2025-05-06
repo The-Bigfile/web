@@ -5,7 +5,7 @@ import {
   monthsToBlocks,
   TBToBytes,
   humanBytes,
-  humanSiacoin,
+  humanBigFile,
 } from '@siafoundation/units'
 
 export function getHostLabel({
@@ -22,7 +22,7 @@ export function getHostLabel({
         .div(1e24)
         .times(rateUsd)
         .toFixed(2)}/TB`
-    : `${humanSiacoin(
+    : `${humanBigFile(
         new BigNumber(host.storagePrice)
           .times(TBToBytes(1))
           .times(monthsToBlocks(1)),

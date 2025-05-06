@@ -1,7 +1,7 @@
 import {
   Result,
-  SiafundElement,
-  SiacoinElement,
+  BigfundElement,
+  BigFileElement,
   V2Transaction,
 } from '@siafoundation/types'
 import { LedgerDevice } from '../contexts/ledger/types'
@@ -11,14 +11,14 @@ export async function signTransactionLedgerV2({
   device,
   transaction,
   addresses,
-  siacoinOutputs,
-  siafundOutputs,
+  bigfileOutputs,
+  bigfundOutputs,
 }: {
   device: LedgerDevice
   transaction: V2Transaction
   addresses: AddressData[]
-  siacoinOutputs: SiacoinElement[]
-  siafundOutputs: SiafundElement[]
+  bigfileOutputs: BigFileElement[]
+  bigfundOutputs: BigfundElement[]
 }): Promise<
   Result<{
     transaction: V2Transaction

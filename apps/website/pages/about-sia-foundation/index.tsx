@@ -71,7 +71,7 @@ function Foundation({ team, featured, reports }: Props) {
               maintain core Sia protocols and consensus code; to support
               developers building on top of Sia and its protocols; to promote
               Sia and facilitate partnerships in other spheres and communities;
-              to ensure that users can easily acquire and safely store siacoins;
+              to ensure that users can easily acquire and safely store bigfiles;
               to develop network scalability solutions; to implement hardforks
               and lead the community through them; and much more. In a broader
               sense, its mission is to commoditize data storage, making it

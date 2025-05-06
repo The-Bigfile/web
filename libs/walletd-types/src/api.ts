@@ -4,16 +4,16 @@ import {
   Currency,
   BlockHeight,
   ChainIndex,
-  SiacoinOutputID,
-  SiafundOutputID,
-  SiacoinElement,
-  SiafundElement,
+  BigFileOutputID,
+  BigfundOutputID,
+  BigFileElement,
+  BigfundElement,
   Transaction,
   V2Transaction,
   WalletEvent,
-  SiacoinOutput,
+  BigFileOutput,
   Address,
-  SiafundOutput,
+  BigfundOutput,
   TransactionID,
 } from '@siafoundation/types'
 import { GatewayPeer, Wallet, WalletAddress, WalletMetadata } from './types'
@@ -35,8 +35,8 @@ export const walletsIdAddressesAddrRoute = '/wallets/:id/addresses/:addr'
 export const walletsIdBalanceRoute = '/wallets/:id/balance'
 export const walletsIdEventsRoute = '/wallets/:id/events'
 export const walletsIdEventsUnconfirmedRoute = '/wallets/:id/events/unconfirmed'
-export const walletsIdOutputsSiacoinRoute = '/wallets/:id/outputs/siacoin'
-export const walletsIdOutputsSiafundRoute = '/wallets/:id/outputs/siafund'
+export const walletsIdOutputsBigFileRoute = '/wallets/:id/outputs/bigfile'
+export const walletsIdOutputsBigfundRoute = '/wallets/:id/outputs/bigfund'
 export const walletsIdFundRoute = '/wallets/:id/fund'
 export const walletsIdFundSfRoute = '/wallets/:id/fundsf'
 export const walletsIdReserveRoute = '/wallets/:id/reserve'
@@ -162,9 +162,9 @@ export type WalletAddressDeleteResponse = never
 export type WalletBalanceParams = { id: string }
 export type WalletBalancePayload = void
 export type WalletBalanceResponse = {
-  siacoins: Currency
-  immatureSiacoins: Currency
-  siafunds: number
+  bigfiles: Currency
+  immatureBigFiles: Currency
+  bigfunds: number
 }
 
 export type WalletEventsParams = { id: string; offset: number; limit: number }
@@ -175,39 +175,39 @@ export type WalletEventsUnconfirmedParams = { id: string }
 export type WalletEventsUnconfirmedPayload = void
 export type WalletEventsUnconfirmedResponse = WalletEvent[]
 
-export type WalletOutputsSiacoinParams = { id: string }
-export type WalletOutputsSiacoinPayload = void
-export type WalletOutputsSiacoinResponse = {
+export type WalletOutputsBigFileParams = { id: string }
+export type WalletOutputsBigFilePayload = void
+export type WalletOutputsBigFileResponse = {
   basis: ChainIndex
-  outputs: SiacoinElement[]
+  outputs: BigFileElement[]
 }
 
-export type WalletOutputsSiafundParams = { id: string }
-export type WalletOutputsSiafundPayload = void
-export type WalletOutputsSiafundResponse = {
+export type WalletOutputsBigfundParams = { id: string }
+export type WalletOutputsBigfundPayload = void
+export type WalletOutputsBigfundResponse = {
   basis: ChainIndex
-  outputs: SiafundElement[]
+  outputs: BigfundElement[]
 }
 
-export type WalletFundSiacoinParams = {
+export type WalletFundBigFileParams = {
   id: string
 }
-export type WalletFundSiacoinPayload = {
+export type WalletFundBigFilePayload = {
   transaction: Transaction
   amount: Currency
   changeAddress: string
 }
-export type WalletFundSiacoinResponse = {
+export type WalletFundBigFileResponse = {
   basis: ChainIndex
   transaction: Transaction
   toSign: string[]
   dependsOn: Transaction[] | null
 }
 
-export type WalletFundSiafundParams = {
+export type WalletFundBigfundParams = {
   id: string
 }
-export type WalletFundSiafundPayload = {
+export type WalletFundBigfundPayload = {
   transaction: Transaction
   amount: number
   changeAddress: string
@@ -224,8 +224,8 @@ export type WalletReserveParams = {
   id: string
 }
 export type WalletReservePayload = {
-  siacoinOutputs?: SiacoinOutputID[]
-  siafundOutputs?: SiafundOutputID[]
+  bigfileOutputs?: BigFileOutputID[]
+  bigfundOutputs?: BigfundOutputID[]
   duration: number
 }
 export type WalletReserveResponse = void
@@ -234,8 +234,8 @@ export type WalletReleaseParams = {
   id: string
 }
 export type WalletReleasePayload = {
-  siacoinOutputs?: SiacoinOutputID[]
-  siafundOutputs?: SiafundOutputID[]
+  bigfileOutputs?: BigFileOutputID[]
+  bigfundOutputs?: BigfundOutputID[]
 }
 export type WalletReleaseResponse = void
 
@@ -243,8 +243,8 @@ export type WalletConstructV1TransactionParams = {
   id: string
 }
 export type WalletConstructV1TransactionPayload = {
-  siacoins?: SiacoinOutput[]
-  siafunds?: SiafundOutput[]
+  bigfiles?: BigFileOutput[]
+  bigfunds?: BigfundOutput[]
   changeAddress: Address
 }
 
@@ -259,8 +259,8 @@ export type WalletConstructV2TransactionParams = {
   id: string
 }
 export type WalletConstructV2TransactionPayload = {
-  siacoins?: SiacoinOutput[]
-  siafunds?: SiafundOutput[]
+  bigfiles?: BigFileOutput[]
+  bigfunds?: BigfundOutput[]
   changeAddress: Address
 }
 export type WalletConstructV2TransactionResponse = {

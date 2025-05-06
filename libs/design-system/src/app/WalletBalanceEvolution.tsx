@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import { ChartXY, Chart } from '../components/ChartXY'
-import { humanSiacoin } from '@siafoundation/units'
+import { humanBigFile } from '@siafoundation/units'
 import {
   formatChartData,
   getDataIntervalLabelFormatter,
@@ -35,13 +35,13 @@ export function BalanceEvolution({
       resolvedTheme === 'light'
         ? {
             sc: {
-              label: 'siacoin',
+              label: 'bigfile',
               color: colors.accent[800],
             },
           }
         : {
             sc: {
-              label: 'siacoin',
+              label: 'bigfile',
               color: colors.accentdark[800],
             },
           },
@@ -60,10 +60,10 @@ export function BalanceEvolution({
         data: {
           sc: chartConfigs.sc,
         },
-        format: (v) => humanSiacoin(v),
+        format: (v) => humanBigFile(v),
         formatTimestamp: getDataIntervalLabelFormatter('default'),
         formatTickY: (v) =>
-          humanSiacoin(v, {
+          humanBigFile(v, {
             fixed: 0,
             dynamicUnits: true,
           }),

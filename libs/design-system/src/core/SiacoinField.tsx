@@ -24,14 +24,14 @@ type Props = Omit<
   changed?: boolean
 }
 
-export function SiacoinField({
+export function BigFileField({
   sc: _externalSc,
   placeholder = new BigNumber(100),
   decimalsLimitFiat = 6,
   decimalsLimitSc = 6,
   onChange,
   size = 'medium',
-  units = 'SC',
+  units = 'BIG',
   unitsFiatPostfix,
   showFiat = true,
   error,
@@ -125,7 +125,7 @@ export function SiacoinField({
   }, [externalSc])
 
   // initialize fiat once rate has loaded,
-  // but only if the siacoin value has initialized
+  // but only if the bigfile value has initialized
   useEffect(() => {
     if (hasInitializedSc) {
       syncFiatToSc(localSc)

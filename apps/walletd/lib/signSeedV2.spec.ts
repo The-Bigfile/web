@@ -41,7 +41,7 @@ describe('signSeedV2', () => {
         ],
       })
     ).toEqual({
-      error: `Missing address ${mocks.walletConstructV2Response.transaction.siacoinInputs[0].parent.siacoinOutput.address}`,
+      error: `Missing address ${mocks.walletConstructV2Response.transaction.bigfileInputs[0].parent.bigfileOutput.address}`,
     })
   })
 
@@ -58,8 +58,8 @@ describe('signSeedV2', () => {
             id: 'id',
             walletId: 'id',
             address:
-              mocks.walletConstructV2Response.transaction.siacoinInputs[0]
-                .parent.siacoinOutput.address,
+              mocks.walletConstructV2Response.transaction.bigfileInputs[0]
+                .parent.bigfileOutput.address,
             metadata: {},
           },
         ],

@@ -38,8 +38,8 @@ export function useLayoutProps(): RenterdAuthedPageLayoutProps {
               }
             : undefined
         }
-        receiveSiacoin={() => openDialog('addressDetails')}
-        sendSiacoin={() => openDialog('sendSiacoin')}
+        receiveBigFile={() => openDialog('addressDetails')}
+        sendBigFile={() => openDialog('sendBigFile')}
       />
     ),
     stats: <WalletFilterBar />,

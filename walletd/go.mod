@@ -1,5 +1,7 @@
 module go.thebigfile.com/web/walletd
 
-go 1.23.0
+go 1.23.1
 
-require go.sia.tech/web v0.0.0-20240422221546-c1709d16b6ef
+toolchain go1.23.2
+
+require go.thebigfile.com/web v0.0.1

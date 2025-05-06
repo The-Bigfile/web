@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react'
-import { WalletSendSiacoinDialog } from '@siafoundation/design-system'
+import { WalletSendBigFileDialog } from '@siafoundation/design-system'
 import {
   useTxPoolRecommendedFee,
   useWallet,
@@ -10,7 +10,7 @@ import BigNumber from 'bignumber.js'
 
 const standardTxnSize = 1200 // bytes
 
-export function RenterdSendSiacoinDialog() {
+export function RenterdSendBigFileDialog() {
   const { dialog, onOpenChange } = useDialog()
   const wallet = useWallet()
 
@@ -55,11 +55,11 @@ export function RenterdSendSiacoinDialog() {
   )
 
   return (
-    <WalletSendSiacoinDialog
+    <WalletSendBigFileDialog
       balance={wallet.data ? new BigNumber(wallet.data.spendable) : undefined}
       send={send}
       fee={fee}
-      open={dialog === 'sendSiacoin'}
+      open={dialog === 'sendBigFile'}
       onOpenChange={onOpenChange}
     />
   )

@@ -72,11 +72,11 @@ export function TipReadOnly({
 
 export function PriceWithRedundancyTip({
   form,
-  priceInSiacoin,
+  priceInBigFile,
   units,
 }: {
   form: UseFormReturn<InputValues>
-  priceInSiacoin?: BigNumber
+  priceInBigFile?: BigNumber
   units: string
 }) {
   const minShards = form.watch('minShards')
@@ -85,7 +85,7 @@ export function PriceWithRedundancyTip({
     minShards,
     totalShards,
   })
-  if (!priceInSiacoin || !minShards || !totalShards) {
+  if (!priceInBigFile || !minShards || !totalShards) {
     return null
   }
   return (
@@ -107,7 +107,7 @@ export function PriceWithRedundancyTip({
           fixed={0}
           showTooltip={false}
           extendedSuffix={`/${units} with redundancy`}
-          value={toHastings(priceInSiacoin).times(redundancyMultiplier)}
+          value={toHastings(priceInBigFile).times(redundancyMultiplier)}
         />
       </TipReadOnly>
     </>

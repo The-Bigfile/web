@@ -89,7 +89,7 @@
 
 - 24ce33b9: Added contractionRevisions API.
 - 866fc68d: Added transactionID property to the ExplorerFileContract type.
-- 9ba91ad7: Re-export base SiacoinOutput type.
+- 9ba91ad7: Re-export base BigFileOutput type.
 - 411e378d: Added null case to proof\* fields in the ExplorerFileContract type.
 
 ## 0.6.0
@@ -109,7 +109,7 @@
 ### Minor Changes
 
 - ff5dc113: Added the TransactionChainIndices API.
-- 79470441: Added the ExplorerSiacoinInput and ExplorerSiafundInput types.
+- 79470441: Added the ExplorerBigFileInput and ExplorerSiafundInput types.
 
 ## 0.3.0
 

@@ -3,7 +3,7 @@ import {
   TipNumber,
   formSetField,
 } from '@siafoundation/design-system'
-import { fiatToSiacoin, toHastings } from '@siafoundation/units'
+import { fiatToBigFile, toHastings } from '@siafoundation/units'
 import { UseFormReturn } from 'react-hook-form'
 import { Categories, RecommendationItem, InputValues } from '../types'
 import { useFormExchangeRate } from '../useFormExchangeRate'
@@ -28,7 +28,7 @@ export function MaxStoragePriceTips({
     <>
       {storageAverage && (
         <TipNumber
-          type="siacoin"
+          type="bigfile"
           label="Network average"
           tip="Averages provided by Sia Central."
           decimalsLimit={0}
@@ -46,7 +46,7 @@ export function MaxStoragePriceTips({
       )}
       {recommendationPrice && (
         <TipNumber
-          type="siacoin"
+          type="bigfile"
           label="Match with more hosts"
           tip={recommendationTipContent}
           decimalsLimit={0}
@@ -64,7 +64,7 @@ export function MaxStoragePriceTips({
       )}
       <PriceWithRedundancyTip
         form={form}
-        priceInSiacoin={maxStoragePriceTBMonth}
+        priceInBigFile={maxStoragePriceTBMonth}
         units="TB/month"
       />
     </>
@@ -85,22 +85,22 @@ export function MaxStoragePricePinnedTips({
   const maxStoragePriceTBMonthPinned = form.watch(
     'maxStoragePriceTBMonthPinned'
   )
-  const currentPriceInSiacoin =
+  const currentPriceInBigFile =
     maxStoragePriceTBMonthPinned && rate
-      ? fiatToSiacoin(maxStoragePriceTBMonthPinned, rate)
+      ? fiatToBigFile(maxStoragePriceTBMonthPinned, rate)
       : undefined
   const recommendationInFiat =
     recommendations?.maxStoragePriceTBMonthPinned?.targetValue
-  const recommendationInSiacoin =
+  const recommendationInBigFile =
     recommendationInFiat && rate
-      ? fiatToSiacoin(recommendationInFiat, rate)
+      ? fiatToBigFile(recommendationInFiat, rate)
       : undefined
 
   return (
     <>
       {storageAverage && rate && (
         <TipNumber
-          type="siacoin"
+          type="bigfile"
           label="Network average"
           tip="Averages provided by Sia Central."
           decimalsLimit={0}
@@ -116,13 +116,13 @@ export function MaxStoragePricePinnedTips({
           }}
         />
       )}
-      {recommendationInSiacoin && (
+      {recommendationInBigFile && (
         <TipNumber
-          type="siacoin"
+          type="bigfile"
           label="Match with more hosts"
           tip={recommendationTipContent}
           decimalsLimit={0}
-          value={toHastings(recommendationInSiacoin)}
+          value={toHastings(recommendationInBigFile)}
           onClick={() =>
             formSetField({
               form,
@@ -136,7 +136,7 @@ export function MaxStoragePricePinnedTips({
       )}
       <PriceWithRedundancyTip
         form={form}
-        priceInSiacoin={currentPriceInSiacoin}
+        priceInBigFile={currentPriceInBigFile}
         units="TB/month"
       />
     </>

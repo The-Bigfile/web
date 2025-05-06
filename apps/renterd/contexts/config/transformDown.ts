@@ -10,7 +10,7 @@ import {
   bytesToTB,
   millisecondsInDays,
   millisecondsInMinutes,
-  toSiacoins,
+  toBigFiles,
   valuePerBytePerBlockToPerTBPerMonth,
   valuePerByteToPerTB,
   valuePerOneToPerMillion,
@@ -85,22 +85,22 @@ export function transformDownGouging({
   gouging: SettingsGouging
 }): ValuesGouging {
   return {
-    maxStoragePriceTBMonth: toSiacoins(
+    maxStoragePriceTBMonth: toBigFiles(
       valuePerBytePerBlockToPerTBPerMonth(
         new BigNumber(gouging.maxStoragePrice)
       ),
       scDecimalPlaces
     ), // TB/month
-    maxUploadPriceTB: toSiacoins(
+    maxUploadPriceTB: toBigFiles(
       valuePerByteToPerTB(new BigNumber(gouging.maxUploadPrice)),
       scDecimalPlaces
     ),
-    maxDownloadPriceTB: toSiacoins(
+    maxDownloadPriceTB: toBigFiles(
       valuePerByteToPerTB(new BigNumber(gouging.maxDownloadPrice)),
       scDecimalPlaces
     ),
-    maxContractPrice: toSiacoins(gouging.maxContractPrice, scDecimalPlaces),
-    maxRPCPriceMillion: toSiacoins(
+    maxContractPrice: toBigFiles(gouging.maxContractPrice, scDecimalPlaces),
+    maxRPCPriceMillion: toBigFiles(
       valuePerOneToPerMillion(new BigNumber(gouging.maxRPCPrice)),
       scDecimalPlaces
     ),
@@ -111,7 +111,7 @@ export function transformDownGouging({
     minAccountExpiryDays: new BigNumber(
       millisecondsInDays(gouging.minAccountExpiry)
     ),
-    minMaxEphemeralAccountBalance: toSiacoins(
+    minMaxEphemeralAccountBalance: toBigFiles(
       gouging.minMaxEphemeralAccountBalance,
       scDecimalPlaces
     ),

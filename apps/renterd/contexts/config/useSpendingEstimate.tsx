@@ -4,7 +4,7 @@ import { Maybe } from '@siafoundation/types'
 import BigNumber from 'bignumber.js'
 import { useRedundancyMultiplier } from './useRedundancyMultiplier'
 import { calculateSpendingEstimate } from './spending'
-import { useEnabledPricingValuesInSiacoin } from './useEnabledPricingValuesInSiacoin'
+import { useEnabledPricingValuesInBigFile } from './useEnabledPricingValuesInBigFile'
 
 export function useSpendingEstimate() {
   const { form } = useConfig()
@@ -26,7 +26,7 @@ export function useSpendingEstimate() {
   }
 }
 
-// Use the current enabled pricing values to calculate the estimated spending in siacoin.
+// Use the current enabled pricing values to calculate the estimated spending in bigfile.
 function useSpendingEstimateFromEnabledPricingValues(): Maybe<BigNumber> {
   const { form } = useConfig()
   const minShards = form.watch('minShards')
@@ -38,7 +38,7 @@ function useSpendingEstimateFromEnabledPricingValues(): Maybe<BigNumber> {
     minShards,
     totalShards,
   })
-  const prices = useEnabledPricingValuesInSiacoin({
+  const prices = useEnabledPricingValuesInBigFile({
     form,
   })
 

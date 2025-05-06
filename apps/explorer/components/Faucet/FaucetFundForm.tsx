@@ -1,7 +1,7 @@
 import {
   Button,
   ConfigFields,
-  FieldSiacoin,
+  FieldBigFile,
   FieldText,
   Paragraph,
   triggerErrorToast,
@@ -34,7 +34,7 @@ const fields: ConfigFields<typeof defaultValues, never> = {
     },
   },
   amount: {
-    type: 'siacoin',
+    type: 'bigfile',
     title: 'Amount',
     showFiat: false,
     validation: {
@@ -89,16 +89,16 @@ export function FaucetFundForm({ onDone }: Props) {
   return (
     <div className="flex flex-col gap-4">
       <Paragraph size="14">
-        Fund a {networkName} wallet address with Siacoin.
+        Fund a {networkName} wallet address with BigFile.
       </Paragraph>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-4"
       >
         <FieldText size="medium" name="address" form={form} fields={fields} />
-        <FieldSiacoin size="medium" name="amount" form={form} fields={fields} />
+        <FieldBigFile size="medium" name="amount" form={form} fields={fields} />
         <Paragraph size="12" className="text-center">
-          Requests are limited to 5 per 5 minutes and 50,000 siacoins per day.
+          Requests are limited to 5 per 5 minutes and 50,000 bigfiles per day.
         </Paragraph>
         <Button size="medium" variant="accent" type="submit">
           Fund wallet

@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import BigNumber from 'bignumber.js'
-import { humanBytes, humanSiacoin } from '@siafoundation/units'
+import { humanBytes, humanBigFile } from '@siafoundation/units'
 import { useActiveSiascanExchangeRate } from '@siafoundation/design-system'
 import { EntityList } from '../Entity/EntityList'
 import { EntityListItemProps } from '../Entity/EntityListItem'
@@ -70,7 +70,7 @@ export function Contract({
           ) : (
             <LoadingCurrency />
           ),
-        comment: humanSiacoin(contract.payout),
+        comment: humanBigFile(contract.payout),
       },
       {
         label: 'transaction ID',

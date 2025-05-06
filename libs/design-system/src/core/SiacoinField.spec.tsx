@@ -4,7 +4,7 @@ import {
   delay,
 } from '@siafoundation/react-core'
 import BigNumber from 'bignumber.js'
-import { SiacoinField } from './SiacoinField'
+import { BigFileField } from './BigFileField'
 import { fireEvent, render, waitFor, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { useState } from 'react'
@@ -31,7 +31,7 @@ beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
-describe('SiacoinField', () => {
+describe('BigFileField', () => {
   it('updates fiat and external value immediately', async () => {
     mockEndpoints('1')
     const user = userEvent.setup()
@@ -247,8 +247,8 @@ describe('SiacoinField', () => {
   })
 
   it('handles backspacing fiat without applying rounding', async () => {
-    // since updating fiat immediately updates siacoin, the source of truth
-    // this test asserts that the siacoin values does not then immediately
+    // since updating fiat immediately updates bigfile, the source of truth
+    // this test asserts that the bigfile values does not then immediately
     // re-update the fiat with a new rounded value.
     mockEndpoints('0.003494929784')
     const user = userEvent.setup()
@@ -316,9 +316,9 @@ describe('SiacoinField', () => {
 function Component({
   sc: initalSc,
   ...props
-}: { sc: BigNumber } & Partial<React.ComponentProps<typeof SiacoinField>>) {
+}: { sc: BigNumber } & Partial<React.ComponentProps<typeof BigFileField>>) {
   const [sc, setSc] = useState<BigNumber | undefined>(new BigNumber(initalSc))
-  return <SiacoinField sc={sc} onChange={setSc} {...props} />
+  return <BigFileField sc={sc} onChange={setSc} {...props} />
 }
 
 const daemonExplorerInfoRoute = '/explorer/info'
@@ -328,7 +328,7 @@ async function renderNode({
   locale = 'en',
   ...props
 }: { sc: BigNumber; locale?: 'en' | 'de-DE' | 'es-ES' } & Partial<
-  React.ComponentProps<typeof SiacoinField>
+  React.ComponentProps<typeof BigFileField>
 >) {
   jest.spyOn(window.navigator, 'language', 'get').mockReturnValue(locale)
 
@@ -369,7 +369,7 @@ function mockDaemonExplorerEndpoint() {
 
 function mockSiascanExchangeRateEndpoint(rate = '1') {
   server.use(
-    http.get('https://api.siascan.com/exchange-rate/siacoin/*', () => {
+    http.get('https://api.siascan.com/exchange-rate/bigfile/*', () => {
       return HttpResponse.json(rate)
     })
   )

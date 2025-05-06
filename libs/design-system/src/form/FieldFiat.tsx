@@ -88,7 +88,7 @@ export function FieldFiat<
         onBlur={onBlur}
       />
       {rate && (
-        <SiacoinPinnedValue value={value} currency={currency} rate={rate} />
+        <BigFilePinnedValue value={value} currency={currency} rate={rate} />
       )}
     </div>
   )
@@ -104,7 +104,7 @@ export function FieldFiat<
   return el
 }
 
-function SiacoinPinnedValue({
+function BigFilePinnedValue({
   value,
   rate,
 }: {
@@ -116,7 +116,7 @@ function SiacoinPinnedValue({
   const sc = available ? toHastings(value).div(rate) : new BigNumber(0)
   return (
     <Panel className="flex gap-1 items-center justify-between relative overflow-hidden px-2 py-1.5 rounded-t-none">
-      <Tooltip side="bottom" content="The pinned value's current siacoin value">
+      <Tooltip side="bottom" content="The pinned value's current bigfile value">
         <Text className="flex gap-1 relative" size="12">
           <ChartArea16 />
           Current value

@@ -1,7 +1,7 @@
 import { getDownloadCost, getStorageCost, getUploadCost } from './storage'
 
 test('storage', () => {
-  expect(getStorageCost({ price: (1e9).toString() })).toEqual('4.320 SC/TB')
+  expect(getStorageCost({ price: (1e9).toString() })).toEqual('4.320 BIG/TB')
 })
 
 test('storage fiat', () => {

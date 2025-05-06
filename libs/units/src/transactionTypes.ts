@@ -5,8 +5,8 @@ import {
 } from '@siafoundation/types'
 
 export type TxType =
-  | 'siacoin'
-  | 'siafund'
+  | 'bigfile'
+  | 'bigfund'
   | 'storageProof'
   | 'contractFormation'
   | 'contractRevision'
@@ -15,7 +15,7 @@ export type TxType =
   | 'contractFinalization'
   | 'contractPayout'
   | 'minerPayout'
-  | 'siafundClaim'
+  | 'bigfundClaim'
   | 'foundationSubsidy'
   | 'hostAnnouncement'
   | 'unknown'
@@ -45,11 +45,11 @@ export function getTransactionType(txn: Transaction): TxType {
   ) {
     return 'hostAnnouncement'
   }
-  if (txn.siafundOutputs && txn.siafundOutputs.length > 0) {
-    return 'siafund'
+  if (txn.bigfundOutputs && txn.bigfundOutputs.length > 0) {
+    return 'bigfund'
   }
-  if (txn.siacoinOutputs && txn.siacoinOutputs.length > 0) {
-    return 'siacoin'
+  if (txn.bigfileOutputs && txn.bigfileOutputs.length > 0) {
+    return 'bigfile'
   }
 
   return 'unknown'
@@ -75,19 +75,19 @@ export function getV2TransactionType(txn: V2Transaction): TxType {
     (at) => at.key === 'HostAnnouncement'
   )
   if (announcement && announcement.length > 0) return 'hostAnnouncement'
-  if (txn.siafundOutputs && txn.siafundOutputs.length > 0) {
-    return 'siafund'
+  if (txn.bigfundOutputs && txn.bigfundOutputs.length > 0) {
+    return 'bigfund'
   }
-  if (txn.siacoinOutputs && txn.siacoinOutputs.length > 0) {
-    return 'siacoin'
+  if (txn.bigfileOutputs && txn.bigfileOutputs.length > 0) {
+    return 'bigfile'
   }
 
   return 'unknown'
 }
 
 const txTypeMap: Record<TxType, string> = {
-  siacoin: 'siacoin transfer',
-  siafund: 'siafund transfer',
+  bigfile: 'bigfile transfer',
+  bigfund: 'bigfund transfer',
   contractFormation: 'contract formation',
   contractRenewal: 'contract renewal',
   contractRevision: 'contract revision',
@@ -96,7 +96,7 @@ const txTypeMap: Record<TxType, string> = {
   contractPayout: 'contract payout',
   storageProof: 'storage proof',
   minerPayout: 'miner payout',
-  siafundClaim: 'siafund claim',
+  bigfundClaim: 'bigfund claim',
   foundationSubsidy: 'foundation subsidy',
   hostAnnouncement: 'host announcement',
   unknown: 'unknown transaction type',

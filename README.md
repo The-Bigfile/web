@@ -19,7 +19,7 @@ User interfaces for the Sia software. The latest Sia software takes a modular ap
 
 ### TypeScript
 
-The Sia web libraries provide developers with convenient TypeScript SDKs for using Sia core types, blockchain utilities, data fetching, daemon-specific React hooks, and components for common functionality such as Siacoin/fiat input fields, transaction lists, files, and more.
+The Sia web libraries provide developers with convenient TypeScript SDKs for using Sia core types, blockchain utilities, data fetching, daemon-specific React hooks, and components for common functionality such as BigFile/fiat input fields, transaction lists, files, and more.
 
 - [@siafoundation/sdk](libs/sdk) - SDK for interacting directly with the Sia network from browsers and web clients.
 - [@siafoundation/renterd-js](libs/renterd-js) - SDK for interacting with `renterd`.

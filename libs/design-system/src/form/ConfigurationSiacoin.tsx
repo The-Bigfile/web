@@ -4,10 +4,10 @@ import { FieldValues, Path, PathValue } from 'react-hook-form'
 import { FieldError } from '../components/Form'
 import { FieldProps } from './configurationFields'
 import BigNumber from 'bignumber.js'
-import { FieldSiacoin } from './FieldSiacoin'
+import { FieldBigFile } from './FieldBigFile'
 import { useFormSetField } from './useFormSetField'
 
-export function ConfigurationSiacoin<
+export function ConfigurationBigFile<
   Values extends FieldValues,
   Categories extends string
 >({ name, form, fields }: FieldProps<Values, Categories>) {
@@ -34,7 +34,7 @@ export function ConfigurationSiacoin<
       <div className="flex flex-col w-[260px]">
         <Before name={name} form={form} fields={fields} />
         <div className="flex flex-col gap-3 w-[260px]">
-          <FieldSiacoin
+          <FieldBigFile
             name={name}
             fields={fields}
             form={form}
@@ -43,7 +43,7 @@ export function ConfigurationSiacoin<
           />
           {average && (
             <TipNumber
-              type="siacoin"
+              type="bigfile"
               label="Network average"
               tip={averageTip || 'Averages provided by Sia Central.'}
               decimalsLimit={tipsDecimalsLimitSc}
@@ -55,7 +55,7 @@ export function ConfigurationSiacoin<
           )}
           {suggestion && suggestionTip && (
             <TipNumber
-              type="siacoin"
+              type="bigfile"
               label={suggestionLabel || 'Suggestion'}
               tip={suggestionTip}
               decimalsLimit={tipsDecimalsLimitSc}

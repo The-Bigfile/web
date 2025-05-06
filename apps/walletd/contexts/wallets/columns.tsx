@@ -92,10 +92,10 @@ export const columns: WalletsTableColumn[] = [
             displayBoth
             size="12"
             variant="value"
-            value={new BigNumber(balance.data.siacoins)}
+            value={new BigNumber(balance.data.bigfiles)}
           />
-          {!!balance.data.siafunds && (
-            <ValueSf size="12" variant="value" value={balance.data.siafunds} />
+          {!!balance.data.bigfunds && (
+            <ValueSf size="12" variant="value" value={balance.data.bigfunds} />
           )}
         </div>
       )

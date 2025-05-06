@@ -64,16 +64,16 @@ import {
   WalletEventsResponse,
   WalletEventsUnconfirmedParams,
   WalletEventsUnconfirmedResponse,
-  WalletFundSiacoinParams,
-  WalletFundSiacoinPayload,
-  WalletFundSiacoinResponse,
-  WalletFundSiafundParams,
-  WalletFundSiafundPayload,
-  WalletFundSiafundResponse,
-  WalletOutputsSiacoinParams,
-  WalletOutputsSiacoinResponse,
-  WalletOutputsSiafundParams,
-  WalletOutputsSiafundResponse,
+  WalletFundBigFileParams,
+  WalletFundBigFilePayload,
+  WalletFundBigFileResponse,
+  WalletFundBigfundParams,
+  WalletFundBigfundPayload,
+  WalletFundBigfundResponse,
+  WalletOutputsBigFileParams,
+  WalletOutputsBigFileResponse,
+  WalletOutputsBigfundParams,
+  WalletOutputsBigfundResponse,
   WalletReleaseParams,
   WalletReleasePayload,
   WalletReleaseResponse,
@@ -104,8 +104,8 @@ import {
   walletsIdEventsUnconfirmedRoute,
   walletsIdFundRoute,
   walletsIdFundSfRoute,
-  walletsIdOutputsSiacoinRoute,
-  walletsIdOutputsSiafundRoute,
+  walletsIdOutputsBigFileRoute,
+  walletsIdOutputsBigfundRoute,
   walletsIdReleaseRoute,
   walletsIdReserveRoute,
   walletsIdRoute,
@@ -411,29 +411,29 @@ export function useWalletEventsUnconfirmed(
   })
 }
 
-export function useWalletOutputsSiacoin(
-  args: HookArgsSwr<WalletOutputsSiacoinParams, WalletOutputsSiacoinResponse>
+export function useWalletOutputsBigFile(
+  args: HookArgsSwr<WalletOutputsBigFileParams, WalletOutputsBigFileResponse>
 ) {
   return useGetSwr({
     ...args,
-    route: walletsIdOutputsSiacoinRoute,
+    route: walletsIdOutputsBigFileRoute,
   })
 }
 
-export function useWalletOutputsSiafund(
-  args: HookArgsSwr<WalletOutputsSiafundParams, WalletOutputsSiafundResponse>
+export function useWalletOutputsBigfund(
+  args: HookArgsSwr<WalletOutputsBigfundParams, WalletOutputsBigfundResponse>
 ) {
   return useGetSwr({
     ...args,
-    route: walletsIdOutputsSiafundRoute,
+    route: walletsIdOutputsBigfundRoute,
   })
 }
 
-export function useWalletFundSiacoin(
+export function useWalletFundBigFile(
   args?: HookArgsCallback<
-    WalletFundSiacoinParams,
-    WalletFundSiacoinPayload,
-    WalletFundSiacoinResponse
+    WalletFundBigFileParams,
+    WalletFundBigFilePayload,
+    WalletFundBigFileResponse
   >
 ) {
   return usePostFunc({ ...args, route: walletsIdFundRoute })
@@ -441,8 +441,8 @@ export function useWalletFundSiacoin(
 
 export function useWalletFundSiafund(
   args?: HookArgsCallback<
-    WalletFundSiafundParams,
-    WalletFundSiafundPayload,
+    WalletFundBigfundParams,
+    WalletFundBigfundPayload,
     WalletFundSiafundResponse
   >
 ) {

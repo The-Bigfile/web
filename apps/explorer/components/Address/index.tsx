@@ -23,7 +23,7 @@ import {
   EventPayout,
   EventV1ContractResolution,
   EventV1Transaction,
-  ExplorerSiacoinOutput,
+  ExplorerBigFileOutput,
   ExplorerV2Transaction,
   EventV2ContractResolution,
 } from '@siafoundation/explored-types'
@@ -36,14 +36,14 @@ type Props = {
     balance: AddressBalance
     events: ExplorerEvent[]
     unconfirmedEvents: ExplorerEvent[]
-    unspentOutputs: ExplorerSiacoinOutput[]
+    unspentOutputs: ExplorerBigFileOutput[]
   }
 }
 
 export function Address({
   id,
   addressInfo: {
-    balance: { unspentSiacoins, unspentSiafunds },
+    balance: { unspentBigFiles, unspentBigfunds },
     events,
     unconfirmedEvents,
     unspentOutputs,
@@ -54,18 +54,18 @@ export function Address({
   const values = useMemo(() => {
     const list: DatumProps[] = [
       {
-        label: 'SC',
-        sc: new BigNumber(unspentSiacoins),
+        label: 'BIG',
+        sc: new BigNumber(unspentBigFiles),
       },
     ]
-    if (unspentSiafunds !== 0) {
+    if (unspentBigfunds !== 0) {
       list.push({
         label: 'SF',
-        sf: Number(unspentSiafunds),
+        sf: Number(unspentBigfunds),
       })
     }
     return list
-  }, [unspentSiacoins, unspentSiafunds])
+  }, [unspentBigFiles, unspentBigfunds])
 
   const eventEntities = useMemo(() => {
     const list: EntityListItemProps[] = [
@@ -84,7 +84,7 @@ export function Address({
     const list: EntityListItemProps[] = []
     if (unspentOutputs.length) {
       unspentOutputs.forEach((output) =>
-        list.push(formatUnspentSiacoinOutputEntity(output))
+        list.push(formatUnspentBigFileOutputEntity(output))
       )
     }
     return list
@@ -168,13 +168,13 @@ function formatV1TransactionEntity(
     hash: v1Transaction.id,
     sc: getTotal({
       address: id,
-      inputs: transaction.siacoinInputs,
-      outputs: transaction.siacoinOutputs?.map((o) => o.siacoinOutput),
+      inputs: transaction.bigfileInputs,
+      outputs: transaction.bigfileOutputs?.map((o) => o.bigfileOutput),
     }),
     sf: getTotal({
       address: id,
-      inputs: transaction.siafundInputs,
-      outputs: transaction.siafundOutputs?.map((o) => o.siafundOutput),
+      inputs: transaction.bigfundInputs,
+      outputs: transaction.bigfundOutputs?.map((o) => o.bigfundOutput),
     }).toNumber(),
     label: 'Transaction',
     initials: 'TX',
@@ -193,16 +193,16 @@ function formatV2TransactionEntity(
     hash: v2Transaction.id,
     sc: getTotal({
       address: id,
-      inputs: transaction.siacoinInputs?.map((o) => o.parent.siacoinOutput),
-      outputs: transaction.siacoinOutputs,
+      inputs: transaction.bigfileInputs?.map((o) => o.parent.bigfileOutput),
+      outputs: transaction.bigfileOutputs,
     }),
     sf: getTotal({
       address: id,
-      inputs: transaction.siafundInputs?.map((o) => ({
-        address: o.parent.siafundOutput.address,
-        value: String(o.parent.siafundOutput.value),
+      inputs: transaction.bigfundInputs?.map((o) => ({
+        address: o.parent.bigfundOutput.address,
+        value: String(o.parent.bigfundOutput.value),
       })),
-      outputs: transaction.siafundOutputs,
+      outputs: transaction.bigfundOutputs,
     }).toNumber(),
     label: 'Transaction',
     initials: 'TX',
@@ -215,14 +215,14 @@ function formatV2TransactionEntity(
 function formatV1ContractResolutionEntity(
   v1ContractResolution: ExplorerEvent
 ): EntityListItemProps {
-  const { parent, siacoinElement } =
+  const { parent, bigfileElement } =
     v1ContractResolution.data as EventV1ContractResolution
   return {
     hash: v1ContractResolution.id,
     label: 'Contract Resolution',
     initials: 'CR',
     href: routes.contract.view.replace(':id', parent.id),
-    sc: new BigNumber(siacoinElement.siacoinOutput.value),
+    sc: new BigNumber(bigfileElement.bigfileOutput.value),
     timestamp: new Date(v1ContractResolution.timestamp).getTime(),
   }
 }
@@ -230,40 +230,40 @@ function formatV1ContractResolutionEntity(
 function formatV2ContractResolutionEntity(
   v1ContractResolution: ExplorerEvent
 ): EntityListItemProps {
-  const { resolution, siacoinElement } =
+  const { resolution, bigfileElement } =
     v1ContractResolution.data as EventV2ContractResolution
   return {
     hash: v1ContractResolution.id,
     label: 'Contract Resolution',
     initials: 'CR',
     href: routes.contract.view.replace(':id', resolution.parent.id),
-    sc: new BigNumber(siacoinElement.siacoinOutput.value),
+    sc: new BigNumber(bigfileElement.bigfileOutput.value),
     timestamp: new Date(v1ContractResolution.timestamp).getTime(),
   }
 }
 
 function formatPayoutEntity(payout: ExplorerEvent): EntityListItemProps {
-  const { siacoinElement } = payout.data as EventPayout
+  const { bigfileElement } = payout.data as EventPayout
   const capitalizedType =
     payout.type.slice(0, 1).toUpperCase() + payout.type.slice(1)
   return {
     hash: payout.id,
     label: `${capitalizedType} Payout`,
     initials: `${capitalizedType.slice(0, 1)}P`,
-    href: routes.address.view.replace(':id', siacoinElement.source),
+    href: routes.address.view.replace(':id', bigfileElement.source),
     height: payout.index.height,
-    sc: new BigNumber(siacoinElement.siacoinOutput.value),
+    sc: new BigNumber(bigfileElement.bigfileOutput.value),
     timestamp: new Date(payout.timestamp).getTime(),
   }
 }
 
-function formatUnspentSiacoinOutputEntity(
-  siacoinOutput: ExplorerSiacoinOutput
+function formatUnspentBigFileOutputEntity(
+  bigfileOutput: ExplorerBigFileOutput
 ): EntityListItemProps {
   return {
-    hash: siacoinOutput.id,
-    sc: new BigNumber(siacoinOutput.siacoinOutput.value),
-    label: 'siacoin output',
+    hash: bigfileOutput.id,
+    sc: new BigNumber(bigfileOutput.bigfileOutput.value),
+    label: 'bigfile output',
     initials: 'SO',
     scVariant: 'value' as const,
   }
@@ -291,7 +291,7 @@ const formatEvent = (
       break
     case 'miner':
     case 'foundation':
-    case 'siafundClaim':
+    case 'bigfundClaim':
       baseEntity = formatPayoutEntity(event)
       break
   }

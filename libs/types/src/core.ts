@@ -11,8 +11,8 @@ export type FileContractID = string
 export type PublicKey = string
 export type PrivateKey = string
 export type TransactionID = Hash256
-export type SiacoinOutputID = Hash256
-export type SiafundOutputID = Hash256
+export type BigFileOutputID = Hash256
+export type BigfundOutputID = Hash256
 export type Address = string
 export type MerkleProof = Hash256[] | null
 
@@ -36,8 +36,8 @@ export type FileContractRevision = {
   fileMerkleRoot: string
   windowStart: number
   windowEnd: number
-  validProofOutputs?: SiacoinOutput[]
-  missedProofOutputs?: SiacoinOutput[]
+  validProofOutputs?: BigFileOutput[]
+  missedProofOutputs?: BigFileOutput[]
   unlockHash: string
 }
 
@@ -49,35 +49,35 @@ export type TransactionSignature = {
   signature?: string
 }
 
-export type SiacoinInput = {
+export type BigFileInput = {
   parentID: string
   unlockConditions: UnlockConditions
 }
 
-export type SiacoinOutput = {
+export type BigFileOutput = {
   value: Currency
   address: string
 }
 
-export type SiacoinElement = StateElement & {
-  siacoinOutput: SiacoinOutput
+export type BigFileElement = StateElement & {
+  bigfileOutput: BigFileOutput
   maturityHeight: number
 }
 
-export type SiafundElement = StateElement & {
-  siafundOutput: SiafundOutput
+export type BigfundElement = StateElement & {
+  bigfundOutput: BigfundOutput
   claimStart: string
 }
 
 export type CoveredFields = {
   wholeTransaction: boolean
-  siacoinInputs?: number[]
-  siacoinOutputs?: number[]
+  bigfileInputs?: number[]
+  bigfileOutputs?: number[]
   fileContracts?: number[]
   fileContractRevisions?: number[]
   storageProofs?: number[]
-  siafundInputs?: number[]
-  siafundOutputs?: number[]
+  bigfundInputs?: number[]
+  bigfundOutputs?: number[]
   minerFees?: number[]
   arbitraryData?: number[]
   signatures?: number[]
@@ -93,8 +93,8 @@ export type FileContract = {
   windowStart: number
   windowEnd: number
   payout: Currency
-  validProofOutputs?: SiacoinOutput[]
-  missedProofOutputs?: SiacoinOutput[]
+  validProofOutputs?: BigFileOutput[]
+  missedProofOutputs?: BigFileOutput[]
   unlockHash: string
   revisionNumber: number
 }
@@ -111,19 +111,19 @@ export type SiafundInput = {
   claimAddress: string
 }
 
-export type SiafundOutput = {
+export type BigfundOutput = {
   value: number
   address: string
 }
 
 export type Transaction = {
-  siacoinInputs?: SiacoinInput[]
-  siacoinOutputs?: SiacoinOutput[]
+  bigfileInputs?: BigFileInput[]
+  bigfileOutputs?: BigFileOutput[]
   fileContracts?: FileContract[]
   fileContractRevisions?: FileContractRevision[]
   storageProofs?: StorageProof[]
-  siafundInputs?: SiafundInput[]
-  siafundOutputs?: SiafundOutput[]
+  bigfundInputs?: SiafundInput[]
+  bigfundOutputs?: BigfundOutput[]
   minerFees?: Currency[]
   arbitraryData?: string[]
   signatures?: TransactionSignature[]
@@ -133,7 +133,7 @@ export type Block = {
   parentID: string
   nonce: string
   timestamp: number
-  minerPayouts?: SiacoinOutput[]
+  minerPayouts?: BigFileOutput[]
   transactions?: Transaction[]
 }
 
