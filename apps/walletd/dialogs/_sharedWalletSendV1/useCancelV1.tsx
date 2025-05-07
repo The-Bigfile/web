@@ -11,17 +11,17 @@ export function useCancelV1() {
 
   const cancel = useCallback(
     async (transaction: Transaction) => {
-      const siacoinOutputs =
-        transaction.siacoinInputs?.map((i) => i.parentID) || []
-      const siafundOutputs =
-        transaction.siafundInputs?.map((i) => i.parentID) || []
+      const bigfileOutputs =
+        transaction.bigfileInputs?.map((i) => i.parentID) || []
+      const bigfundOutputs =
+        transaction.bigfundInputs?.map((i) => i.parentID) || []
       const response = await walletRelease.post({
         params: {
           id: walletId,
         },
         payload: {
-          siacoinOutputs,
-          siafundOutputs,
+          bigfileOutputs,
+          bigfundOutputs,
         },
       })
       if (response.error) {

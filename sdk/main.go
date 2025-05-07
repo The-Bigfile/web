@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	js.Global().Set("sia", map[string]any{
+	js.Global().Set("bigfile", map[string]any{
 		"rhp": map[string]any{
 			"generateAccount": jsFunc(generateAccount),
 			// settings

@@ -13,7 +13,7 @@ import {
   ExplorerEvent,
   ExplorerFileContract,
   ExplorerHost,
-  ExplorerSiacoinOutput,
+  ExplorerBigFileOutput,
   ExplorerSiafundOutput,
   ExplorerTransaction,
   ExplorerV2FileContract,
@@ -26,9 +26,9 @@ import {
   Peer,
   PublicKey,
   SearchResultType,
-  SiacoinOutputID,
-  SiafundElement,
-  SiafundOutputID,
+  BigFileOutputID,
+  BigfundElement,
+  BigfundOutputID,
   TransactionID,
   TxpoolBroadcast,
   TxpoolTransactions,
@@ -155,25 +155,25 @@ export type V2TransactionChainIndicesResponse = ChainIndex[]
 
 // Address
 
-// Returns the specified address' unspent siacoin outputs.
-export const addressSiacoinUTXOsRoute = '/addresses/:address/utxos/siacoin'
-export type AddressSiacoinUTXOsParams = {
+// Returns the specified address' unspent bigfile outputs.
+export const addressBigFileUTXOsRoute = '/addresses/:address/utxos/bigfile'
+export type AddressBigFileUTXOsParams = {
   address: Address
   offset?: number
   limit?: number
 }
-export type AddressSiacoinUTXOsPayload = void
-export type AddressSiacoinUTXOsResponse = ExplorerSiacoinOutput[]
+export type AddressBigFileUTXOsPayload = void
+export type AddressBigFileUTXOsResponse = ExplorerBigFileOutput[]
 
 // Returns the specified address' unspent siafind outputs.
-export const addressSiafundUTXOsRoute = '/addresses/:address/utxos/siafund'
-export type AddressSiafundUTXOsParams = {
+export const addressBigfundUTXOsRoute = '/addresses/:address/utxos/bigfund'
+export type AddressBigfundUTXOsParams = {
   address: Address
   offset?: number
   limit?: number
 }
-export type AddressSiafundUTXOsPayload = void
-export type AddressSiafundUTXOsResponse = SiafundElement[]
+export type AddressBigfundUTXOsPayload = void
+export type AddressBigfundUTXOsResponse = BigfundElement[]
 
 // Returns the specified address' events.
 export const addressEventsRoute = '/addresses/:address/events'
@@ -201,17 +201,17 @@ export type AddressBalancePayload = void
 export type AddressBalanceResponse = AddressBalance
 
 // Output
-// Returns the specified siacoin output.
-export const outputSiacoinRoute = '/outputs/siacoin/:siacoinoutputid'
-export type OutputSiacoinParams = { siacoinOutputID: SiacoinOutputID }
-export type OutputSiacoinPayload = void
-export type OutputSiacoinResponse = ExplorerSiacoinOutput
+// Returns the specified bigfile output.
+export const outputBigFileRoute = '/outputs/bigfile/:bigfileoutputid'
+export type OutputBigFileParams = { bigfileOutputID: BigFileOutputID }
+export type OutputBigFilePayload = void
+export type OutputBigFileResponse = ExplorerBigFileOutput
 
 // Returns the specified address' events.
-export const outputSiafundeRoute = '/outputs/siafund/:siafundoutputid'
-export type OutputSiafundeParams = { address: SiafundOutputID }
-export type OutputSiafundePayload = void
-export type OutputSiafundeResponse = ExplorerSiafundOutput
+export const outputBigfundeRoute = '/outputs/bigfund/:bigfundoutputid'
+export type OutputBigfundeParams = { address: BigfundOutputID }
+export type OutputBigfundePayload = void
+export type OutputBigfundeResponse = ExplorerSiafundOutput
 
 // Contract
 
@@ -311,8 +311,8 @@ export type HostsListResponse = ExplorerHost[]
 
 // Exchange Rates
 
-// Returns the value of 1 SC in the specified currency.
-export const exchangeRateRoute = '/exchange-rate/siacoin/:currency'
+// Returns the value of 1 BIG in the specified currency.
+export const exchangeRateRoute = '/exchange-rate/bigfile/:currency'
 export type ExchangeRateParams = { currency: CurrencyID }
 export type ExchangeRatePayload = void
 export type ExchangeRateResponse = number

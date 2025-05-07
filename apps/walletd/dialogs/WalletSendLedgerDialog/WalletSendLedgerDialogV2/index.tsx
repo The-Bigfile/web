@@ -45,12 +45,12 @@ export function WalletSendLedgerDialogV2({
   const { dataset: addresses } = useWalletAddresses({ id: walletId })
 
   const balanceSc = useMemo(
-    () => new BigNumber(balance.data?.siacoins || 0),
+    () => new BigNumber(balance.data?.bigfiles || 0),
     [balance.data]
   )
 
   const balanceSf = useMemo(
-    () => new BigNumber(balance.data?.siafunds || 0),
+    () => new BigNumber(balance.data?.bigfunds || 0),
     [balance.data]
   )
 

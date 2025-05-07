@@ -54,10 +54,10 @@ export function WalletCmdGroup({ currentPage, parentPage, pushPage }: Props) {
         currentPage={currentPage}
         commandPage={commandPage}
         onSelect={() => {
-          openDialog('sendSiacoin')
+          openDialog('sendBigFile')
         }}
       >
-        Send siacoin
+        Send bigfile
       </CommandItemSearch>
       <CommandItemSearch
         currentPage={currentPage}
@@ -66,7 +66,7 @@ export function WalletCmdGroup({ currentPage, parentPage, pushPage }: Props) {
           openDialog('addressDetails')
         }}
       >
-        Receive siacoin
+        Receive bigfile
       </CommandItemSearch>
       <CommandItemSearch
         currentPage={currentPage}

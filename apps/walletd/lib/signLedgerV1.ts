@@ -1,6 +1,6 @@
 import {
-  SiacoinElement,
-  SiafundElement,
+  BigFileElement,
+  BigfundElement,
   Transaction,
 } from '@siafoundation/types'
 import { AddressData } from '../contexts/addresses/types'
@@ -16,20 +16,20 @@ export async function signTransactionLedgerV1({
   transaction,
   toSign,
   addresses,
-  siacoinOutputs,
-  siafundOutputs,
+  bigfileOutputs,
+  bigfundOutputs,
 }: {
   device: LedgerDevice
   transaction: Transaction
   toSign: string[]
   addresses: AddressData[]
-  siacoinOutputs: SiacoinElement[]
-  siafundOutputs: SiafundElement[]
+  bigfileOutputs: BigFileElement[]
+  bigfundOutputs: BigfundElement[]
 }): Promise<{ transaction?: Transaction; error?: string }> {
   if (!addresses) {
     return { error: 'No addresses' }
   }
-  if (!siacoinOutputs) {
+  if (!bigfileOutputs) {
     return { error: 'No outputs' }
   }
 
@@ -37,8 +37,8 @@ export async function signTransactionLedgerV1({
     transaction,
     toSign,
     addresses,
-    siacoinOutputs,
-    siafundOutputs,
+    bigfileOutputs,
+    bigfundOutputs,
   })
 
   if (error) {
@@ -50,8 +50,8 @@ export async function signTransactionLedgerV1({
     const addressInfo = getToSignMetadataV1({
       toSignId,
       addresses,
-      siacoinOutputs,
-      siafundOutputs,
+      bigfileOutputs,
+      bigfundOutputs,
       transaction,
     })
     if (addressInfo.error) {

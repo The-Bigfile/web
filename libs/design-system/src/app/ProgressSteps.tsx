@@ -4,7 +4,7 @@ import { cx } from 'class-variance-authority'
 
 export type TransactionData = {
   address: string
-  siacoin: BigNumber
+  bigfile: BigNumber
 }
 
 type Step = {

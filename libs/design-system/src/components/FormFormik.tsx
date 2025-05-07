@@ -3,7 +3,7 @@ import { TextField, textFieldStyles } from '../core/TextField'
 import { Label } from '../core/Label'
 import { Text } from '../core/Text'
 import { NumberField } from '../core/NumberField'
-import { SiacoinField } from '../core/SiacoinField'
+import { BigFileField } from '../core/BigFileField'
 import BigNumber from 'bignumber.js'
 import { VariantProps } from '../types'
 import { cx } from 'class-variance-authority'
@@ -67,8 +67,8 @@ export function FormFieldFormik({
           placeholder={placeholder}
           variants={variants}
         />
-      ) : type === 'siacoin' ? (
-        <FormSiacoinFieldFormik
+      ) : type === 'bigfile' ? (
+        <FormBigFileFieldFormik
           formik={formik}
           name={name}
           disabled={disabled}
@@ -191,7 +191,7 @@ function FormNumberFieldFormik({
   )
 }
 
-type FormSiacoinFieldFormikProps = {
+type FormBigFileFieldFormikProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   formik: any
   name: string
@@ -205,7 +205,7 @@ type FormSiacoinFieldFormikProps = {
   variants?: VariantProps<typeof textFieldStyles>
 }
 
-function FormSiacoinFieldFormik({
+function FormBigFileFieldFormik({
   formik,
   name,
   disabled,
@@ -216,9 +216,9 @@ function FormSiacoinFieldFormik({
   decimalsLimitFiat = 3,
   decimalsLimitSc = 3,
   variants,
-}: FormSiacoinFieldFormikProps) {
+}: FormBigFileFieldFormikProps) {
   return (
-    <SiacoinField
+    <BigFileField
       id={name}
       name={name}
       disabled={disabled}
@@ -228,7 +228,7 @@ function FormSiacoinFieldFormik({
       readOnly={readOnly || formik.isSubmitting}
       tabIndex={tabIndex}
       onFocus={() => formik.setFieldTouched(name)}
-      sc={new BigNumber(formik.values[name])}
+      big={new BigNumber(formik.values[name])}
       placeholder={new BigNumber(placeholder)}
       onChange={(val) => formik.setFieldValue(name, val?.toString())}
       {...variants}

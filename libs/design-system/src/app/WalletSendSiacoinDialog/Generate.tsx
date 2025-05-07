@@ -5,17 +5,17 @@ import { Text } from '../../core/Text'
 import { InfoTip } from '../../core/InfoTip'
 import { ValueSc } from '../../components/ValueSc'
 import { ConfigFields } from '../../form/configurationFields'
-import { SendSiacoinParams } from './types'
+import { SendBigFileParams } from './types'
 import { FieldText } from '../../form/FieldText'
 import { FieldSwitch } from '../../form/FieldSwitch'
-import { FieldSiacoin } from '../../form/FieldSiacoin'
+import { FieldBigFile } from '../../form/FieldBigFile'
 
 const exampleAddr =
   'e3b1050aef388438668b52983cf78f40925af8f0aa8b9de80c18eadcefce8388d168a313e3f2'
 
 const defaultValues = {
   address: '',
-  siacoin: undefined as BigNumber | undefined,
+  bigfile: undefined as BigNumber | undefined,
   includeFee: false,
 }
 
@@ -41,9 +41,9 @@ function getFields({
         },
       },
     },
-    siacoin: {
-      title: 'Siacoin',
-      type: 'siacoin',
+    bigfile: {
+      title: 'BigFile',
+      type: 'bigfile',
       placeholder: '100',
       validation: {
         required: 'required',
@@ -75,11 +75,11 @@ function getFields({
 
 type Props = {
   fee: BigNumber
-  onComplete: (data: SendSiacoinParams) => void
+  onComplete: (data: SendBigFileParams) => void
   balance?: BigNumber
 }
 
-export function useSendSiacoinGenerateForm({
+export function useSendBigFileGenerateForm({
   balance,
   fee,
   onComplete,
@@ -89,7 +89,7 @@ export function useSendSiacoinGenerateForm({
   })
 
   const onValid = async (values: Values) => {
-    if (!values.siacoin) {
+    if (!values.bigfile) {
       return
     }
 
@@ -98,8 +98,8 @@ export function useSendSiacoinGenerateForm({
     }
 
     const hastings = values.includeFee
-      ? toHastings(values.siacoin).minus(fee)
-      : toHastings(values.siacoin)
+      ? toHastings(values.bigfile).minus(fee)
+      : toHastings(values.bigfile)
 
     const total = getTotalTransactionCost({
       hastings,
@@ -122,8 +122,8 @@ export function useSendSiacoinGenerateForm({
   const submit = form.handleSubmit(onValid)
 
   const includeFee = form.watch('includeFee')
-  const siacoin = form.watch('siacoin')
-  const hastings = toHastings(siacoin || 0)
+  const bigfile = form.watch('bigfile')
+  const hastings = toHastings(bigfile || 0)
 
   const el = (
     <div className="flex flex-col gap-4">
@@ -134,7 +134,7 @@ export function useSendSiacoinGenerateForm({
         name="address"
         autoComplete="off"
       />
-      <FieldSiacoin form={form} fields={fields} name="siacoin" />
+      <FieldBigFile form={form} fields={fields} name="bigfile" />
       <div className="flex items-center">
         <FieldSwitch
           name="includeFee"

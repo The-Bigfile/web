@@ -12,7 +12,7 @@ import { HostsFilterAddressDialog } from '../components/Hosts/HostsFilterAddress
 import { ContractsFilterPublicKeyDialog } from '../components/Contracts/ContractsFilterPublicKeyDialog'
 import { FilesSearchBucketDialog } from '../dialogs/FilesSearchBucketDialog'
 import { useSyncerConnect, useWallet } from '@siafoundation/renterd-react'
-import { RenterdSendSiacoinDialog } from '../dialogs/RenterdSendSiacoinDialog'
+import { RenterdSendBigFileDialog } from '../dialogs/RenterdSendBigFileDialog'
 import { RenterdTransactionDetailsDialog } from '../dialogs/RenterdTransactionDetailsDialog'
 import { HostsFilterPublicKeyDialog } from '../components/Hosts/HostsFilterPublicKeyDialog'
 import { FilesBucketDeleteDialog } from '../dialogs/FilesBucketDeleteDialog'
@@ -25,7 +25,7 @@ import { DebugDialog } from '../dialogs/DebugDialog'
 export type DialogType =
   | 'cmdk'
   | 'settings'
-  | 'sendSiacoin'
+  | 'sendBigFile'
   | 'transactionDetails'
   | 'addressDetails'
   | 'connectPeer'
@@ -142,7 +142,7 @@ export function Dialogs() {
         onOpenChange={onOpenChange}
         showGpuSetting
       />
-      <RenterdSendSiacoinDialog />
+      <RenterdSendBigFileDialog />
       <WalletSingleAddressDetailsDialog
         address={wallet.data?.address}
         isValidating={wallet.isValidating}

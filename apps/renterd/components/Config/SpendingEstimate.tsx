@@ -1,7 +1,7 @@
 import {
   Option,
   Select,
-  SiacoinField,
+  BigFileField,
   Text,
   ValueScFiat,
 } from '@siafoundation/design-system'
@@ -100,14 +100,14 @@ export function SpendingEstimate() {
           mode === 'total' ? (
             <>
               {modeSelector}
-              <SiacoinField
+              <BigFileField
                 name="estimatedSpendingPerMonth"
                 tabIndex={-1}
                 className="min-w-[250px]"
                 readOnly
-                sc={estimatedSpendingPerMonth}
+                big={estimatedSpendingPerMonth}
                 size="small"
-                units="SC/month"
+                units="BIG/month"
                 unitsFiatPostfix="/month"
                 decimalsLimitSc={0}
                 decimalsLimitFiat={2}
@@ -116,14 +116,14 @@ export function SpendingEstimate() {
           ) : (
             <>
               {modeSelector}
-              <SiacoinField
+              <BigFileField
                 name="estimatedSpendingPerTBPerMonth"
                 tabIndex={-1}
                 className="min-w-[250px]"
                 readOnly
-                sc={estimatedSpendingPerTB}
+                big={estimatedSpendingPerTB}
                 size="small"
-                units="SC/month"
+                units="BIG/month"
                 unitsFiatPostfix="/month"
                 decimalsLimitSc={0}
                 decimalsLimitFiat={2}

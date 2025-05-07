@@ -5,10 +5,10 @@ import {
   Hash256,
   MerkleProof,
   PublicKey,
-  SiacoinElement,
-  SiacoinOutput,
-  SiafundElement,
-  SiafundOutput,
+  BigFileElement,
+  BigFileOutput,
+  BigfundElement,
+  BigfundOutput,
   Signature,
   StateElement,
   UnlockConditions,
@@ -19,8 +19,8 @@ export type SpendPolicy = {
   policy: UnlockConditions
 }
 
-export type V2SiacoinInput = {
-  parent: SiacoinElement
+export type V2BigFileInput = {
+  parent: BigFileElement
   satisfiedPolicy: SatisfiedPolicy
 }
 
@@ -28,8 +28,8 @@ export interface V2TransactionInput {
   satisfiedPolicy: SatisfiedPolicy
 }
 
-export type V2SiafundInput = {
-  parent: SiafundElement
+export type V2BigfundInput = {
+  parent: BigfundElement
   claimAddress: Address
   satisfiedPolicy: SatisfiedPolicy
 }
@@ -45,8 +45,8 @@ export type V2FileContract = {
   fileMerkleRoot: Hash256
   proofHeight: number
   expirationHeight: number
-  renterOutput: SiacoinOutput
-  hostOutput: SiacoinOutput
+  renterOutput: BigFileOutput
+  hostOutput: BigFileOutput
   missedHostValue: Currency
   totalCollateral: Currency
   renterPublicKey: PublicKey
@@ -71,10 +71,10 @@ export type V2FileContractRenewal = {
 }
 
 export type V2Transaction = {
-  siacoinInputs?: V2SiacoinInput[]
-  siacoinOutputs?: SiacoinOutput[]
-  siafundInputs?: V2SiafundInput[]
-  siafundOutputs?: SiafundOutput[]
+  bigfileInputs?: V2BigFileInput[]
+  bigfileOutputs?: BigFileOutput[]
+  bigfundInputs?: V2BigfundInput[]
+  bigfundOutputs?: BigfundOutput[]
   fileContracts?: V2FileContract[]
   fileContractRevisions?: V2FileContractRevision[]
   fileContractResolutions?: V2FileContractResolution[]

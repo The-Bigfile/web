@@ -3,7 +3,7 @@ import {
   TipNumber,
   formSetField,
 } from '@siafoundation/design-system'
-import { fiatToSiacoin, toHastings } from '@siafoundation/units'
+import { fiatToBigFile, toHastings } from '@siafoundation/units'
 import { UseFormReturn } from 'react-hook-form'
 import { Categories, RecommendationItem, InputValues } from '../types'
 import { useFormExchangeRate } from '../useFormExchangeRate'
@@ -26,7 +26,7 @@ export function MaxDownloadPriceTips({
     <>
       {downloadAverage && (
         <TipNumber
-          type="siacoin"
+          type="bigfile"
           label="Network average"
           tip="Averages provided by Sia Central."
           decimalsLimit={0}
@@ -44,7 +44,7 @@ export function MaxDownloadPriceTips({
       )}
       {recommendationPrice && (
         <TipNumber
-          type="siacoin"
+          type="bigfile"
           label="Match with more hosts"
           tip={recommendationTipContent}
           decimalsLimit={0}
@@ -77,15 +77,15 @@ export function MaxDownloadPricePinnedTips({
   const { downloadAverage } = useAverages()
   const recommendationInFiat =
     recommendations?.maxDownloadPriceTBPinned?.targetValue
-  const recommendationInSiacoin =
+  const recommendationInBigFile =
     recommendationInFiat && rate
-      ? fiatToSiacoin(recommendationInFiat, rate)
+      ? fiatToBigFile(recommendationInFiat, rate)
       : null
   return (
     <>
       {downloadAverage && rate && (
         <TipNumber
-          type="siacoin"
+          type="bigfile"
           label="Network average"
           tip="Averages provided by Sia Central."
           decimalsLimit={0}
@@ -101,13 +101,13 @@ export function MaxDownloadPricePinnedTips({
           }}
         />
       )}
-      {recommendationInSiacoin && (
+      {recommendationInBigFile && (
         <TipNumber
-          type="siacoin"
+          type="bigfile"
           label="Match with more hosts"
           tip={recommendationTipContent}
           decimalsLimit={0}
-          value={toHastings(recommendationInSiacoin)}
+          value={toHastings(recommendationInBigFile)}
           onClick={() =>
             formSetField({
               form,

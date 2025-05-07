@@ -12,8 +12,8 @@ import {
   blocksToDays,
   blocksToMonths,
   humanBytes,
-  humanSiacoin,
-  toSiacoins,
+  humanBigFile,
+  toBigFiles,
   getDownloadCost,
   getStorageCost,
   getUploadCost,
@@ -168,7 +168,7 @@ export function HostSettings({ host }: Props) {
           ) : (
             <LoadingCurrency />
           ),
-        comment: humanSiacoin(
+        comment: humanBigFile(
           host.v2 ? host.v2Settings.maxCollateral : host.settings.maxcollateral
         ),
       },
@@ -189,7 +189,7 @@ export function HostSettings({ host }: Props) {
           ) : (
             <LoadingCurrency />
           ),
-        comment: humanSiacoin(
+        comment: humanBigFile(
           host.v2
             ? host.v2Settings.prices.contractPrice
             : host.settings.contractprice
@@ -200,7 +200,7 @@ export function HostSettings({ host }: Props) {
         copyable: false,
         value:
           exchange.currency && exchange.rate ? (
-            `${exchange.currency.prefix || ''}${toSiacoins(
+            `${exchange.currency.prefix || ''}${toBigFiles(
               host.settings.baserpcprice
             )
               .times(1e6)
@@ -209,27 +209,27 @@ export function HostSettings({ host }: Props) {
           ) : (
             <LoadingCurrency type="perMillion" />
           ),
-        comment: `${toSiacoins(host.settings.baserpcprice).times(
+        comment: `${toBigFiles(host.settings.baserpcprice).times(
           1e6
-        )} SC/million`,
+        )} BIG/million`,
       },
       !host.v2 && {
         label: 'sector access price',
         copyable: false,
         value:
           exchange.currency && exchange.rate ? (
-            `${exchange.currency.prefix || ''}${toSiacoins(
+            `${exchange.currency.prefix || ''}${toBigFiles(
               host.settings.sectoraccessprice
             )
               .times(1e6)
               .times(exchange.rate || 1)
-              .precision(2)} SC/million`
+              .precision(2)} BIG/million`
           ) : (
             <LoadingCurrency type="perSCMillion" />
           ),
-        comment: `${toSiacoins(host.settings.sectoraccessprice).times(
+        comment: `${toBigFiles(host.settings.sectoraccessprice).times(
           1e6
-        )} SC/million`,
+        )} BIG/million`,
       },
       !host.v2 && {
         label: 'ephemeral account expiry',
@@ -258,7 +258,7 @@ export function HostSettings({ host }: Props) {
       !host.v2 && {
         label: 'max ephemeral account balance',
         copyable: false,
-        sc: new BigNumber(host.settings.maxephemeralaccountbalance),
+        big: new BigNumber(host.settings.maxephemeralaccountbalance),
       },
       !host.v2 && {
         label: 'sector size',

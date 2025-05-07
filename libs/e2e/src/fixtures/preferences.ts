@@ -7,7 +7,7 @@ export const setCurrencyDisplay = step(
   'set currency display',
   async (
     page: Page,
-    display: 'sc' | 'fiat' | 'bothPreferSc' | 'bothPreferFiat',
+    display: 'big' | 'fiat' | 'bothPreferSc' | 'bothPreferFiat',
     currency?: CurrencyId
   ) => {
     await page.getByTestId('sidenav').getByLabel('App preferences').click()

@@ -1,3 +1,3 @@
-module go.sia.tech/web/nextjs
+module go.thebigfile.com/web/nextjs
 
 go 1.23.0

@@ -85,7 +85,7 @@ export const configResetBasicSettings = step(
     await fillTextInputByName(page, 'uploadTBMonth', '7')
     await fillTextInputByName(page, 'downloadTBMonth', '7')
 
-    await configFillEstimatesSiacoin(page)
+    await configFillEstimatesBigFile(page)
 
     await fillTextInputByName(page, 'minShards', '1')
     await fillTextInputByName(page, 'totalShards', '3')
@@ -101,7 +101,7 @@ export const configResetBasicSettings = step(
   }
 )
 
-export const configFillEstimatesSiacoin = step(
+export const configFillEstimatesBigFile = step(
   'config fill estimates and prices',
   async (page: Page) => {
     await fillTextInputByName(page, 'maxStoragePriceTBMonth', '3000')

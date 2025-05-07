@@ -8,11 +8,11 @@ import (
 	"time"
 
 	"go.sia.tech/cluster/nodes"
-	proto2 "go.sia.tech/core/rhp/v2"
-	proto4 "go.sia.tech/core/rhp/v4"
-	"go.sia.tech/core/types"
-	"go.sia.tech/coreutils/chain"
-	"go.sia.tech/explored/api"
+	proto2 "go.thebigfile.com/core/rhp/v2"
+	proto4 "go.thebigfile.com/core/rhp/v4"
+	"go.thebigfile.com/core/types"
+	"go.thebigfile.com/coreutils/chain"
+	"go.thebigfile.com/explored/api"
 	"go.uber.org/zap"
 )
 
@@ -55,8 +55,8 @@ func setupV1Contracts(nm *nodes.Manager, w *swallet, cm *chain.Manager) error {
 			WindowSize: 1,
 			Address:    types.StandardUnlockHash(hk),
 		}
-		sc := types.Siacoins(1)
-		fc := proto2.PrepareContractFormation(rk, hk, sc.Mul64(5), sc.Mul64(5), endHeight, hs, rAddr)
+		big := types.BigFiles(1)
+		fc := proto2.PrepareContractFormation(rk, hk, big.Mul64(5), big.Mul64(5), endHeight, hs, rAddr)
 		fc.UnlockHash = w.Address()
 		return fc
 	}
@@ -207,9 +207,9 @@ func setupV2Contracts(nm *nodes.Manager, e *api.Client, w *swallet, cm *chain.Ma
 	prepareContract := func(proofHeight uint64) types.V2FileContract {
 		fc, _ := proto4.NewContract(proto4.HostPrices{}, proto4.RPCFormContractParams{
 			ProofHeight:     proofHeight,
-			Allowance:       types.Siacoins(5),
+			Allowance:       types.BigFiles(5),
 			RenterAddress:   renterAddr,
-			Collateral:      types.Siacoins(5),
+			Collateral:      types.BigFiles(5),
 			RenterPublicKey: renterPrivateKey.PublicKey(),
 		}, hostPrivateKey.PublicKey(), hostAddr)
 		fc.ExpirationHeight = fc.ProofHeight + 1

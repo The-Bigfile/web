@@ -1,8 +1,8 @@
 import {
   ChainIndex,
   Transaction,
-  SiacoinElement,
-  SiafundElement,
+  BigFileElement,
+  BigfundElement,
   FileContractElement,
   Hash256,
   Address,
@@ -25,8 +25,8 @@ export type WalletEventTransactionV1 = WalletEventBase & {
   type: 'v1Transaction'
   data: {
     transaction: Transaction
-    spentSiacoinElements?: SiacoinElement[]
-    spentSiafundElements?: SiafundElement[]
+    spentBigFileElements?: BigFileElement[]
+    spentBigfundElements?: BigfundElement[]
   }
 }
 
@@ -39,7 +39,7 @@ export type WalletEventContractResolutionV1 = WalletEventBase & {
   type: 'v1ContractResolution'
   data: {
     parent: FileContractElement
-    siacoinElement: SiacoinElement
+    bigfileElement: BigFileElement
     missed: boolean
   }
 }
@@ -48,7 +48,7 @@ export type WalletEventContractResolutionV2 = WalletEventBase & {
   type: 'v2ContractResolution'
   data: {
     resolution: V2FileContractResolutionType
-    siacoinElement: SiacoinElement
+    bigfileElement: BigFileElement
     missed: boolean
   }
 }
@@ -56,21 +56,21 @@ export type WalletEventContractResolutionV2 = WalletEventBase & {
 export type WalletEventMinerPayout = WalletEventBase & {
   type: 'miner'
   data: {
-    siacoinElement: SiacoinElement
+    bigfileElement: BigFileElement
   }
 }
 
-export type WalletEventSiafundClaim = WalletEventBase & {
-  type: 'siafundClaim'
+export type WalletEventBigfundClaim = WalletEventBase & {
+  type: 'bigfundClaim'
   data: {
-    siacoinElement: SiacoinElement
+    bigfileElement: BigFileElement
   }
 }
 
 export type WalletEventFoundationSubsidy = WalletEventBase & {
   type: 'foundation'
   data: {
-    siacoinElement: SiacoinElement
+    bigfileElement: BigFileElement
   }
 }
 
@@ -81,6 +81,6 @@ export type WalletEvent =
   | WalletEventContractResolutionV2
   | WalletEventMinerPayout
   | WalletEventFoundationSubsidy
-  | WalletEventSiafundClaim
+  | WalletEventBigfundClaim
 
 export type WalletEventType = WalletEvent['type']

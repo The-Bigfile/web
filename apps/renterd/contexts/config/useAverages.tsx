@@ -2,7 +2,7 @@ import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
 import {
   valuePerBytePerBlockToPerTBPerMonth,
-  toSiacoins,
+  toBigFiles,
   valuePerByteToPerTB,
 } from '@siafoundation/units'
 import { useConsensusState } from '@siafoundation/renterd-react'
@@ -52,7 +52,7 @@ export function useAverages() {
       storagePrice
         ? new BigNumber(
             valuePerBytePerBlockToPerTBPerMonth(
-              toSiacoins(storagePrice)
+              toBigFiles(storagePrice)
             ).toFixed(0)
           )
         : undefined,
@@ -61,7 +61,7 @@ export function useAverages() {
   const uploadAverage = useMemo(
     () =>
       uploadPrice
-        ? new BigNumber(valuePerByteToPerTB(toSiacoins(uploadPrice)).toFixed(0))
+        ? new BigNumber(valuePerByteToPerTB(toBigFiles(uploadPrice)).toFixed(0))
         : undefined,
     [uploadPrice]
   )
@@ -69,7 +69,7 @@ export function useAverages() {
     () =>
       downloadPrice
         ? new BigNumber(
-            valuePerByteToPerTB(toSiacoins(downloadPrice)).toFixed(0)
+            valuePerByteToPerTB(toBigFiles(downloadPrice)).toFixed(0)
           )
         : undefined,
     [downloadPrice]

@@ -17,13 +17,13 @@ export function SendReceiptV1({
     changeAddress,
     claimAddress,
     mode,
-    siacoin,
-    siafund,
+    bigfile,
+    bigfund,
     fee,
   },
   transactionId,
 }: Props) {
-  const totalSiacoin = siacoin.plus(fee)
+  const totalBigFile = bigfile.plus(fee)
   return (
     <div className="flex flex-col gap-2">
       <div className="flex gap-6 justify-between items-center">
@@ -46,7 +46,7 @@ export function SendReceiptV1({
           labeledBy="changeAddress"
         />
       </div>
-      {mode === 'siafund' && (
+      {mode === 'bigfund' && (
         <div className="flex gap-6 justify-between items-center">
           <Text color="verySubtle" noWrap id="claimAddress">
             Claim address
@@ -63,11 +63,11 @@ export function SendReceiptV1({
           Amount
         </Text>
         <div className="flex relative top-[-0.5px]">
-          {mode === 'siacoin' ? (
+          {mode === 'bigfile' ? (
             <ValueSc
               labeledBy="amount"
               size="14"
-              value={siacoin}
+              value={bigfile}
               variant="value"
               dynamicUnits={false}
             />
@@ -75,7 +75,7 @@ export function SendReceiptV1({
             <ValueSf
               labeledBy="amount"
               size="14"
-              value={siafund}
+              value={bigfund}
               variant="value"
             />
           )}
@@ -95,7 +95,7 @@ export function SendReceiptV1({
           />
         </div>
       </div>
-      {mode === 'siacoin' && (
+      {mode === 'bigfile' && (
         <div className="flex items-center gap-2 justify-between">
           <Text color="verySubtle" noWrap id="total">
             Total
@@ -104,7 +104,7 @@ export function SendReceiptV1({
             <ValueSc
               labeledBy="total"
               size="14"
-              value={totalSiacoin}
+              value={totalBigFile}
               variant="value"
               dynamicUnits={false}
             />

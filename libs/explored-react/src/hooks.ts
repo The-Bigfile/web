@@ -5,12 +5,12 @@ import {
   AddressEventsParams,
   AddressEventsResponse,
   addressEventsRoute,
-  AddressSiacoinUTXOsParams,
-  AddressSiacoinUTXOsResponse,
-  addressSiacoinUTXOsRoute,
-  AddressSiafundUTXOsParams,
-  AddressSiafundUTXOsResponse,
-  addressSiafundUTXOsRoute,
+  AddressBigFileUTXOsParams,
+  AddressBigFileUTXOsResponse,
+  addressBigFileUTXOsRoute,
+  AddressBigfundUTXOsParams,
+  AddressBigfundUTXOsResponse,
+  addressBigfundUTXOsRoute,
   AddressUnconfirmedEventsParams,
   AddressUnconfirmedEventsResponse,
   addressUnconfirmedEventsRoute,
@@ -58,12 +58,12 @@ import {
   HostsListPayload,
   HostsListResponse,
   hostsListRoute,
-  OutputSiacoinParams,
-  OutputSiacoinResponse,
-  outputSiacoinRoute,
-  OutputSiafundeParams,
-  OutputSiafundeResponse,
-  outputSiafundeRoute,
+  OutputBigFileParams,
+  OutputBigFileResponse,
+  outputBigFileRoute,
+  OutputBigfundeParams,
+  OutputBigfundeResponse,
+  outputBigfundeRoute,
   SearchResultTypeParams,
   SearchResultTypeResponse,
   searchResultTypeRoute,
@@ -312,21 +312,21 @@ export function useV2TransactionChainIndices(
 
 // Address
 
-export function useAddressSiacoinUTXOs(
-  args: HookArgsSwr<AddressSiacoinUTXOsParams, AddressSiacoinUTXOsResponse>
+export function useAddressBigFileUTXOs(
+  args: HookArgsSwr<AddressBigFileUTXOsParams, AddressBigFileUTXOsResponse>
 ) {
   return useGetSwr({
     ...args,
-    route: addressSiacoinUTXOsRoute,
+    route: addressBigFileUTXOsRoute,
   })
 }
 
 export function useAddressSiafundUTXOs(
-  args: HookArgsSwr<AddressSiafundUTXOsParams, AddressSiafundUTXOsResponse>
+  args: HookArgsSwr<AddressBigfundUTXOsParams, AddressBigfundUTXOsResponse>
 ) {
   return useGetSwr({
     ...args,
-    route: addressSiafundUTXOsRoute,
+    route: addressBigfundUTXOsRoute,
   })
 }
 
@@ -362,21 +362,21 @@ export function useAddressBalance(
 
 // Output
 
-export function useOutputSiacoin(
-  args: HookArgsSwr<OutputSiacoinParams, OutputSiacoinResponse>
+export function useOutputBigFile(
+  args: HookArgsSwr<OutputBigFileParams, OutputBigFileResponse>
 ) {
   return useGetSwr({
     ...args,
-    route: outputSiacoinRoute,
+    route: outputBigFileRoute,
   })
 }
 
 export function useOutputSiafund(
-  args: HookArgsSwr<OutputSiafundeParams, OutputSiafundeResponse>
+  args: HookArgsSwr<OutputBigfundeParams, OutputBigfundeResponse>
 ) {
   return useGetSwr({
     ...args,
-    route: outputSiafundeRoute,
+    route: outputBigfundeRoute,
   })
 }
 

@@ -3,7 +3,7 @@ import {
   ExplorerFileContract,
   ExplorerV2FileContract,
   ExplorerV2FileContractResolutionType,
-  SiacoinOutput,
+  BigFileOutput,
 } from '@siafoundation/explored-types'
 import BigNumber from 'bignumber.js'
 
@@ -65,13 +65,13 @@ export type ContractData = {
   confirmationIndex: ChainIndex
   fileMerkleRoot: string
   filesize: number
-  hostBurned: SiacoinOutput | undefined
-  hostPayoutValid: SiacoinOutput
-  hostPayoutMissed: SiacoinOutput
+  hostBurned: BigFileOutput | undefined
+  hostPayoutValid: BigFileOutput
+  hostPayoutMissed: BigFileOutput
   id: string
   payout: string
-  renterPayoutMissed: SiacoinOutput
-  renterPayoutValid: SiacoinOutput
+  renterPayoutMissed: BigFileOutput
+  renterPayoutValid: BigFileOutput
   resolutionWindowStart: number
   resolutionWindowEnd: number
   revisionNumber: number

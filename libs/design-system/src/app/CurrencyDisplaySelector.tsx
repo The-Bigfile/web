@@ -4,9 +4,9 @@ import { Option, Select } from '../core/Select'
 import { CurrencyDisplay, useAppSettings } from '@siafoundation/react-core'
 
 const displayOptions = [
-  { id: 'sc', label: 'Siacoin' },
+  { id: 'big', label: 'BigFile' },
   { id: 'fiat', label: 'Fiat' },
-  { id: 'bothPreferSc', label: 'Both - prefer siacoin' },
+  { id: 'bothPreferSc', label: 'Both - prefer bigfile' },
   { id: 'bothPreferFiat', label: 'Both - prefer fiat' },
 ] as const
 

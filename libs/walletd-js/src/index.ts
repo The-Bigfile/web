@@ -62,18 +62,18 @@ import {
   WalletEventsUnconfirmedParams,
   WalletEventsUnconfirmedPayload,
   WalletEventsUnconfirmedResponse,
-  WalletFundSiacoinParams,
-  WalletFundSiacoinPayload,
-  WalletFundSiacoinResponse,
-  WalletFundSiafundParams,
-  WalletFundSiafundPayload,
+  WalletFundBigFileParams,
+  WalletFundBigFilePayload,
+  WalletFundBigFileResponse,
+  WalletFundBigfundParams,
+  WalletFundBigfundPayload,
   WalletFundSiafundResponse,
-  WalletOutputsSiacoinParams,
-  WalletOutputsSiacoinPayload,
-  WalletOutputsSiacoinResponse,
-  WalletOutputsSiafundParams,
-  WalletOutputsSiafundPayload,
-  WalletOutputsSiafundResponse,
+  WalletOutputsBigFileParams,
+  WalletOutputsBigFilePayload,
+  WalletOutputsBigFileResponse,
+  WalletOutputsBigfundParams,
+  WalletOutputsBigfundPayload,
+  WalletOutputsBigfundResponse,
   WalletReleaseParams,
   WalletReleasePayload,
   WalletReleaseResponse,
@@ -105,8 +105,8 @@ import {
   walletsIdEventsUnconfirmedRoute,
   walletsIdFundRoute,
   walletsIdFundSfRoute,
-  walletsIdOutputsSiacoinRoute,
-  walletsIdOutputsSiafundRoute,
+  walletsIdOutputsBigFileRoute,
+  walletsIdOutputsBigfundRoute,
   walletsIdReleaseRoute,
   walletsIdReserveRoute,
   walletsIdRoute,
@@ -223,24 +223,24 @@ export function Walletd({ api, password }: { api: string; password?: string }) {
       WalletEventsUnconfirmedPayload,
       WalletEventsUnconfirmedResponse
     >(axios, 'get', walletsIdEventsUnconfirmedRoute),
-    walletOutputsSiacoin: buildRequestHandler<
-      WalletOutputsSiacoinParams,
-      WalletOutputsSiacoinPayload,
-      WalletOutputsSiacoinResponse
-    >(axios, 'get', walletsIdOutputsSiacoinRoute),
+    walletOutputsBigFile: buildRequestHandler<
+      WalletOutputsBigFileParams,
+      WalletOutputsBigFilePayload,
+      WalletOutputsBigFileResponse
+    >(axios, 'get', walletsIdOutputsBigFileRoute),
     walletOutputsSiafund: buildRequestHandler<
-      WalletOutputsSiafundParams,
-      WalletOutputsSiafundPayload,
-      WalletOutputsSiafundResponse
-    >(axios, 'get', walletsIdOutputsSiafundRoute),
-    walletFundSiacoin: buildRequestHandler<
-      WalletFundSiacoinParams,
-      WalletFundSiacoinPayload,
-      WalletFundSiacoinResponse
+      WalletOutputsBigfundParams,
+      WalletOutputsBigfundPayload,
+      WalletOutputsBigfundResponse
+    >(axios, 'get', walletsIdOutputsBigfundRoute),
+    walletFundBigFile: buildRequestHandler<
+      WalletFundBigFileParams,
+      WalletFundBigFilePayload,
+      WalletFundBigFileResponse
     >(axios, 'post', walletsIdFundRoute),
     walletFundSiafund: buildRequestHandler<
-      WalletFundSiafundParams,
-      WalletFundSiafundPayload,
+      WalletFundBigfundParams,
+      WalletFundBigfundPayload,
       WalletFundSiafundResponse
     >(axios, 'post', walletsIdFundSfRoute),
     walletReserve: buildRequestHandler<

@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import BigNumber from 'bignumber.js'
-import { humanBytes, humanSiacoin } from '@siafoundation/units'
+import { humanBytes, humanBigFile } from '@siafoundation/units'
 import { useActiveSiascanExchangeRate } from '@siafoundation/design-system'
 import { EntityList } from '../Entity/EntityList'
 import { EntityListItemProps } from '../Entity/EntityListItem'
@@ -70,7 +70,7 @@ export function Contract({
           ) : (
             <LoadingCurrency />
           ),
-        comment: humanSiacoin(contract.payout),
+        comment: humanBigFile(contract.payout),
       },
       {
         label: 'transaction ID',
@@ -203,14 +203,14 @@ export function Contract({
       {
         label: 'renter payout: remaining renter allowance',
         initials: 'r',
-        sc:
+        big:
           contract.renterPayoutValid &&
           new BigNumber(contract.renterPayoutValid.value),
       },
       {
         label: 'host payout',
         initials: 'h',
-        sc:
+        big:
           contract.hostPayoutValid &&
           new BigNumber(contract.hostPayoutValid.value),
       },
@@ -222,21 +222,21 @@ export function Contract({
       {
         label: 'renter payout: remaining renter allowance',
         initials: 'r',
-        sc:
+        big:
           contract.renterPayoutMissed &&
           new BigNumber(contract.renterPayoutMissed.value),
       },
       {
         label: `host payout: payout minus risked collateral and storage revenue`,
         initials: 'h',
-        sc:
+        big:
           contract.hostPayoutMissed &&
           new BigNumber(contract.hostPayoutMissed.value),
       },
       contract.hostBurned && {
         label: 'host burn: host revenue plus risked collateral',
         initials: 'b',
-        sc: contract.hostBurned && new BigNumber(contract.hostBurned.value),
+        big: contract.hostBurned && new BigNumber(contract.hostBurned.value),
       },
     ].filter(Boolean) as EntityListItemProps[]
   }, [contract])

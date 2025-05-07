@@ -1,8 +1,8 @@
 import {
   useConsensusNetwork,
-  useWalletOutputsSiacoin,
+  useWalletOutputsBigFile,
   useConsensusTipState,
-  useWalletOutputsSiafund,
+  useWalletOutputsBigfund,
 } from '@siafoundation/walletd-react'
 import { useWallets } from '../../../contexts/wallets'
 import { useCallback } from 'react'
@@ -17,13 +17,13 @@ export function useSignAndBroadcastV1() {
   const { wallet, cacheWalletMnemonic } = useWallets()
   const walletId = wallet?.id
 
-  const siacoinOutputs = useWalletOutputsSiacoin({
+  const bigfileOutputs = useWalletOutputsBigFile({
     disabled: !walletId,
     params: {
       id: walletId,
     },
   })
-  const siafundOutputs = useWalletOutputsSiafund({
+  const bigfundOutputs = useWalletOutputsBigfund({
     disabled: !walletId,
     params: {
       id: walletId,
@@ -70,8 +70,8 @@ export function useSignAndBroadcastV1() {
         consensusState: cs.data,
         consensusNetwork: cn.data,
         addresses,
-        siacoinOutputs: siacoinOutputs.data?.outputs,
-        siafundOutputs: siafundOutputs.data?.outputs,
+        bigfileOutputs: bigfileOutputs.data?.outputs,
+        bigfundOutputs: bigfundOutputs.data?.outputs,
       })
       if (signingError) {
         cancel(fundedTransaction)
@@ -93,8 +93,8 @@ export function useSignAndBroadcastV1() {
       walletId,
       cs.data,
       cn.data,
-      siacoinOutputs.data,
-      siafundOutputs.data,
+      bigfileOutputs.data,
+      bigfundOutputs.data,
       cacheWalletMnemonic,
       broadcast,
     ]

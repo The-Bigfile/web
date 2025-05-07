@@ -11,7 +11,7 @@ import {
   MiBToBytes,
   humanBytes,
   humanNumber,
-  humanSiacoin,
+  humanBigFile,
   secondsInMilliseconds,
 } from '@siafoundation/units'
 import { useCallback, useMemo } from 'react'
@@ -249,7 +249,7 @@ function useMetricsMain() {
           return <ValueScFiat variant="value" value={new BigNumber(value)} />
         },
         formatTickY: (v) =>
-          humanSiacoin(v, {
+          humanBigFile(v, {
             fixed: 0,
             dynamicUnits: true,
           }),
@@ -291,7 +291,7 @@ function useMetricsMain() {
         },
         formatTimestamp,
         formatTickY: (v) =>
-          humanSiacoin(v, {
+          humanBigFile(v, {
             fixed: 0,
             dynamicUnits: true,
           }),
@@ -363,7 +363,7 @@ function useMetricsMain() {
         },
         formatTimestamp,
         formatTickY: (v) =>
-          humanSiacoin(v, {
+          humanBigFile(v, {
             fixed: 0,
             dynamicUnits: true,
           }),

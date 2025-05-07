@@ -2,7 +2,7 @@
 
 import { Text } from '../core/Text'
 import { Tooltip } from '../core/Tooltip'
-import { humanSiacoin } from '@siafoundation/units'
+import { humanBigFile } from '@siafoundation/units'
 import BigNumber from 'bignumber.js'
 
 type Props = {
@@ -63,11 +63,11 @@ export function ValueSc({
       color={color}
     >
       {variant === 'change'
-        ? `${sign}${humanSiacoin(value.absoluteValue(), {
+        ? `${sign}${humanBigFile(value.absoluteValue(), {
             fixed,
             dynamicUnits,
           })}`
-        : humanSiacoin(value, { fixed, dynamicUnits, hastingUnits })}
+        : humanBigFile(value, { fixed, dynamicUnits, hastingUnits })}
       {extendedSuffix ? extendedSuffix : ''}
     </Text>
   )
@@ -77,7 +77,7 @@ export function ValueSc({
       <Tooltip
         content={
           (tooltip ? `${tooltip} ` : '') +
-          humanSiacoin(value, {
+          humanBigFile(value, {
             fixed: 16,
             dynamicUnits: false,
           })

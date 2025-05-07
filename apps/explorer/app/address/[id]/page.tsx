@@ -33,7 +33,7 @@ export default async function Page({ params }) {
     to(getExplored().addressBalance({ params: { address } })),
     getExplored().addressEvents({ params: { address, limit: 500 } }),
     getExplored().addressUnconfirmedEvents({ params: { address } }),
-    getExplored().addressSiacoinUTXOs({ params: { address } }),
+    getExplored().addressBigFileUTXOs({ params: { address } }),
   ])
 
   if (balanceError) {

@@ -12,7 +12,7 @@ import {
   monthsToBlocks,
   TBToBytes,
   humanBytes,
-  humanSiacoin,
+  humanBigFile,
   sectorsToBytes,
 } from '@siafoundation/units'
 import { ExplorerHost } from '@siafoundation/explored-types'
@@ -44,7 +44,7 @@ export function HostItem({
           .div(1e24)
           .times(rate)
           .toFixed(2)}/TB`
-      : `${humanSiacoin(
+      : `${humanBigFile(
           new BigNumber(storagePrice || 0)
             .times(TBToBytes(1))
             .times(monthsToBlocks(1)),
@@ -62,7 +62,7 @@ export function HostItem({
           .div(1e24)
           .times(rate)
           .toFixed(2)}/TB`
-      : `${humanSiacoin(new BigNumber(downloadPrice || 0).times(TBToBytes(1)), {
+      : `${humanBigFile(new BigNumber(downloadPrice || 0).times(TBToBytes(1)), {
           fixed: 0,
         })}/TB`
   }, [rate, currency, host])
@@ -77,7 +77,7 @@ export function HostItem({
           .div(1e24)
           .times(rate)
           .toFixed(2)}/TB`
-      : `${humanSiacoin(new BigNumber(uploadPrice || 0).times(TBToBytes(1)), {
+      : `${humanBigFile(new BigNumber(uploadPrice || 0).times(TBToBytes(1)), {
           fixed: 0,
         })}/TB`
   }, [rate, currency, host])

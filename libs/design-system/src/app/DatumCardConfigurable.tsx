@@ -16,7 +16,7 @@ type Props = {
   category: string
   label: string
   color?: string
-  sc?: {
+  big?: {
     total: number
     average: number
     latest: number
@@ -49,7 +49,7 @@ export function DatumCardConfigurable({
   category,
   label,
   color,
-  sc,
+  big,
   scFixed = 2,
   value,
   extendedSuffix,
@@ -81,7 +81,7 @@ export function DatumCardConfigurable({
           ))}
         </Select>
       }
-      sc={sc?.[mode] !== undefined ? new BigNumber(sc[mode]) : undefined}
+      big={big?.[mode] !== undefined ? new BigNumber(big[mode]) : undefined}
       scFixed={scFixed}
       extendedSuffix={extendedSuffix}
       value={
@@ -90,14 +90,14 @@ export function DatumCardConfigurable({
           : undefined
       }
       comment={
-        sc ? (
+        big ? (
           <div className="flex items-center gap-4">
             <ValueScFiat
               tooltip="Net change over time range:"
               fixedTipFiat={10}
-              value={new BigNumber(sc.diff)}
+              value={new BigNumber(big.diff)}
             />
-            {showChange && sc.change !== undefined && (
+            {showChange && big.change !== undefined && (
               <Tooltip content="Percent change over time range">
                 <Text
                   size="14"
@@ -106,7 +106,7 @@ export function DatumCardConfigurable({
                   ellipsis
                   color="verySubtle"
                 >
-                  {sc.change.toFixed(2)}%
+                  {big.change.toFixed(2)}%
                 </Text>
               </Tooltip>
             )}

@@ -4,16 +4,16 @@ import BigNumber from 'bignumber.js'
 import { useMemo, useState } from 'react'
 import { Separator } from '../../core/Separator'
 import { Dialog } from '../../core/Dialog'
-import { useSendSiacoinGenerateForm } from './Generate'
-import { useSendSiacoinConfirmForm } from './Confirm'
+import { useSendBigFileGenerateForm } from './Generate'
+import { useSendBigFileConfirmForm } from './Confirm'
 import { ProgressSteps } from '../ProgressSteps'
-import { WalletSendSiacoinComplete } from './Complete'
+import { WalletSendBigFileComplete } from './Complete'
 import { FormSubmitButton } from '../../components/Form'
-import { SendSiacoinParams } from './types'
+import { SendBigFileParams } from './types'
 
 type Step = 'setup' | 'confirm' | 'done'
 
-const emptyFormData: SendSiacoinParams = {
+const emptyFormData: SendBigFileParams = {
   address: '',
   hastings: new BigNumber(0),
 }
@@ -25,11 +25,11 @@ type Props = {
   balance?: BigNumber
   fee: BigNumber
   send: (
-    params: SendSiacoinParams & { includeFee: boolean }
+    params: SendBigFileParams & { includeFee: boolean }
   ) => Promise<{ transactionId?: string; error?: string }>
 }
 
-export function WalletSendSiacoinDialog({
+export function WalletSendBigFileDialog({
   trigger,
   open,
   onOpenChange,
@@ -39,10 +39,10 @@ export function WalletSendSiacoinDialog({
 }: Props) {
   const [step, setStep] = useState<Step>('setup')
   const [signedTxnId, setSignedTxnId] = useState<string>()
-  const [params, setParams] = useState<SendSiacoinParams>(emptyFormData)
+  const [params, setParams] = useState<SendBigFileParams>(emptyFormData)
 
   // Form for each step
-  const generate = useSendSiacoinGenerateForm({
+  const generate = useSendBigFileGenerateForm({
     balance,
     fee,
     onComplete: (data) => {
@@ -50,7 +50,7 @@ export function WalletSendSiacoinDialog({
       setStep('confirm')
     },
   })
-  const confirm = useSendSiacoinConfirmForm({
+  const confirm = useSendBigFileConfirmForm({
     fee,
     params,
     send,
@@ -94,7 +94,7 @@ export function WalletSendSiacoinDialog({
         }
         onOpenChange(val)
       }}
-      title="Send siacoin"
+      title="Send bigfile"
       onSubmit={controls ? controls.submit : undefined}
       controls={
         controls && (
@@ -132,7 +132,7 @@ export function WalletSendSiacoinDialog({
         {step === 'setup' && generate.el}
         {step === 'confirm' && confirm.el}
         {step === 'done' && (
-          <WalletSendSiacoinComplete
+          <WalletSendBigFileComplete
             data={params}
             fee={fee}
             transactionId={signedTxnId}

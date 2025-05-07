@@ -1,4 +1,4 @@
-import { humanSiacoin, humanSiafund } from '@siafoundation/units'
+import { humanBigFile, humanBigfund } from '@siafoundation/units'
 import { getOGImage } from '../../../components/OGImageEntity'
 import { truncate } from '@siafoundation/design-system'
 import { getExplored } from '../../../lib/explored'
@@ -23,15 +23,15 @@ export default async function Image({ params }) {
 
     const values = [
       {
-        label: 'siacoin balance',
-        value: humanSiacoin(balance.unspentSiacoins || 0),
+        label: 'bigfile balance',
+        value: humanBigFile(balance.unspentBigFiles || 0),
       },
     ]
 
-    if (balance.unspentSiafunds !== 0) {
+    if (balance.unspentBigfunds !== 0) {
       values.push({
-        label: 'siafund balance',
-        value: humanSiafund(balance.unspentSiafunds || 0),
+        label: 'bigfund balance',
+        value: humanBigfund(balance.unspentBigfunds || 0),
       })
     }
 

@@ -3,9 +3,9 @@ import {
   WalletAddress,
   WalletBalanceResponse,
   WalletConstructV2TransactionResponse,
-  WalletFundSiacoinResponse,
-  WalletOutputsSiacoinResponse,
-  WalletOutputsSiafundResponse,
+  WalletFundBigFileResponse,
+  WalletOutputsBigFileResponse,
+  WalletOutputsBigfundResponse,
 } from '@siafoundation/walletd-types'
 import { toHastings } from '@siafoundation/units'
 import { getMockConsensusNetworkResponse } from './mockConsensusNetwork'
@@ -34,12 +34,12 @@ export function getMockScenarioSeedWallet() {
   }
 
   const walletBalanceResponse: WalletBalanceResponse = {
-    siacoins: toHastings('100').toString(),
-    immatureSiacoins: toHastings('10').toString(),
-    siafunds: 10,
+    bigfiles: toHastings('100').toString(),
+    immatureBigFiles: toHastings('10').toString(),
+    bigfunds: 10,
   }
 
-  const walletOutputsSiacoinResponse: WalletOutputsSiacoinResponse = {
+  const walletOutputsBigFileResponse: WalletOutputsBigFileResponse = {
     basis: {
       height: 0,
       id: '0',
@@ -61,7 +61,7 @@ export function getMockScenarioSeedWallet() {
           'a68820d6b79b2735b15c69d0fc26b11252bb27f22b9088559ed13f9420f5dda1',
           '1bbcead690290291ea9628214a121ef783411693975171803bf5716a3a6ff19b',
         ],
-        siacoinOutput: {
+        bigfileOutput: {
           value: '1000000000000000000000000',
           address:
             'f2dbf56b5b0c698d7fbf43f646c76169d84e597e8b37fada97348beeecaa812d400ac4ce7981',
@@ -79,7 +79,7 @@ export function getMockScenarioSeedWallet() {
           'ecc307c6c3e505d97ccf821938e5e5702ef0130d33c991ca95735f7d9706a4b8',
           '9560060ee399793f102e092afdfdbdd33692706256955e8390af552de0addfc0',
         ],
-        siacoinOutput: {
+        bigfileOutput: {
           value: '97988210000000000000000000',
           address:
             'f2dbf56b5b0c698d7fbf43f646c76169d84e597e8b37fada97348beeecaa812d400ac4ce7981',
@@ -89,7 +89,7 @@ export function getMockScenarioSeedWallet() {
     ],
   }
 
-  const walletOutputsSiafundResponse: WalletOutputsSiafundResponse = {
+  const walletOutputsBigfundResponse: WalletOutputsBigfundResponse = {
     basis: {
       height: 0,
       id: '0',
@@ -97,13 +97,13 @@ export function getMockScenarioSeedWallet() {
     outputs: [],
   }
 
-  const walletFundResponse: WalletFundSiacoinResponse = {
+  const walletFundResponse: WalletFundBigFileResponse = {
     basis: {
       height: 0,
       id: '0',
     },
     transaction: {
-      siacoinInputs: [
+      bigfileInputs: [
         {
           parentID:
             'aa3e781330c9b3991e0141807df1327fadf114ca6c37acb9e58004f942d91dfb',
@@ -123,7 +123,7 @@ export function getMockScenarioSeedWallet() {
           },
         },
       ],
-      siacoinOutputs: [
+      bigfileOutputs: [
         {
           value: '1000000000000000000000000',
           address:
@@ -151,12 +151,12 @@ export function getMockScenarioSeedWallet() {
       id: '0',
     },
     transaction: {
-      siacoinInputs: [
+      bigfileInputs: [
         {
           parent: {
             id: 'aa3e781330c9b3991e0141807df1327fadf114ca6c37acb9e58004f942d91dfb',
             maturityHeight: 0,
-            siacoinOutput: {
+            bigfileOutput: {
               value: '1000000000000000000000000',
               address:
                 '90c6057cdd2463eca61f83796e83152dbba28b6cb9a74831a043833051ec9f422726bfff2ee8',
@@ -184,7 +184,7 @@ export function getMockScenarioSeedWallet() {
           parent: {
             id: '32e430158591b4073a6834e9f4c4b67162e348844f569f4e472896bb72efb724',
             maturityHeight: 0,
-            siacoinOutput: {
+            bigfileOutput: {
               value: '97984280000000000000000000',
               address:
                 'f2dbf56b5b0c698d7fbf43f646c76169d84e597e8b37fada97348beeecaa812d400ac4ce7981',
@@ -209,7 +209,7 @@ export function getMockScenarioSeedWallet() {
           },
         },
       ],
-      siacoinOutputs: [
+      bigfileOutputs: [
         {
           value: '1000000000000000000000000',
           address:
@@ -291,8 +291,8 @@ export function getMockScenarioSeedWallet() {
     changeAddress,
     newWallet,
     walletBalanceResponse,
-    walletOutputsSiacoinResponse,
-    walletOutputsSiafundResponse,
+    walletOutputsBigFileResponse,
+    walletOutputsBigfundResponse,
     walletFundResponse,
     walletConstructV2Response,
     walletAddressesResponse,

@@ -3,7 +3,7 @@ import {
   monthsToBlocks,
   TBToBytes,
   humanBytes,
-  humanSiacoin,
+  humanBigFile,
   sectorsToBytes,
 } from '@siafoundation/units'
 import { HostDataWithLocation } from '../../../contexts/hosts/types'
@@ -29,7 +29,7 @@ export function getHostLabel({
         .div(1e24)
         .times(rate)
         .toFixed(2)}/TB`
-    : `${humanSiacoin(
+    : `${humanBigFile(
         new BigNumber(storagePrice || 0)
           .times(TBToBytes(1))
           .times(monthsToBlocks(1)),

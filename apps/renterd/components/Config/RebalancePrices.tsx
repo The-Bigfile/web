@@ -20,7 +20,7 @@ import {
 import { useRedundancyMultiplier } from '../../contexts/config/useRedundancyMultiplier'
 import { useFormExchangeRate } from '../../contexts/config/useFormExchangeRate'
 import { useSpendingEstimate } from '../../contexts/config/useSpendingEstimate'
-import { useEnabledPricingValuesInSiacoin } from '../../contexts/config/useEnabledPricingValuesInSiacoin'
+import { useEnabledPricingValuesInBigFile } from '../../contexts/config/useEnabledPricingValuesInBigFile'
 
 export function RebalancePrices({
   estimatedSpendingPerMonth,
@@ -111,7 +111,7 @@ function useSpendingDerivedPricingFromEnabledFields({
     if (!derivedPricing) {
       return undefined
     }
-    // Convert derived siacoin prices to pinned fiat prices.
+    // Convert derived bigfile prices to pinned fiat prices.
     const pinnedPricing = rate
       ? {
           maxStoragePriceTBMonthPinned:
@@ -160,7 +160,7 @@ function useSpendingDerivedPricingFromEnabledFields({
 
 function useIsEnabledAndDifferentEnough() {
   const { form } = useConfig()
-  const currentPrices = useEnabledPricingValuesInSiacoin({
+  const currentPrices = useEnabledPricingValuesInBigFile({
     form,
   })
   const { estimatedSpendingPerMonth } = useSpendingEstimate()

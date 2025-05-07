@@ -30,7 +30,7 @@ export type ConfigField<
 > = {
   type:
     | 'number'
-    | 'siacoin'
+    | 'bigfile'
     | 'fiat'
     | 'text'
     | 'password'
@@ -69,7 +69,7 @@ export type ConfigField<
   }>
   // number
   decimalsLimit?: number
-  // sc
+  // big
   decimalsLimitSc?: number
   decimalsLimitFiat?: number
   tipsDecimalsLimitSc?: number

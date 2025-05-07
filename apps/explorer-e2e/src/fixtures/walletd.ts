@@ -3,7 +3,7 @@ import { blake2bHex } from 'blakejs'
 import { WalletAddressMetadata } from '@siafoundation/walletd-types'
 import { to } from '@siafoundation/request'
 import { mine } from '@siafoundation/clusterd'
-import { humanSiacoin } from '@siafoundation/units'
+import { humanBigFile } from '@siafoundation/units'
 import { Cluster } from './cluster'
 
 export async function addWalletToWalletd(walletd: ReturnType<typeof Walletd>) {
@@ -59,13 +59,13 @@ export async function addWalletToWalletd(walletd: ReturnType<typeof Walletd>) {
   return { wallet, address: suh.address }
 }
 
-// renterd cluster nodes have siacoins we can use to fund other wallets.
-export async function sendSiacoinFromRenterd(
+// renterd cluster nodes have bigfiles we can use to fund other wallets.
+export async function sendBigFileFromRenterd(
   renterd: Cluster['daemons']['renterds'][number],
   address: string,
   amount: string
 ) {
-  console.log(`Sending ${humanSiacoin(amount)} from renterd to:`, address)
+  console.log(`Sending ${humanBigFile(amount)} from renterd to:`, address)
   try {
     // Send some funds to the wallet.
     await renterd.api.walletSend({
@@ -77,6 +77,6 @@ export async function sendSiacoinFromRenterd(
     })
     await mine(1)
   } catch (e) {
-    console.log('error sending siacoin', e)
+    console.log('error sending bigfile', e)
   }
 }

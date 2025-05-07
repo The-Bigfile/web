@@ -24,7 +24,7 @@ export function MaxRPCPriceTips({
     <>
       {recommendationPrice && (
         <TipNumber
-          type="siacoin"
+          type="bigfile"
           label="Match with more hosts"
           tip={recommendationTipContent}
           decimalsLimit={0}

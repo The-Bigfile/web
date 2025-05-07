@@ -15,8 +15,8 @@ test('v1TxnCalculateScValue', () => {
     data: {
       transaction: {
         // not used in calculation
-        siacoinInputs: [],
-        siacoinOutputs: [
+        bigfileInputs: [],
+        bigfileOutputs: [
           {
             value: toHastings(100).toString(),
             address: 'addr:1',
@@ -29,13 +29,13 @@ test('v1TxnCalculateScValue', () => {
         minerFees: ['1000000000000000000000000'],
         signatures: [],
       },
-      spentSiacoinElements: [
+      spentBigFileElements: [
         {
           id: 'id-1',
           leafIndex: 0,
           merkleProof: ['proof'],
           maturityHeight: 0,
-          siacoinOutput: {
+          bigfileOutput: {
             value: toHastings(50).toString(),
             address: 'addr:1',
           },
@@ -45,7 +45,7 @@ test('v1TxnCalculateScValue', () => {
           leafIndex: 0,
           merkleProof: ['proof'],
           maturityHeight: 0,
-          siacoinOutput: {
+          bigfileOutput: {
             value: toHastings(30).toString(),
             address: 'addr:2',
           },
@@ -55,21 +55,21 @@ test('v1TxnCalculateScValue', () => {
           leafIndex: 0,
           merkleProof: ['proof'],
           maturityHeight: 0,
-          siacoinOutput: {
+          bigfileOutput: {
             value: toHastings(30).toString(),
             // not in relevant
             address: 'addr:3',
           },
         },
       ],
-      spentSiafundElements: undefined,
+      spentBigfundElements: undefined,
     },
     relevant: ['addr:1', 'addr:2'],
   }
   expect(calculateScValue(e)).toEqual(toHastings(20))
 })
 
-test('v1TxnCalculateScValue when no relevant / spentSiacoinElements is null', () => {
+test('v1TxnCalculateScValue when no relevant / spentBigFileElements is null', () => {
   const e: WalletEvent = {
     id: 'h:85e850176d6b7d775a69e2cb523ceebbebfab3467d8752e79e3757d08d64aa84',
     index: {
@@ -81,8 +81,8 @@ test('v1TxnCalculateScValue when no relevant / spentSiacoinElements is null', ()
     type: 'v1Transaction',
     data: {
       transaction: {
-        siacoinInputs: [],
-        siacoinOutputs: [
+        bigfileInputs: [],
+        bigfileOutputs: [
           {
             value: toHastings(500).toString(),
             address: 'addr:1',
@@ -95,8 +95,8 @@ test('v1TxnCalculateScValue when no relevant / spentSiacoinElements is null', ()
         minerFees: ['1000000000000000000000000'],
         signatures: [],
       },
-      spentSiacoinElements: undefined,
-      spentSiafundElements: undefined,
+      spentBigFileElements: undefined,
+      spentBigfundElements: undefined,
     },
     relevant: ['addr:1'],
   }
@@ -114,7 +114,7 @@ test('v2TxnCalculateScValue', () => {
     maturityHeight: 78258,
     type: 'v2Transaction',
     data: {
-      siacoinInputs: [
+      bigfileInputs: [
         {
           satisfiedPolicy: {
             policy: 'policy',
@@ -126,7 +126,7 @@ test('v2TxnCalculateScValue', () => {
             leafIndex: 0,
             merkleProof: ['proof'],
             maturityHeight: 0,
-            siacoinOutput: {
+            bigfileOutput: {
               value: toHastings(50).toString(),
               address: 'addr:1',
             },
@@ -143,14 +143,14 @@ test('v2TxnCalculateScValue', () => {
             leafIndex: 0,
             merkleProof: ['proof'],
             maturityHeight: 0,
-            siacoinOutput: {
+            bigfileOutput: {
               value: toHastings(50000).toString(),
               address: 'addr:3',
             },
           },
         },
       ],
-      siacoinOutputs: [
+      bigfileOutputs: [
         {
           value: toHastings(100).toString(),
           address: 'addr:1',
@@ -180,7 +180,7 @@ test('v1TxnCalculateSfValue', () => {
     data: {
       transaction: {
         // not used in calculation
-        siafundOutputs: [
+        bigfundOutputs: [
           {
             value: 100,
             address: 'addr:1',
@@ -193,14 +193,14 @@ test('v1TxnCalculateSfValue', () => {
         minerFees: ['1000000000000000000000000'],
         signatures: [],
       },
-      spentSiacoinElements: undefined,
-      spentSiafundElements: [
+      spentBigFileElements: undefined,
+      spentBigfundElements: [
         {
           id: 'id-1',
           leafIndex: 0,
           merkleProof: ['proof'],
           claimStart: '',
-          siafundOutput: {
+          bigfundOutput: {
             value: 50,
             address: 'addr:1',
           },
@@ -210,7 +210,7 @@ test('v1TxnCalculateSfValue', () => {
           leafIndex: 0,
           merkleProof: ['proof'],
           claimStart: '',
-          siafundOutput: {
+          bigfundOutput: {
             value: 30,
             address: 'addr:2',
           },
@@ -220,7 +220,7 @@ test('v1TxnCalculateSfValue', () => {
           leafIndex: 0,
           merkleProof: ['proof'],
           claimStart: '',
-          siafundOutput: {
+          bigfundOutput: {
             value: 30,
             // not in relevant
             address: 'addr:3',
@@ -233,7 +233,7 @@ test('v1TxnCalculateSfValue', () => {
   expect(calculateSfValue(e)).toEqual(20)
 })
 
-test('v1TxnCalculateSfValue when no relevant / spentSiafundElements is null', () => {
+test('v1TxnCalculateSfValue when no relevant / spentBigfundElements is null', () => {
   const e: WalletEvent = {
     id: 'h:85e850176d6b7d775a69e2cb523ceebbebfab3467d8752e79e3757d08d64aa84',
     index: {
@@ -245,7 +245,7 @@ test('v1TxnCalculateSfValue when no relevant / spentSiafundElements is null', ()
     type: 'v1Transaction',
     data: {
       transaction: {
-        siafundOutputs: [
+        bigfundOutputs: [
           {
             value: 500,
             address: 'addr:1',
@@ -258,8 +258,8 @@ test('v1TxnCalculateSfValue when no relevant / spentSiafundElements is null', ()
         minerFees: ['1000000000000000000000000'],
         signatures: [],
       },
-      spentSiacoinElements: undefined,
-      spentSiafundElements: undefined,
+      spentBigFileElements: undefined,
+      spentBigfundElements: undefined,
     },
     relevant: ['addr:1'],
   }
@@ -277,7 +277,7 @@ test('v2TxnCalculateSfValue', () => {
     maturityHeight: 78258,
     type: 'v2Transaction',
     data: {
-      siafundInputs: [
+      bigfundInputs: [
         {
           satisfiedPolicy: {
             policy: 'policy',
@@ -290,7 +290,7 @@ test('v2TxnCalculateSfValue', () => {
             leafIndex: 0,
             merkleProof: ['proof'],
             claimStart: '',
-            siafundOutput: {
+            bigfundOutput: {
               value: 50,
               address: 'addr:1',
             },
@@ -308,14 +308,14 @@ test('v2TxnCalculateSfValue', () => {
             leafIndex: 0,
             merkleProof: ['proof'],
             claimStart: '',
-            siafundOutput: {
+            bigfundOutput: {
               value: 50000,
               address: 'addr:3',
             },
           },
         },
       ],
-      siafundOutputs: [
+      bigfundOutputs: [
         {
           value: 100,
           address: 'addr:1',

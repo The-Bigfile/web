@@ -117,7 +117,7 @@
 
 ### Minor Changes
 
-- 71f03ca2: Add showFiat configurationField for FieldSiacoin.
+- 71f03ca2: Add showFiat configurationField for FieldBigFile.
 
 ### Patch Changes
 
@@ -135,8 +135,8 @@
 
 ### Minor Changes
 
-- 5e7fedb9: SiacoinField border is no longer blue in readOnly state.
-- 5e7fedb9: SiacoinField now has a unitsFiatPostfix prop.
+- 5e7fedb9: BigFileField border is no longer blue in readOnly state.
+- 5e7fedb9: BigFileField now has a unitsFiatPostfix prop.
 - 4eba392b: Add handleBatchOperation method.
 - 9d8b9d74: The table now supports multiple dragging datums.
 
@@ -158,7 +158,7 @@
 - 09142864: Table row data now supports an isSelected prop.
 - d891861b: Checkbox light mode background color is now white.
 - d891861b: Table column sort icons are now chevrons to differentiate from context menus which often use carets.
-- 57744734: Adjusted the size of the siacoin and fiat values in the wallet balance tooltip breakdown.
+- 57744734: Adjusted the size of the bigfile and fiat values in the wallet balance tooltip breakdown.
 - d891861b: Table now supports custom column heading components.
 
 ## 4.10.0
@@ -174,7 +174,7 @@
 - 4cf6c8ea: Fixed a warning caused by animation props being passed to non-animated graphs.
 - 4cf6c8ea: Fixed a 1 pixel gap that would show between the top of the Table and its sticky header when scrolling.
 - 4cf6c8ea: Fixed warnings caused by the Dialog description prop and aria-describedby.
-- 1d1452d8: Fixed an issue where SiacoinField was depending on the siaCentral setting rather than the active exchange rate API.
+- 1d1452d8: Fixed an issue where BigFileField was depending on the siaCentral setting rather than the active exchange rate API.
 - Updated dependencies [56974bbf]
 - Updated dependencies [9277382b]
 - Updated dependencies [56974bbf]
@@ -206,7 +206,7 @@
 
 ### Minor Changes
 
-- 02c02fe7: The send siacoin feature now validates the entered address.
+- 02c02fe7: The send bigfile feature now validates the entered address.
 - 8be86046: Time conversion helpers were moved from design-system to units package.
 - 8be86046: Fiat components requiring exchange rate now use the generic useExchangeRate hook rather than useSiascanExchangeRate directly.
 - 5f34c9a6: Migrated all exchange rate usage from Sia Central to Siascan.
@@ -241,7 +241,7 @@
 - 6ad3f2f9: Added font and tipSide props to ValueFiat. Component also now uses existing extendedSuffix prop.
 - a6c956ea: App setting allowCustomApi is now more accurately named loginWithCustomApi.
 - 6ad3f2f9: Added an objectEntries method, a typesafe Object.entries.
-- 6ad3f2f9: FieldFiat input is now a unified control with focus and other states including both the input and read-only siacoin value.
+- 6ad3f2f9: FieldFiat input is now a unified control with focus and other states including both the input and read-only bigfile value.
 - 6ad3f2f9: Renamed toFixMax and added BigNumber and Number variants.
 - 6ad3f2f9: Added font prop to ValueSc.
 - 6ad3f2f9: Added a TipText.
@@ -255,7 +255,7 @@
 - 6ad3f2f9: Added formSetField and formSetFields convenience methods for working with ConfigFields form data.
 - 6ad3f2f9: The ConfigField type now supports a custom suggestionLabel property.
 - a64f40cc: Event and transaction utility methods have been moved to the units library.
-- a64f40cc: WalletBalance now supports an optional immature sc value.
+- a64f40cc: WalletBalance now supports an optional immature big value.
 
 ### Patch Changes
 
@@ -315,7 +315,7 @@
 ### Minor Changes
 
 - 49ff7435: useFormServerSynced now updates values to remote values if they have not been modified by the user. Closes https://github.com/SiaFoundation/hostd/issues/286
-- 78fe2e65: Added FieldFiat with current siacoin value.
+- 78fe2e65: Added FieldFiat with current bigfile value.
 - 9f8b8fc8: Add an after node prop to AppAuthedLayout and AppNavbar.
 - 78fe2e65: All Field components now support group prop.
 
@@ -522,8 +522,8 @@
 
 ### Minor Changes
 
-- 35ff2dec: Siacoin and number input placeholders now match the suggested value.
-- 6fc53f46: Extremely small siacoin values will now show as hastings by default rather than 0SC.
+- 35ff2dec: BigFile and number input placeholders now match the suggested value.
+- 6fc53f46: Extremely small bigfile values will now show as hastings by default rather than 0SC.
 
 ## 0.58.1
 
@@ -610,7 +610,7 @@
 
 - 198df6a6: Sorting fields no longer have to be table columns.
 - 33cd3b54: BalanceEvolution now has chartType and allowConfiguration props.
-- 06e7e1c5: NumberField and SiacoinField now intl/localize formatting.
+- 06e7e1c5: NumberField and BigFileField now intl/localize formatting.
 
 ## 0.49.0
 
@@ -626,13 +626,13 @@
 
 - c7d2288: Add wrapEllipsis prop to Text.
 - d1561e0: Modified how the EntityList displays the unconfirmed transaction status.
-- fef9e82: SiacoinField inputs now pass updated values immediately on change.
+- fef9e82: BigFileField inputs now pass updated values immediately on change.
 - b9b5484: Link and LinkButton set rel to noopener when target is \_blank.
 - fef9e82: Configuration field components are now fully config driven and based on react-hook-form.
 - ec02c30: Configuration and form system now has Field components.
 - c7d2288: Refine toast text overflow and wrap behaviour.
 - c7d2288: Added a generic ConfirmDialog.
-- fef9e82: SiacoinField now does not revalidate exchange rates on focus.
+- fef9e82: BigFileField now does not revalidate exchange rates on focus.
 - fef9e82: Naming of time utility functions has been cleaned up.
 
 ## 0.47.0
@@ -648,7 +648,7 @@
 - fa57fe6: Add Select Option component with background and text colors.
 - cb359ad: Add ConfigurationSwitch, useSiacoinFiat, and vertical Separator variant.
 - cb359ad: Corrected a styling issue for custom toast notification such as in the copy authenticated URL files feature.
-- 4585fb0: ConfigurationSiacoin now supports custom units such as SC/TB.
+- 4585fb0: ConfigurationBigFile now supports custom units such as BIG/TB.
 - 4585fb0: Fixed decimal handling NumberField, extracted a new BaseNumberField.
 - 4719bc1: Added functions for converting between sectors and different byte/binary units.
 
@@ -680,7 +680,7 @@
 ### Minor Changes
 
 - 30493f4: All configuration fields are now directly form driven.
-- 13a9882: Siacoin inputs are now easier to use, especially when entering and editing decimal values.
+- 13a9882: BigFile inputs are now easier to use, especially when entering and editing decimal values.
 - 72ab6fe: Streamlined Table API, separated out cell context data, non-stateful column definitions.
 - 30493f4: Fixed an issue with form submit button disabled states.
 - 13a9882: Consolidated bytes/TiB conversion functions.
@@ -741,7 +741,7 @@
 - ff5abd5: Moved the ProgressSteps component to the design-system.
 - ff5abd5: Adjusted the rounding on Badges, adjusted margins in ValueCopyable.
 - f56a9a4: Add SectionHeading, a heading with with automatic anchoring.
-- f96683e: Siacoin form inputs now have an option to disable the associated fiat currency input.
+- f96683e: BigFile form inputs now have an option to disable the associated fiat currency input.
 - ff5abd5: The tailwind config now supports an animation-delay property.
 - 21cc882: Added helpers for converting between blocks and time.
 
@@ -811,7 +811,7 @@
 - renter wallet, update renterd hooks ([219476f](https://github.com/SiaFoundation/web/commit/219476fe780ecf3da54f5684046176128ab8d6b2))
 - renterd app, extract shared components ([0b3c9f3](https://github.com/SiaFoundation/web/commit/0b3c9f3e77803d0a2520ee6c5b8e08f4d4f12934))
 - renterd file explorer, contracts, hosts, config ([ba5126a](https://github.com/SiaFoundation/web/commit/ba5126a4d2615bfd2a0ab338830c3d252477b2ec))
-- send siacoin ([551d37c](https://github.com/SiaFoundation/web/commit/551d37cb785731e55949b43a389bda1c318a4580))
+- send bigfile ([551d37c](https://github.com/SiaFoundation/web/commit/551d37cb785731e55949b43a389bda1c318a4580))
 
 # [0.33.0](https://github.com/SiaFoundation/web/compare/design-system-0.32.0...design-system-0.33.0) (2022-09-07)
 

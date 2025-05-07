@@ -8,7 +8,7 @@ beforeEach(async () => {
 })
 
 describe('signLedgerV1', () => {
-  describe('siacoin', () => {
+  describe('bigfile', () => {
     it('builds and signs valid transaction', async () => {
       const device = getMockDevice()
       const mocks = getMockScenarioSeedWallet()
@@ -17,8 +17,8 @@ describe('signLedgerV1', () => {
           device,
           transaction: mocks.walletFundResponse.transaction,
           toSign: mocks.walletFundResponse.toSign,
-          siacoinOutputs: mocks.walletOutputsSiacoinResponse.outputs,
-          siafundOutputs: mocks.walletOutputsSiafundResponse.outputs,
+          bigfileOutputs: mocks.walletOutputsBigFileResponse.outputs,
+          bigfundOutputs: mocks.walletOutputsBigfundResponse.outputs,
           addresses: getMockAddresses(mocks),
         })
       ).toMatchSnapshot()
@@ -31,10 +31,10 @@ describe('signLedgerV1', () => {
         await signTransactionLedgerV1({
           device,
           transaction: mocks.walletFundResponse.transaction,
-          siacoinOutputs: mocks.walletOutputsSiacoinResponse.outputs,
-          siafundOutputs: mocks.walletOutputsSiafundResponse.outputs,
+          bigfileOutputs: mocks.walletOutputsBigFileResponse.outputs,
+          bigfundOutputs: mocks.walletOutputsBigfundResponse.outputs,
           addresses: getMockAddresses(mocks),
-          toSign: [mocks.walletFundResponse.toSign[0], 'not in siacoinOutputs'],
+          toSign: [mocks.walletFundResponse.toSign[0], 'not in bigfileOutputs'],
         })
       ).toEqual({
         error: 'Missing utxo',
@@ -49,8 +49,8 @@ describe('signLedgerV1', () => {
           device,
           transaction: mocks.walletFundResponse.transaction,
           toSign: mocks.walletFundResponse.toSign,
-          siacoinOutputs: mocks.walletOutputsSiacoinResponse.outputs,
-          siafundOutputs: mocks.walletOutputsSiafundResponse.outputs,
+          bigfileOutputs: mocks.walletOutputsBigFileResponse.outputs,
+          bigfundOutputs: mocks.walletOutputsBigfundResponse.outputs,
           addresses: [
             {
               id: 'id',
@@ -75,14 +75,14 @@ describe('signLedgerV1', () => {
           device,
           transaction: mocks.walletFundResponse.transaction,
           toSign: mocks.walletFundResponse.toSign,
-          siacoinOutputs: mocks.walletOutputsSiacoinResponse.outputs,
-          siafundOutputs: mocks.walletOutputsSiafundResponse.outputs,
+          bigfileOutputs: mocks.walletOutputsBigFileResponse.outputs,
+          bigfundOutputs: mocks.walletOutputsBigfundResponse.outputs,
           addresses: [
             {
               id: 'id',
               walletId: 'id',
               address:
-                mocks.walletOutputsSiacoinResponse.outputs[1].siacoinOutput
+                mocks.walletOutputsBigFileResponse.outputs[1].bigfileOutput
                   .address,
               metadata: {},
             },
@@ -103,8 +103,8 @@ describe('signLedgerV1', () => {
           device,
           transaction: mocks.walletFundResponse.transaction,
           toSign: mocks.walletFundResponse.toSign,
-          siacoinOutputs: mocks.walletOutputsSiacoinResponse.outputs,
-          siafundOutputs: mocks.walletOutputsSiafundResponse.outputs,
+          bigfileOutputs: mocks.walletOutputsBigFileResponse.outputs,
+          bigfundOutputs: mocks.walletOutputsBigfundResponse.outputs,
           addresses,
         })
       ).toEqual({

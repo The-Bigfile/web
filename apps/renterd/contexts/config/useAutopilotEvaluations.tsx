@@ -6,8 +6,8 @@ import {
 } from '@siafoundation/renterd-react'
 import {
   humanNumber,
-  humanSiacoin,
-  siacoinToFiat,
+  humanBigFile,
+  bigfileToFiat,
   toHastings,
 } from '@siafoundation/units'
 import BigNumber from 'bignumber.js'
@@ -28,7 +28,7 @@ import {
   getAdvancedDefaults,
   Values,
 } from './types'
-import { useEnabledPricingValuesInSiacoin } from './useEnabledPricingValuesInSiacoin'
+import { useEnabledPricingValuesInBigFile } from './useEnabledPricingValuesInBigFile'
 import { useFormExchangeRate } from './useFormExchangeRate'
 import { AutopilotConfigEvaluatePayload } from '@siafoundation/renterd-types'
 
@@ -56,13 +56,13 @@ export function useAutopilotEvaluations({
     return true
   }, [form.formState.isValid, resources, renterdState.data])
 
-  // Convert any pinned fields over to siacoin values.
-  const pricing = useEnabledPricingValuesInSiacoin({
+  // Convert any pinned fields over to bigfile values.
+  const pricing = useEnabledPricingValuesInBigFile({
     form,
   })
 
   const currentValuesWithPinnedOverridesAndDefaults = useMemo(() => {
-    // Any pinned values are converted to siacoin and merged into the
+    // Any pinned values are converted to bigfile and merged into the
     // corresponding non-pinned fields.
     const valuesWithPinnedOverrides = {
       ...values,
@@ -341,11 +341,11 @@ function getRecommendationItem({
     currentLabel: '',
     targetLabel: '',
   }
-  if (fields[key].type === 'siacoin') {
+  if (fields[key].type === 'bigfile') {
     const format = (val: BigNumber) =>
-      `${humanSiacoin(toHastings(val), {
+      `${humanBigFile(toHastings(val), {
         fixed: 1,
-      })}${fields[key].units?.replace('SC/', '/') || ''}`
+      })}${fields[key].units?.replace('BIG/', '/') || ''}`
     rec.currentLabel = format(currentValue)
     rec.targetLabel = format(targetValue)
   }
@@ -383,12 +383,12 @@ function pricesToPinnedPrices({
     return undefined
   }
   return {
-    maxStoragePriceTBMonthPinned: siacoinToFiat(
+    maxStoragePriceTBMonthPinned: bigfileToFiat(
       maxStoragePriceTBMonth,
       exchangeRate
     ),
-    maxDownloadPriceTBPinned: siacoinToFiat(maxDownloadPriceTB, exchangeRate),
-    maxUploadPriceTBPinned: siacoinToFiat(maxUploadPriceTB, exchangeRate),
+    maxDownloadPriceTBPinned: bigfileToFiat(maxDownloadPriceTB, exchangeRate),
+    maxUploadPriceTBPinned: bigfileToFiat(maxUploadPriceTB, exchangeRate),
   }
 }
 

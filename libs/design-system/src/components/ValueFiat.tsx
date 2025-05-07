@@ -9,7 +9,7 @@ type Props = {
   labeledBy?: string
   size?: React.ComponentProps<typeof Text>['size']
   scaleSize?: React.ComponentProps<typeof Text>['scaleSize']
-  sc: BigNumber // hastings
+  big: BigNumber // hastings
   color?: React.ComponentProps<typeof Text>['color']
   variant?: 'change' | 'value'
   tooltip?: string
@@ -24,7 +24,7 @@ type Props = {
 }
 
 export function ValueFiat({
-  sc,
+  big,
   size,
   scaleSize,
   color: customColor,
@@ -39,19 +39,19 @@ export function ValueFiat({
   labeledBy,
 }: Props) {
   const { rate, currency } = useExternalActiveExchangeRate()
-  const sign = sc.isZero()
+  const sign = big.isZero()
     ? ''
-    : sc.isGreaterThan(0) && variant === 'change'
+    : big.isGreaterThan(0) && variant === 'change'
     ? '+'
-    : sc.isLessThan(0)
+    : big.isLessThan(0)
     ? '-'
     : ''
   const color =
     customColor ||
     (variant === 'change'
-      ? sc.isGreaterThan(0)
+      ? big.isGreaterThan(0)
         ? 'green'
-        : sc.isLessThan(0)
+        : big.isLessThan(0)
         ? 'red'
         : 'subtle'
       : 'contrast')
@@ -59,7 +59,7 @@ export function ValueFiat({
   if (!rate || !currency) {
     return null
   }
-  const fiat = rate.times(sc).div(1e24)
+  const fiat = rate.times(big).div(1e24)
 
   const digits = fixed !== undefined ? fixed : currency.fixed
 

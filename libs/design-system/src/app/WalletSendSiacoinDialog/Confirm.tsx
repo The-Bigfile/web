@@ -1,20 +1,20 @@
 import { useForm } from 'react-hook-form'
 import BigNumber from 'bignumber.js'
-import { WalletSendSiacoinReceipt } from './Receipt'
-import { SendSiacoinParams } from './types'
+import { WalletSendBigFileReceipt } from './Receipt'
+import { SendBigFileParams } from './types'
 import { triggerErrorToast } from '../../lib/toast'
 import { useCallback, useMemo } from 'react'
 
 type Props = {
   send: (
-    params: SendSiacoinParams & { includeFee: boolean }
+    params: SendBigFileParams & { includeFee: boolean }
   ) => Promise<{ transactionId?: string; error?: string }>
-  params: SendSiacoinParams
+  params: SendBigFileParams
   fee: BigNumber
   onConfirm: (params: { transactionId?: string }) => void
 }
 
-export function useSendSiacoinConfirmForm({
+export function useSendBigFileConfirmForm({
   send,
   params,
   fee,
@@ -34,7 +34,7 @@ export function useSendSiacoinConfirmForm({
 
     if (error) {
       triggerErrorToast({
-        title: 'Error sending siacoin',
+        title: 'Error sending bigfile',
         body: error,
       })
       return
@@ -49,7 +49,7 @@ export function useSendSiacoinConfirmForm({
 
   const el = (
     <div className="flex flex-col gap-4">
-      <WalletSendSiacoinReceipt
+      <WalletSendBigFileReceipt
         address={address}
         hastings={hastings}
         fee={fee}

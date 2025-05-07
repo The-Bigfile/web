@@ -135,9 +135,9 @@
 
 ### Minor Changes
 
-- 02c02fe7: The send siacoin feature now validates the entered address.
+- 02c02fe7: The send bigfile feature now validates the entered address.
 - 5f34c9a6: The UI now uses the daemon configured explorer for exchange rates.
-- 81d374f4: The send siacoin feature now calculates the fee using the daemon's recommended fee per byte and a standard transaction size.
+- 81d374f4: The send bigfile feature now calculates the fee using the daemon's recommended fee per byte and a standard transaction size.
 - 5f34c9a6: Migrated all exchange rate usage from Sia Central to Siascan.
 - d6eed368: The contracts metrics now show active, rejected, failed, renewed, finalized, and successful.
 
@@ -231,7 +231,7 @@
 
 ### Minor Changes
 
-- d4fcadf8: Siacoin metric cards now show the dynamic units with two decimal places. Closes https://github.com/SiaFoundation/hostd/issues/217
+- d4fcadf8: BigFile metric cards now show the dynamic units with two decimal places. Closes https://github.com/SiaFoundation/hostd/issues/217
 - 805f32e0: All graphs now remember any chart configuration that the user has selected.
 
 ## 0.38.0
@@ -282,7 +282,7 @@
 ### Minor Changes
 
 - fa1297bf: The configuration page now has menu options to download or copy an image of the current configuration for easier sharing.
-- e470c163: Fixed an issue where siacoin and numeric input values would jump to an incorrect value.
+- e470c163: Fixed an issue where bigfile and numeric input values would jump to an incorrect value.
 - 7484cbc0: The announce button is now disabled unless the net address does not match the last announcement. Closes https://github.com/SiaFoundation/hostd/issues/248
 
 ## 0.32.0
@@ -318,7 +318,7 @@
 ### Minor Changes
 
 - 23f4fb47: Copyable entity values now have a context menu with support for opening Siascan pages.
-- 5592bd90: The onboarding wallet balance check is now satisfied by a confirmed or unconfirmed balance above 0 SC.
+- 5592bd90: The onboarding wallet balance check is now satisfied by a confirmed or unconfirmed balance above 0 BIG.
 - a4d9df51: The onboarding wizard no longer shows on the login page.
 - bfa6b96b: Fixed an issue where number fields would not properly handle user input starting with a decimal separator.
 - 64ca2b2b: The alerts dialog now has an "all" filter.
@@ -338,7 +338,7 @@
 
 - 2003a885: The revenue graph is now a bar stack, much more clearly showing earned vs potential revenue.
 - 2003a885: The metrics graphs now show a y-axis.
-- b72ef30f: Currency display can now be configured to siacoin, fiat, or both along with a preference for when only one can be displayed.
+- b72ef30f: Currency display can now be configured to bigfile, fiat, or both along with a preference for when only one can be displayed.
 - 5308806e: App preferences no longer list unused GPU setting.
 
 ## 0.26.0
@@ -348,7 +348,7 @@
 - e04a35c7: Wallet now instructs new users to fund their wallet when there are no transactions yet.
 - 16b7df4c: The wallet balance tooltip now shows spendable confirmed and unconfirmed values.
 - 7996532c: The configuration now shows suggestions for pricing, collateral, and other settings.
-- 6fc53f46: Extremely small siacoin values will now show as hastings by default rather than 0SC.
+- 6fc53f46: Extremely small bigfile values will now show as hastings by default rather than 0SC.
 - e04a35c7: Wallet balance evolution graph is now hidden until at least 1 data point is available.
 
 ## 0.25.0
@@ -516,14 +516,14 @@
 
 - ec02c30: Create and resize volume features now support Windows file paths.
 - fef9e82: Dynamic DNS configuration now supports the required provider specific options.
-- d1561e0: Wallet send siacoin feature now correctly reports successful transactions.
+- d1561e0: Wallet send bigfile feature now correctly reports successful transactions.
 - 7e096cb: The configuration RHP3 section is now called Accounts.
 - e80345c: Contracts explorer payout column values are now accurate.
 - ec02c30: The create volume directory selection now reports the correct free space.
 - fef9e82: Configuration tabs now include more specific validation errors and feedback.
-- d1561e0: Wallet transaction list now shows siacoin value for pending transactions.
+- d1561e0: Wallet transaction list now shows bigfile value for pending transactions.
 - fef9e82: Dynamic DNS now supports cloudflare.
-- c7d2288: Broadcasting host announcement now requires confirmation and shows the siacoin transaction cost.
+- c7d2288: Broadcasting host announcement now requires confirmation and shows the bigfile transaction cost.
 - fef9e82: Configuration no longer includes a window size setting.
 
 ## 0.9.0
@@ -559,7 +559,7 @@
 
 - 12d206f: The contracts explorer now allows filtering on status and contract ID, these are also accessible via the global ⌘K palette.
 - d746281: The unlock form now times out after 5s and shows a new 'Error, daemon did not respond' error - this occurs when the wallet is re-indexing.
-- 12d206f: The contracts explorer now features columns for a contract timeline, siacoin usage by type, data size, and more.
+- 12d206f: The contracts explorer now features columns for a contract timeline, bigfile usage by type, data size, and more.
 - 12d206f: The contracts explorer now supports view column configuration and sorting by status and timeline.
 
 ## 0.6.0

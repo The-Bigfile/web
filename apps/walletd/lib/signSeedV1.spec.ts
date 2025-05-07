@@ -17,8 +17,8 @@ describe('signSeedV1', () => {
         toSign: mocks.walletFundResponse.toSign,
         consensusState: mocks.consensusState,
         consensusNetwork: mocks.consensusNetwork,
-        siacoinOutputs: mocks.walletOutputsSiacoinResponse.outputs,
-        siafundOutputs: mocks.walletOutputsSiafundResponse.outputs,
+        bigfileOutputs: mocks.walletOutputsBigFileResponse.outputs,
+        bigfundOutputs: mocks.walletOutputsBigfundResponse.outputs,
         addresses: getMockAddresses(mocks),
       })
     ).toMatchSnapshot()
@@ -32,10 +32,10 @@ describe('signSeedV1', () => {
         transaction: mocks.walletFundResponse.transaction,
         consensusState: mocks.consensusState,
         consensusNetwork: mocks.consensusNetwork,
-        siacoinOutputs: mocks.walletOutputsSiacoinResponse.outputs,
-        siafundOutputs: mocks.walletOutputsSiafundResponse.outputs,
+        bigfileOutputs: mocks.walletOutputsBigFileResponse.outputs,
+        bigfundOutputs: mocks.walletOutputsBigfundResponse.outputs,
         addresses: getMockAddresses(mocks),
-        toSign: ['not in siacoinOutputs'],
+        toSign: ['not in bigfileOutputs'],
       })
     ).toEqual({
       error: 'Missing utxo',
@@ -51,8 +51,8 @@ describe('signSeedV1', () => {
         toSign: mocks.walletFundResponse.toSign,
         consensusState: mocks.consensusState,
         consensusNetwork: mocks.consensusNetwork,
-        siacoinOutputs: mocks.walletOutputsSiacoinResponse.outputs,
-        siafundOutputs: mocks.walletOutputsSiafundResponse.outputs,
+        bigfileOutputs: mocks.walletOutputsBigFileResponse.outputs,
+        bigfundOutputs: mocks.walletOutputsBigfundResponse.outputs,
         addresses: [
           {
             id: 'id',
@@ -78,14 +78,14 @@ describe('signSeedV1', () => {
         toSign: mocks.walletFundResponse.toSign,
         consensusState: mocks.consensusState,
         consensusNetwork: mocks.consensusNetwork,
-        siacoinOutputs: mocks.walletOutputsSiacoinResponse.outputs,
-        siafundOutputs: mocks.walletOutputsSiafundResponse.outputs,
+        bigfileOutputs: mocks.walletOutputsBigFileResponse.outputs,
+        bigfundOutputs: mocks.walletOutputsBigfundResponse.outputs,
         addresses: [
           {
             id: 'id',
             walletId: 'id',
             address:
-              mocks.walletOutputsSiacoinResponse.outputs[1].siacoinOutput
+              mocks.walletOutputsBigFileResponse.outputs[1].bigfileOutput
                 .address,
             metadata: {},
           },
@@ -107,8 +107,8 @@ describe('signSeedV1', () => {
         toSign: mocks.walletFundResponse.toSign,
         consensusState: mocks.consensusState,
         consensusNetwork: mocks.consensusNetwork,
-        siacoinOutputs: mocks.walletOutputsSiacoinResponse.outputs,
-        siafundOutputs: mocks.walletOutputsSiafundResponse.outputs,
+        bigfileOutputs: mocks.walletOutputsBigFileResponse.outputs,
+        bigfundOutputs: mocks.walletOutputsBigfundResponse.outputs,
         addresses,
       })
     ).toEqual({

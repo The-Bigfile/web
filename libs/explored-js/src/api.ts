@@ -8,14 +8,14 @@ import {
   AddressEventsParams,
   AddressEventsPayload,
   AddressEventsResponse,
-  addressSiacoinUTXOsRoute,
-  AddressSiacoinUTXOsParams,
-  AddressSiacoinUTXOsPayload,
-  AddressSiacoinUTXOsResponse,
-  addressSiafundUTXOsRoute,
-  AddressSiafundUTXOsParams,
-  AddressSiafundUTXOsPayload,
-  AddressSiafundUTXOsResponse,
+  addressBigFileUTXOsRoute,
+  AddressBigFileUTXOsParams,
+  AddressBigFileUTXOsPayload,
+  AddressBigFileUTXOsResponse,
+  addressBigfundUTXOsRoute,
+  AddressBigfundUTXOsParams,
+  AddressBigfundUTXOsPayload,
+  AddressBigfundUTXOsResponse,
   blockByIDRoute,
   BlockByIDParams,
   BlockByIDPayload,
@@ -80,14 +80,14 @@ import {
   HostByPubkeyParams,
   HostByPubkeyPayload,
   HostByPubkeyResponse,
-  OutputSiacoinParams,
-  OutputSiacoinPayload,
-  OutputSiacoinResponse,
-  outputSiacoinRoute,
-  OutputSiafundeParams,
-  OutputSiafundePayload,
-  OutputSiafundeResponse,
-  outputSiafundeRoute,
+  OutputBigFileParams,
+  OutputBigFilePayload,
+  OutputBigFileResponse,
+  outputBigFileRoute,
+  OutputBigfundeParams,
+  OutputBigfundePayload,
+  OutputBigfundeResponse,
+  outputBigfundeRoute,
   searchResultTypeRoute,
   SearchResultTypeParams,
   SearchResultTypePayload,
@@ -263,16 +263,16 @@ export function Explored({
       V2TransactionChainIndicesResponse
     >(axios, 'get', v2TransactionChainIndicesRoute),
     // Address
-    addressSiacoinUTXOs: buildRequestHandler<
-      AddressSiacoinUTXOsParams,
-      AddressSiacoinUTXOsPayload,
-      AddressSiacoinUTXOsResponse
-    >(axios, 'get', addressSiacoinUTXOsRoute),
+    addressBigFileUTXOs: buildRequestHandler<
+      AddressBigFileUTXOsParams,
+      AddressBigFileUTXOsPayload,
+      AddressBigFileUTXOsResponse
+    >(axios, 'get', addressBigFileUTXOsRoute),
     addressSiafundUTXOs: buildRequestHandler<
-      AddressSiafundUTXOsParams,
-      AddressSiafundUTXOsPayload,
-      AddressSiafundUTXOsResponse
-    >(axios, 'get', addressSiafundUTXOsRoute),
+      AddressBigfundUTXOsParams,
+      AddressBigfundUTXOsPayload,
+      AddressBigfundUTXOsResponse
+    >(axios, 'get', addressBigfundUTXOsRoute),
     addressEvents: buildRequestHandler<
       AddressEventsParams,
       AddressEventsPayload,
@@ -289,16 +289,16 @@ export function Explored({
       AddressBalanceResponse
     >(axios, 'get', addressBalanceRoute),
     //Output
-    outputSiacoin: buildRequestHandler<
-      OutputSiacoinParams,
-      OutputSiacoinPayload,
-      OutputSiacoinResponse
-    >(axios, 'get', outputSiacoinRoute),
+    outputBigFile: buildRequestHandler<
+      OutputBigFileParams,
+      OutputBigFilePayload,
+      OutputBigFileResponse
+    >(axios, 'get', outputBigFileRoute),
     outputSiafund: buildRequestHandler<
-      OutputSiafundeParams,
-      OutputSiafundePayload,
-      OutputSiafundeResponse
-    >(axios, 'get', outputSiafundeRoute),
+      OutputBigfundeParams,
+      OutputBigfundePayload,
+      OutputBigfundeResponse
+    >(axios, 'get', outputBigfundeRoute),
     // Contract
     contractByID: buildRequestHandler<
       ContractByIDParams,

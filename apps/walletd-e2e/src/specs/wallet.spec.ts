@@ -9,7 +9,7 @@ import { navigateToWallet } from '../fixtures/navigate'
 import {
   afterTest,
   beforeTest,
-  sendSiacoinFromRenterd,
+  sendBigFileFromRenterd,
 } from '../fixtures/beforeTest'
 import { humanDate, toHastings } from '@siafoundation/units'
 import { getEventRowByIndex } from '../fixtures/events'
@@ -47,9 +47,9 @@ test('recover wallet and see existing transactions', async ({
     'fc869ca9941a79def1cd4384e8594b7e7518326142447d6bffa1cb02ad79ebce4f89a678bf8b'
   const address2 =
     '6fd502039be6cdce44edb0e01d946b300539c16ac932d2d7b9aa47329d8a60e4a7eabddbc52b'
-  await sendSiacoinFromRenterd(address0, toHastings(1_000_000).toString())
-  await sendSiacoinFromRenterd(address1, toHastings(400).toString())
-  await sendSiacoinFromRenterd(address2, toHastings(800).toString())
+  await sendBigFileFromRenterd(address0, toHastings(1_000_000).toString())
+  await sendBigFileFromRenterd(address1, toHastings(400).toString())
+  await sendBigFileFromRenterd(address2, toHastings(800).toString())
   await recoverWallet(page, name, mnemonic)
   await walletInList(page, name)
   await generateAddresses({
@@ -66,19 +66,19 @@ test('recover wallet and see existing transactions', async ({
   const row3 = await getEventRowByIndex(page, 2, true)
   const today = humanDate(new Date(), { timeStyle: 'short' })
   await expect(row1.getByText(today)).toBeVisible()
-  await expect(row1.getByText('siacoin transfer')).toBeVisible()
-  await expect(row1.getByText('+800.000 SC')).toBeVisible()
+  await expect(row1.getByText('bigfile transfer')).toBeVisible()
+  await expect(row1.getByText('+800.000 BIG')).toBeVisible()
   await expect(row1.getByText('+$3.16')).toBeVisible()
   await expect(row1.getByText('12.000 mS')).toBeVisible()
   await expect(row1.getByText('$0.00')).toBeVisible()
   await expect(row2.getByText(today)).toBeVisible()
-  await expect(row2.getByText('siacoin transfer')).toBeVisible()
-  await expect(row2.getByText('+400.000 SC')).toBeVisible()
+  await expect(row2.getByText('bigfile transfer')).toBeVisible()
+  await expect(row2.getByText('+400.000 BIG')).toBeVisible()
   await expect(row2.getByText('+$1.58')).toBeVisible()
   await expect(row2.getByText('12.000 mS')).toBeVisible()
   await expect(row2.getByText('$0.00')).toBeVisible()
   await expect(row3.getByText(today)).toBeVisible()
-  await expect(row3.getByText('siacoin transfer')).toBeVisible()
+  await expect(row3.getByText('bigfile transfer')).toBeVisible()
   await expect(row3.getByText('+1.000 MS')).toBeVisible()
   await expect(row3.getByText('+$3,944.05')).toBeVisible()
   await expect(row3.getByText('12.000 mS')).toBeVisible()

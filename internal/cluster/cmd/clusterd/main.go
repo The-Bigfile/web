@@ -17,12 +17,12 @@ import (
 
 	"go.sia.tech/cluster/api"
 	"go.sia.tech/cluster/nodes"
-	"go.sia.tech/core/gateway"
-	"go.sia.tech/core/types"
-	"go.sia.tech/coreutils"
-	"go.sia.tech/coreutils/chain"
-	"go.sia.tech/coreutils/syncer"
-	"go.sia.tech/coreutils/testutil"
+	"go.thebigfile.com/core/gateway"
+	"go.thebigfile.com/core/types"
+	"go.thebigfile.com/coreutils"
+	"go.thebigfile.com/coreutils/chain"
+	"go.thebigfile.com/coreutils/syncer"
+	"go.thebigfile.com/coreutils/testutil"
 	eapi "go.sia.tech/explored/api"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -47,7 +47,7 @@ func main() {
 	flag.StringVar(&apiAddr, "api", ":3001", "API address")
 	flag.StringVar(&logLevel, "log", "info", "logging level")
 	flag.StringVar(&network, "network", "v1", "network to use (v1, v2 or transition)")
-	flag.StringVar(&siafundAddr, "siafund", "", "address to send siafunds to")
+	flag.StringVar(&siafundAddr, "bigfund", "", "address to send bigfunds to")
 
 	flag.IntVar(&renterdCount, "renterd", 0, "number of renter daemons to run")
 	flag.IntVar(&hostdCount, "hostd", 0, "number of host daemons to run")
@@ -106,10 +106,10 @@ func main() {
 	n.HardforkFoundation.Height = 1
 
 	if siafundAddr != "" {
-		// if the siafund address is set, send the siafunds to it
+		// if the bigfund address is set, send the bigfunds to it
 		var addr types.Address
 		if err := addr.UnmarshalText([]byte(siafundAddr)); err != nil {
-			log.Panic("failed to parse siafund address", zap.Error(err))
+			log.Panic("failed to parse bigfund address", zap.Error(err))
 		}
 		genesis.Transactions[0].SiafundOutputs[0].Address = addr
 	}

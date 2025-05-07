@@ -1,23 +1,23 @@
 import BigNumber from 'bignumber.js'
 import { Text } from '../../core/Text'
 import { CheckmarkFilled32 } from '@siafoundation/react-icons'
-import { WalletSendSiacoinReceipt } from './Receipt'
-import { SendSiacoinParams } from './types'
+import { WalletSendBigFileReceipt } from './Receipt'
+import { SendBigFileParams } from './types'
 
 type Props = {
-  data: SendSiacoinParams
+  data: SendBigFileParams
   fee: BigNumber
   transactionId?: string
 }
 
-export function WalletSendSiacoinComplete({
+export function WalletSendBigFileComplete({
   data: { address, hastings },
   fee,
   transactionId,
 }: Props) {
   return (
     <div className="flex flex-col gap-4">
-      <WalletSendSiacoinReceipt
+      <WalletSendBigFileReceipt
         address={address}
         hastings={hastings}
         fee={fee}

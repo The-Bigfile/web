@@ -26,7 +26,7 @@ export function HomePricing() {
           category="pricing"
           label="storage"
           color={pricing.config.data['storage'].color}
-          sc={pricing.stats['storage']}
+          big={pricing.stats['storage']}
           extendedSuffix={humanStoragePriceSuffix}
           defaultMode="latest"
           isLoading={pricing.isLoading}
@@ -36,7 +36,7 @@ export function HomePricing() {
           category="pricing"
           label="ingress"
           color={pricing.config.data['ingress'].color}
-          sc={pricing.stats['ingress']}
+          big={pricing.stats['ingress']}
           defaultMode="latest"
           extendedSuffix={humanIngressPriceSuffix}
           isLoading={pricing.isLoading}
@@ -46,7 +46,7 @@ export function HomePricing() {
           category="pricing"
           label="egress"
           color={pricing.config.data['egress'].color}
-          sc={pricing.stats['egress']}
+          big={pricing.stats['egress']}
           defaultMode="latest"
           extendedSuffix={humanEgressPriceSuffix}
           isLoading={pricing.isLoading}
@@ -56,7 +56,7 @@ export function HomePricing() {
           category="pricing"
           label="collateral"
           color={pricing.config.data['collateral'].color}
-          sc={pricing.stats['collateral']}
+          big={pricing.stats['collateral']}
           defaultMode="latest"
           extendedSuffix={humanCollateralPriceSuffix}
           isLoading={pricing.isLoading}
@@ -66,7 +66,7 @@ export function HomePricing() {
           category="pricing"
           label="contract"
           color={pricing.config.data['contract'].color}
-          sc={pricing.stats['contract']}
+          big={pricing.stats['contract']}
           defaultMode="latest"
           isLoading={pricing.isLoading}
           enabledModes={['latest', 'average']}
@@ -75,7 +75,7 @@ export function HomePricing() {
           category="pricing"
           label="sector access"
           color={pricing.config.data['sectorAccess'].color}
-          sc={pricing.stats['sectorAccess']}
+          big={pricing.stats['sectorAccess']}
           extendedSuffix={humanSectorAccessPriceSuffix}
           defaultMode="latest"
           isLoading={pricing.isLoading}
@@ -85,7 +85,7 @@ export function HomePricing() {
           category="pricing"
           label="base RPC"
           color={pricing.config.data['baseRPC'].color}
-          sc={pricing.stats['baseRPC']}
+          big={pricing.stats['baseRPC']}
           extendedSuffix={humanBaseRpcPriceSuffix}
           defaultMode="latest"
           isLoading={pricing.isLoading}

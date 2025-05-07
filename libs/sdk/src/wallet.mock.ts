@@ -12,7 +12,7 @@ export const mockKeyPair0 = {
 
 export function getTransaction(): Transaction {
   return {
-    siacoinInputs: [
+    bigfileInputs: [
       {
         parentID:
           'b222428602c8382b67a769d17e1cdc0952f37f2441a872b92671a6ed76cf22f5',
@@ -23,14 +23,14 @@ export function getTransaction(): Transaction {
         },
       },
     ],
-    siacoinOutputs: [
+    bigfileOutputs: [
       {
         value: '95408980544305197274920800',
         address:
           '934b885229a9f98153401d7a647a1862aede399c656f33ec8492dfffca557ca907a3d22089c8',
       },
     ],
-    siafundInputs: [
+    bigfundInputs: [
       {
         parentID:
           'b53e88ce69f19f0bf1d3496479f20b72e1133c719e82278830ee6618bb582852',
@@ -45,7 +45,7 @@ export function getTransaction(): Transaction {
           '934b885229a9f98153401d7a647a1862aede399c656f33ec8492dfffca557ca907a3d22089c8',
       },
     ],
-    siafundOutputs: [
+    bigfundOutputs: [
       {
         value: 1,
         address:
@@ -104,7 +104,7 @@ export function getAddresses() {
   ]
 }
 
-export function getSiacoinOutputs() {
+export function getBigFileOutputs() {
   return [
     {
       id: '31cf3ddc946d71d219fb1fbe9a11804e607b6d5ad1b4bf7b3678a2faa701a42e',
@@ -120,7 +120,7 @@ export function getSiacoinOutputs() {
         '7b42dc5e0f6cfd84104bbae8279f917ae4fc383b6da5b792106e27559e14a4d5',
         '913008cd339f08d4c2c28e734ab617ae2917b838c67f8afa4d2d38043ca51aa3',
       ],
-      siacoinOutput: {
+      bigfileOutput: {
         value: '992140000000000000000000',
         address:
           '934b885229a9f98153401d7a647a1862aede399c656f33ec8492dfffca557ca907a3d22089c8',
@@ -141,7 +141,7 @@ export function getSiacoinOutputs() {
         '7b42dc5e0f6cfd84104bbae8279f917ae4fc383b6da5b792106e27559e14a4d5',
         '913008cd339f08d4c2c28e734ab617ae2917b838c67f8afa4d2d38043ca51aa3',
       ],
-      siacoinOutput: {
+      bigfileOutput: {
         value: '996070000000000000000000',
         address:
           'eb2ee5169dd9aaab804b38f7e70043690ac21da1144990a4a28c1dcf66cd7ee9845aef03006f',
@@ -162,7 +162,7 @@ export function getSiacoinOutputs() {
         '7b42dc5e0f6cfd84104bbae8279f917ae4fc383b6da5b792106e27559e14a4d5',
         '913008cd339f08d4c2c28e734ab617ae2917b838c67f8afa4d2d38043ca51aa3',
       ],
-      siacoinOutput: {
+      bigfileOutput: {
         value: '55711757555233190591737',
         address:
           '934b885229a9f98153401d7a647a1862aede399c656f33ec8492dfffca557ca907a3d22089c8',
@@ -187,7 +187,7 @@ export function getSiacoinOutputs() {
         '442f5a2b1a5fe821cc811e9e1b746ebefb5b50441fc510cfed1787105e957aa6',
         '02537976f2e05843dbab0a6c5d09447cd9cc76a391f31ce764bf3a85a513dab8',
       ],
-      siacoinOutput: {
+      bigfileOutput: {
         value: '95412910544305197274920800',
         address:
           '934b885229a9f98153401d7a647a1862aede399c656f33ec8492dfffca557ca907a3d22089c8',
@@ -208,7 +208,7 @@ export function getSiacoinOutputs() {
         '7b42dc5e0f6cfd84104bbae8279f917ae4fc383b6da5b792106e27559e14a4d5',
         '913008cd339f08d4c2c28e734ab617ae2917b838c67f8afa4d2d38043ca51aa3',
       ],
-      siacoinOutput: {
+      bigfileOutput: {
         value: '47992140000000000000000000',
         address:
           '934b885229a9f98153401d7a647a1862aede399c656f33ec8492dfffca557ca907a3d22089c8',
@@ -233,7 +233,7 @@ export function getSiacoinOutputs() {
         '442f5a2b1a5fe821cc811e9e1b746ebefb5b50441fc510cfed1787105e957aa6',
         '02537976f2e05843dbab0a6c5d09447cd9cc76a391f31ce764bf3a85a513dab8',
       ],
-      siacoinOutput: {
+      bigfileOutput: {
         value: '0',
         address:
           '934b885229a9f98153401d7a647a1862aede399c656f33ec8492dfffca557ca907a3d22089c8',
@@ -263,7 +263,7 @@ export function getSiafundOutputs() {
         '442f5a2b1a5fe821cc811e9e1b746ebefb5b50441fc510cfed1787105e957aa6',
         '02537976f2e05843dbab0a6c5d09447cd9cc76a391f31ce764bf3a85a513dab8',
       ],
-      siafundOutput: {
+      bigfundOutput: {
         value: 99,
         address:
           '934b885229a9f98153401d7a647a1862aede399c656f33ec8492dfffca557ca907a3d22089c8',
@@ -284,7 +284,7 @@ export function getSiafundOutputs() {
         '7b42dc5e0f6cfd84104bbae8279f917ae4fc383b6da5b792106e27559e14a4d5',
         '913008cd339f08d4c2c28e734ab617ae2917b838c67f8afa4d2d38043ca51aa3',
       ],
-      siafundOutput: {
+      bigfundOutput: {
         value: 1,
         address:
           'eb2ee5169dd9aaab804b38f7e70043690ac21da1144990a4a28c1dcf66cd7ee9845aef03006f',

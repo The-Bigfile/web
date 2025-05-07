@@ -1,6 +1,6 @@
 import { TBToBytes } from './bytes'
 import BigNumber from 'bignumber.js'
-import { humanSiacoin, toSiacoins } from './currency'
+import { humanBigFile, toBigFiles } from './currency'
 import { humanBytes } from './humanUnits'
 import { valuePerBytePerBlockToPerTBPerMonth } from './valuePer'
 import { ExplorerHost } from '@siafoundation/explored-types'
@@ -21,11 +21,11 @@ type Props = {
 export function getStorageCost({ price, exchange }: Props) {
   return exchange
     ? `${exchange.currency.prefix}${valuePerBytePerBlockToPerTBPerMonth(
-        toSiacoins(price)
+        toBigFiles(price)
       )
         .times(exchange.rate || 1)
         .toFormat(2)}/TB`
-    : `${humanSiacoin(
+    : `${humanBigFile(
         valuePerBytePerBlockToPerTBPerMonth(new BigNumber(price)),
         {
           fixed: 3,
@@ -35,12 +35,12 @@ export function getStorageCost({ price, exchange }: Props) {
 
 function hastingsPerByteToCurrencyPerTBFormatted({ price, exchange }: Props) {
   return exchange
-    ? `${exchange.currency.prefix}${toSiacoins(
+    ? `${exchange.currency.prefix}${toBigFiles(
         new BigNumber(price).times(TBToBytes(1))
       )
         .times(exchange.rate || 1)
         .toFormat(2)}/TB`
-    : `${humanSiacoin(new BigNumber(price).times(TBToBytes(1)), {
+    : `${humanBigFile(new BigNumber(price).times(TBToBytes(1)), {
         fixed: 3,
       })}/TB`
 }

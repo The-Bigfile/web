@@ -10,7 +10,7 @@
 
 ### Patch Changes
 
-- a8e77c6c: Fixed V2 signing for wallets that do not have siafund outputs.
+- a8e77c6c: Fixed V2 signing for wallets that do not have bigfund outputs.
 
 ## 0.29.0
 
@@ -25,7 +25,7 @@
 - 1c6e8c1a: Seed wallets now support and automatically switch to sending V2 transactions once the consensus height hits the V2 hardfork allow height. Closes https://github.com/SiaFoundation/walletd/issues/216 Closes https://github.com/SiaFoundation/walletd/issues/186
 - 54a4eabe: Displayed entity values which are often truncated can now be copied to clipboard by double-clicking directly on the visible characters.
 - 819c0664: V1 signing now uses the address spendPolicy.
-- 93b2e77d: Send mode only sends the amount of siacoin or siafunds specified in the active mode.
+- 93b2e77d: Send mode only sends the amount of bigfile or bigfunds specified in the active mode.
 - 819c0664: Added V2 signing method.
 - 54a4eabe: Wallet addresses can now be copied to clipboard by clicking on the QR code in the address dialog.
 - 453b5418: Ledger wallets will now disable sending transactions and display a warning once the hardfork require height is reached. The message explains that sending funds with ledger is not yet available but coming soon.
@@ -86,7 +86,7 @@
 
 ### Patch Changes
 
-- 24b47560: Fixed an issue where calculating the siacoin value for a transaction without relevant siacoin inputs would cause an error. Closes https://github.com/SiaFoundation/walletd/issues/150
+- 24b47560: Fixed an issue where calculating the bigfile value for a transaction without relevant bigfile inputs would cause an error. Closes https://github.com/SiaFoundation/walletd/issues/150
 
 ## 0.22.2
 
@@ -114,7 +114,7 @@
 
 ### Patch Changes
 
-- e43d0d4e: Unconfirmed transactions rows now show their siacoin amount and fees. Closes https://github.com/SiaFoundation/walletd/issues/123
+- e43d0d4e: Unconfirmed transactions rows now show their bigfile amount and fees. Closes https://github.com/SiaFoundation/walletd/issues/123
 
 ## 0.20.0
 
@@ -178,9 +178,9 @@
 
 ### Minor Changes
 
-- f3b50183: The send siacoin and siafund features now support specifying custom change and claim addresses.
-- ccf9e177: Ledger wallets now support sending siafunds.
-- ccf9e177: Seed wallets now support sending siafunds.
+- f3b50183: The send bigfile and bigfund features now support specifying custom change and claim addresses.
+- ccf9e177: Ledger wallets now support sending bigfunds.
+- ccf9e177: Seed wallets now support sending bigfunds.
 - ccf9e177: Event balances are now calculated with only relevant transaction components.
 - ccf9e177: The ledger generate addresses dialog now shows a close action if no new addresses have been generated.
 
@@ -188,14 +188,14 @@
 
 ### Minor Changes
 
-- b72ef30f: Currency display can now be configured to siacoin, fiat, or both along with a preference for when only one can be displayed.
+- b72ef30f: Currency display can now be configured to bigfile, fiat, or both along with a preference for when only one can be displayed.
 - 5308806e: App preferences no longer list unused GPU setting.
 
 ## 0.12.0
 
 ### Minor Changes
 
-- 170c1e3b: Wallet do now shows siafund balances when greater than 0.
+- 170c1e3b: Wallet do now shows bigfund balances when greater than 0.
 
 ## 0.11.0
 
@@ -233,12 +233,12 @@
 
 - e74d48cc: Currency options now include AUD.
 - e74d48cc: The wallet list now has a colum that shows the lock status. If the wallet is unlocked, the tooltip also shows the remaining time.
-- e74d48cc: The wallet list now has a siacoin balance column.
+- e74d48cc: The wallet list now has a bigfile balance column.
 - e74d48cc: Wallet dropdown now includes unlock, edit, and delete operations.
 - e74d48cc: Wallet auto-locking can be enabled or disabled from the App Preferences menu - the feature is enabled by default. The locking inactivity period can also be configured.
 - e74d48cc: Seed-based wallets can now be unlocked for a period of time. Each wallet will lock after a period of inactivity or if the app is closed.
 - e74d48cc: The Settings dialog is now called App preferences.
-- e74d48cc: Operations that require a seed, such as sending siacoin or generated addresses now use cached seed values when a wallet is already unlocked.
+- e74d48cc: Operations that require a seed, such as sending bigfile or generated addresses now use cached seed values when a wallet is already unlocked.
 - e74d48cc: The app now includes an auto-lock feature that can be enabled or disabled from the App Preferences menu. The locking inactivity period can also be configured.
 
 ## 0.7.0

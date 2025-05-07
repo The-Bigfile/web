@@ -11,7 +11,7 @@ import { useMetricsContract } from '@siafoundation/renterd-react'
 import { useMemo } from 'react'
 import BigNumber from 'bignumber.js'
 import { ChartContractCategory, ChartContractKey } from './types'
-import { humanSiacoin, daysInMilliseconds } from '@siafoundation/units'
+import { humanBigFile, daysInMilliseconds } from '@siafoundation/units'
 import { getTimeClampedToNearest5min } from './utils'
 
 export function useContractMetrics({
@@ -130,7 +130,7 @@ export function useContractMetrics({
             ? getDataIntervalLabelFormatter('daily')
             : undefined,
         formatTickY: (v) =>
-          humanSiacoin(v, {
+          humanBigFile(v, {
             fixed: 0,
             dynamicUnits: true,
           }),

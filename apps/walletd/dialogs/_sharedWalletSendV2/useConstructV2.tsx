@@ -3,7 +3,7 @@ import { useWallets } from '../../contexts/wallets'
 import { useCallback } from 'react'
 import { SendParamsV2 } from './typesV2'
 import { WalletConstructV2TransactionPayload } from '@siafoundation/walletd-types'
-import { SiacoinOutput, SiafundOutput } from '@siafoundation/types'
+import { BigFileOutput, BigfundOutput } from '@siafoundation/types'
 
 export function useConstructV2() {
   const { wallet } = useWallets()
@@ -14,8 +14,8 @@ export function useConstructV2() {
     async ({
       receiveAddress,
       changeAddress,
-      siacoin,
-      siafund,
+      bigfile,
+      bigfund,
     }: SendParamsV2) => {
       if (!receiveAddress || !changeAddress) {
         return {
@@ -23,27 +23,27 @@ export function useConstructV2() {
         }
       }
 
-      const siacoins: SiacoinOutput[] = []
-      const siafunds: SiafundOutput[] = []
+      const bigfiles: BigFileOutput[] = []
+      const bigfunds: BigfundOutput[] = []
 
-      if (siacoin.gt(0)) {
-        siacoins.push({
-          value: siacoin.toString(),
+      if (bigfile.gt(0)) {
+        bigfiles.push({
+          value: bigfile.toString(),
           address: receiveAddress,
         })
       }
 
-      if (siafund > 0) {
-        siafunds.push({
-          value: siafund,
+      if (bigfund > 0) {
+        bigfunds.push({
+          value: bigfund,
           address: receiveAddress,
         })
       }
 
       const payload: WalletConstructV2TransactionPayload = {
         changeAddress,
-        siacoins,
-        siafunds,
+        bigfiles,
+        bigfunds,
       }
 
       // construct: funds txn, calculates and adds miner fees, determines utxo change.

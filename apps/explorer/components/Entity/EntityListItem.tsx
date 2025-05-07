@@ -30,7 +30,7 @@ export type EntityListItemProps = {
   type?: EntityType
   txType?: TxType
   initials?: string
-  sc?: BigNumber
+  big?: BigNumber
   sf?: number
   scVariant?: 'value' | 'change'
   sfVariant?: 'value' | 'change'
@@ -43,7 +43,7 @@ export type EntityListItemProps = {
 }
 
 export function EntityListItem(entity: EntityListItemProps) {
-  const sc = entity.sc
+  const big = entity.big
   const sf = entity.sf
   const truncHashEl = entity.hash && (
     <ValueCopyable
@@ -89,7 +89,7 @@ export function EntityListItem(entity: EntityListItemProps) {
           </div>
           <div className="flex-1" />
           <div className="flex items-center">
-            {!!sc && <ValueScFiat variant={entity.scVariant} value={sc} />}
+            {!!big && <ValueScFiat variant={entity.scVariant} value={big} />}
             {!!sf && <ValueSf variant={entity.sfVariant} value={sf} />}
           </div>
         </div>

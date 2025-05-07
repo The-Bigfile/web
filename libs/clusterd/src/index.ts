@@ -77,7 +77,7 @@ export async function setupCluster({
     `-walletd=${walletdCount}`,
     `-explored=${exploredCount}`,
     `-api=:${clusterd.managementPort}`,
-    `-siafund=${siafundAddr}`,
+    `-bigfund=${siafundAddr}`,
   ])
   // Drain buffer to prevent process from hanging.
   clusterd.process.stdout.on('data', () => null)

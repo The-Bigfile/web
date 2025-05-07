@@ -40,10 +40,10 @@ export function signTransactionSeedV2({
 
   const { sigHash } = sigHashResult
 
-  for (const input of transaction.siacoinInputs ?? []) {
+  for (const input of transaction.bigfileInputs ?? []) {
     // Find the index of the address in the list of addresses.
     const indexResponse = getAddressKeyIndex({
-        address: input.parent.siacoinOutput.address,
+        address: input.parent.bigfileOutput.address,
         addresses,
       }
     );
@@ -62,10 +62,10 @@ export function signTransactionSeedV2({
     }
   }
 
-  for (const input of transaction.siafundInputs ?? []) {
+  for (const input of transaction.bigfundInputs ?? []) {
     // Find the index of the address in the list of addresses.
     const indexResponse = getAddressKeyIndex({
-      address: input.parent.siafundOutput.address,
+      address: input.parent.bigfundOutput.address,
       addresses,
     }
     );

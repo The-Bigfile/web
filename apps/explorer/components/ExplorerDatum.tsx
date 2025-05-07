@@ -9,14 +9,14 @@ import { upperFirst } from '@technically/lodash'
 import { getHref } from '../lib/utils'
 import { EntityType } from '@siafoundation/units'
 
-// entityType&entityValue | value | values | sc | sf
+// entityType&entityValue | value | values | big | sf
 export type DatumProps = {
   label: string
   value?: React.ReactNode
   displayValue?: string
   entityType?: EntityType
   entityValue?: string
-  sc?: BigNumber
+  big?: BigNumber
   sf?: number
   comment?: React.ReactNode
   copyable?: boolean
@@ -29,7 +29,7 @@ export function ExplorerDatum({
   copyable = true,
   value,
   displayValue,
-  sc,
+  big,
   sf,
   comment,
 }: DatumProps) {
@@ -39,8 +39,8 @@ export function ExplorerDatum({
         {upperFirst(label)}
       </Text>
       <div className="flex flex-col gap-2 items-end md:items-end md:flex-[2]">
-        {sc !== undefined && (
-          <ValueSc scaleSize="18" variant="value" value={sc} />
+        {big !== undefined && (
+          <ValueSc scaleSize="18" variant="value" value={big} />
         )}
         {sf !== undefined && (
           <ValueSf scaleSize="18" variant="value" value={sf} />

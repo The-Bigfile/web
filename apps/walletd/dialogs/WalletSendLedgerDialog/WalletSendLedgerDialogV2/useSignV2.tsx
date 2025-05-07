@@ -1,7 +1,7 @@
 import { V2Transaction } from '@siafoundation/types'
 import {
-  useWalletOutputsSiacoin,
-  useWalletOutputsSiafund,
+  useWalletOutputsBigFile,
+  useWalletOutputsBigfund,
 } from '@siafoundation/walletd-react'
 import { useWallets } from '../../../contexts/wallets'
 import { useCallback } from 'react'
@@ -12,13 +12,13 @@ import { useLedger } from '../../../contexts/ledger'
 export function useSignV2() {
   const { wallet } = useWallets()
   const walletId = wallet?.id
-  const siacoinOutputs = useWalletOutputsSiacoin({
+  const bigfileOutputs = useWalletOutputsBigFile({
     disabled: !walletId,
     params: {
       id: walletId,
     },
   })
-  const siafundOutputs = useWalletOutputsSiafund({
+  const bigfundOutputs = useWalletOutputsBigfund({
     disabled: !walletId,
     params: {
       id: walletId,
@@ -37,8 +37,8 @@ export function useSignV2() {
         device,
         transaction: fundedTransaction,
         addresses,
-        siacoinOutputs: siacoinOutputs.data?.outputs,
-        siafundOutputs: siafundOutputs.data?.outputs,
+        bigfileOutputs: bigfileOutputs.data?.outputs,
+        bigfundOutputs: bigfundOutputs.data?.outputs,
       })
       if ('error' in signResponse) {
         return {
@@ -49,7 +49,7 @@ export function useSignV2() {
         signedTransaction: signResponse.transaction,
       }
     },
-    [device, addresses, siacoinOutputs.data, siafundOutputs.data]
+    [device, addresses, bigfileOutputs.data, bigfundOutputs.data]
   )
 
   return sign

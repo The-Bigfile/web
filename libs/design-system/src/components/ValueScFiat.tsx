@@ -97,7 +97,7 @@ export function ValueScFiat({
   const fiatEl = useMemo(
     () => (
       <ValueFiat
-        sc={value}
+        big={value}
         size={size}
         color={
           displayBoth &&
@@ -139,7 +139,7 @@ export function ValueScFiat({
     ]
   )
 
-  if (currencyDisplay === 'sc') {
+  if (currencyDisplay === 'big') {
     return scEl
   }
 

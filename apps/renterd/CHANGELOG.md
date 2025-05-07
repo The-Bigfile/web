@@ -221,7 +221,7 @@
 
 ### Minor Changes
 
-- 64d82fc3: The transactions list now includes more details such as specific transaction types and maturity height for locked siacoin.
+- 64d82fc3: The transactions list now includes more details such as specific transaction types and maturity height for locked bigfile.
 - 32363a16: The files directory and global mode explorers now use the new list objects API.
 - 978b70aa: The hosts explorer now uses the new combined hosts API.
 - ac703a94: The configuration feature now internally uses the new strong settings APIs.
@@ -240,8 +240,8 @@
 
 ### Minor Changes
 
-- 02c02fe7: The send siacoin feature now validates the entered address.
-- 81d374f4: The send siacoin feature now calculates the fee using the daemon's recommended fee per byte and a standard transaction size.
+- 02c02fe7: The send bigfile feature now validates the entered address.
+- 81d374f4: The send bigfile feature now calculates the fee using the daemon's recommended fee per byte and a standard transaction size.
 - a7ff93e9: Min recent scan failures is now max consecutive scan failures. Relates to https://github.com/SiaFoundation/renterd/pull/1482
 - 5f34c9a6: Migrated all exchange rate usage from Sia Central to Siascan.
 - dd1b4036: The recommendations now say "no recommendations" instead of 0. Closes https://github.com/SiaFoundation/desktop/issues/90
@@ -274,7 +274,7 @@
 - eabad8c5: Allowance, max storage price, max upload price, max download price, and max RPC price fields now support price pinning. The user can choose to pin any or all of those values to a fiat currency value.
 - eabad8c5: The allowance fitting features now work with pinned prices or a mix of pinned and unpinned prices.
 - eabad8c5: The configuration system recommendations now support evaluating and setting pinned fields.
-- eabad8c5: Each max pricing field that is factored into the allowance now has (when available) both a recommendation for matching with more hosts and an option to fit the current allowance. These are available in both non-pinned siacoin and pinned fiat modes.
+- eabad8c5: Each max pricing field that is factored into the allowance now has (when available) both a recommendation for matching with more hosts and an option to fit the current allowance. These are available in both non-pinned bigfile and pinned fiat modes.
 - ce89b99a: Added support for the new network naming scheme and the anagami testnet.
 - 4bb128df: The file explorer now shows new directories right away when uploading nested files.
 - eabad8c5: All tips and recommendations are now displayed according to the app preferences currency setting.
@@ -488,7 +488,7 @@
 - 7635e79d: Fixed an issue displaying the contract sets column data on the contracts explorer.
 - d2161c5e: The renterd file count stats tooltip description is now more accurate.
 - fa1297bf: The configuration page now has menu options to download or copy an image of the current configuration for easier sharing.
-- e470c163: Fixed an issue where siacoin and numeric input values would jump to an incorrect value.
+- e470c163: Fixed an issue where bigfile and numeric input values would jump to an incorrect value.
 - cc7b1500: Contracts can now be filtered by contract set.
 
 ## 0.41.0
@@ -572,7 +572,7 @@
 - 5958be26: The configuration now has zen-specific suggested/default values for number of contract hosts and shard values.
 - 69a696ca: The bucket context menu now allows you to edit the bucket policy and toggle the read access between public and private.
 - f0403c7e: The simple configuration mode now shows download and upload estimates and pricing.
-- b72ef30f: Currency display can now be configured to siacoin, fiat, or both along with a preference for when only one can be displayed.
+- b72ef30f: Currency display can now be configured to bigfile, fiat, or both along with a preference for when only one can be displayed.
 - d34b0a4f: Fixed an issue with file search where selecting a file would navigate to the path without the bucket.
 - 1af82db8: The configuration now includes a setting for a migration surcharge multiplier which allows you to set a factor for increasing the max download price when trying to repair critically low health sectors.
 - f0403c7e: The contract count shown in onboarding will update more quickly as it now includes pending contracts.
@@ -588,13 +588,13 @@
 - 16b7df4c: The wallet balance tooltip now shows spendable confirmed and unconfirmed values.
 - 6fc53f46: The maxDowntimeHours setting default value is now 336.
 - 6fc53f46: Added support for the minRecentScanFailures autopilot hosts setting.
-- 35ff2dec: Siacoin and number input placeholders now match the suggested value.
-- 6fc53f46: Extremely small siacoin values will now show as hastings by default rather than 0SC.
+- 35ff2dec: BigFile and number input placeholders now match the suggested value.
+- 6fc53f46: Extremely small bigfile values will now show as hastings by default rather than 0SC.
 - e04a35c7: Fixed an issue where the wallet balance graph would not show the first data point.
 - db21136e: The autopilot loop is now triggered after settings are successfully updated.
 - a2db3b21: Files are now paginated.
 - 6fc53f46: Refined the warnings in the files feature navbar and file explorer empty states.
-- 9a065e66: Onboarding fund wallet step now requires >0 SC instead of a full allowance.
+- 9a065e66: Onboarding fund wallet step now requires >0 BIG instead of a full allowance.
 - e04a35c7: Wallet balance evolution graph is now hidden until at least 1 data point is available.
 - 4462f129: The hosts table now has a last announcement column instead of the known since column.
 
@@ -820,9 +820,9 @@
 ### Minor Changes
 
 - 13a9882: The autopilot target price default value calculation has been corrected.
-- 13a9882: Siacoin inputs are now easier to use, especially when entering and editing decimal values.
+- 13a9882: BigFile inputs are now easier to use, especially when entering and editing decimal values.
 - 842ffbe: The txpool and wallet transaction lists now show the specific type of transaction.
-- 842ffbe: Fixed a bug in the send siacoin transaction flow.
+- 842ffbe: Fixed a bug in the send bigfile transaction flow.
 - 72ab6fe: Host and contract explorer view menus now allow toggling column visibility by group.
 - 72ab6fe: The host explorer view menu now allows toggling column visibility by group.
 - 30493f4: Autopilot estimates are now accurately labeled with TiB units.
@@ -891,7 +891,7 @@
 - 2e5dec6: The files feature now has a view configuration menu.
 - 82832d9: The apps are now built into Go modules exposing static assets as an embed.FS.
 - ea616f1: The hosts feature now shows whether autopilot considers the host usable based on the scoring criteria. If the host is unusable, the reasons are listed.
-- 27c4248: Fixed an issue where siacoin config values were being sent as decimal strings.
+- 27c4248: Fixed an issue where bigfile config values were being sent as decimal strings.
 - 81a5af6: Host, contract, and file explorer action menus are now all accessed via an icon on the far left of each row.
 - ea616f1: The hosts feature now allows filtering to hosts with active contracts.
 - ceb56a8: renterd now supports allowlist and blocklist management, accessible from the global command menu or the hosts page.

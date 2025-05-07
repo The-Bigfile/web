@@ -77,7 +77,7 @@ export default function Wallet({
               background={patterns.nateSnow}
               description={
                 <>
-                  Learn how to create a Sia wallet and send and receive siacoin
+                  Learn how to create a Sia wallet and send and receive bigfile
                   with walletd.
                 </>
               }

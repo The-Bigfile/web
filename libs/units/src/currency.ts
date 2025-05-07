@@ -1,6 +1,6 @@
 import { BigNumber } from 'bignumber.js'
 
-// Siacoin -> hastings unit conversion functions
+// BigFile -> hastings unit conversion functions
 // These make conversion between units of Sia easy and consistent for developers.
 // Never return exponentials from BigNumber.toString, since they confuse the API
 BigNumber.config({ EXPONENTIAL_AT: 1e9 })
@@ -8,23 +8,23 @@ BigNumber.config({ DECIMAL_PLACES: 30 })
 
 // Hastings is the lowest divisible unit in Sia. This constant will be used to
 // calculate the conversion between the base unit to human readable values.
-const hastingsPerSiacoin = new BigNumber('10').exponentiatedBy(24)
+const hastingsPerBigFile = new BigNumber('10').exponentiatedBy(24)
 
-export function toSiacoins(
+export function toBigFiles(
   hastings: BigNumber | number | string,
   fixed?: number
 ) {
   if (fixed !== undefined) {
     return new BigNumber(
-      new BigNumber(hastings).dividedBy(hastingsPerSiacoin).toFixed(fixed)
+      new BigNumber(hastings).dividedBy(hastingsPerBigFile).toFixed(fixed)
     )
   }
-  return new BigNumber(hastings).dividedBy(hastingsPerSiacoin)
+  return new BigNumber(hastings).dividedBy(hastingsPerBigFile)
 }
 
-export function toHastings(siacoins: BigNumber | number | string) {
+export function toHastings(bigfiles: BigNumber | number | string) {
   return new BigNumber(
-    new BigNumber(siacoins).times(hastingsPerSiacoin).toFixed(0)
+    new BigNumber(bigfiles).times(hastingsPerBigFile).toFixed(0)
   )
 }
 
@@ -32,25 +32,25 @@ export function toScale(num: BigNumber | number | string, fixed: number) {
   return new BigNumber(new BigNumber(num).toFixed(fixed))
 }
 
-export function fiatToSiacoin(fiat: BigNumber, exchangeRate: BigNumber) {
+export function fiatToBigFile(fiat: BigNumber, exchangeRate: BigNumber) {
   return fiat.div(exchangeRate)
 }
 
-export function siacoinToFiat(siacoin: BigNumber, exchangeRate: BigNumber) {
-  return siacoin.times(exchangeRate)
+export function bigfileToFiat(bigfile: BigNumber, exchangeRate: BigNumber) {
+  return bigfile.times(exchangeRate)
 }
 
-type HumanSiacoinOptions = {
+type HumanBigFileOptions = {
   fixed?: number
   dynamicUnits?: boolean
   hastingUnits?: boolean
 }
-const humanSiacoinOptionDefaults: HumanSiacoinOptions = {
+const humanBigFileOptionDefaults: HumanBigFileOptions = {
   // number of decimal places
   fixed: 3,
-  // whether on not to use units like KS or to display as 5000 SC
+  // whether on not to use units like KS or to display as 5000 BIG
   dynamicUnits: true,
-  // whether on not to include H units or display 0 SC
+  // whether on not to include H units or display 0 BIG
   hastingUnits: false,
 }
 /**
@@ -58,12 +58,12 @@ const humanSiacoinOptionDefaults: HumanSiacoinOptions = {
  * This is copy of the HumanString function from Sia repo.
  * @param hastings amount of hastings to convert
  */
-export function humanSiacoin(
+export function humanBigFile(
   hastings: BigNumber | number | string,
-  options?: HumanSiacoinOptions
+  options?: HumanBigFileOptions
 ): string {
   const { fixed, dynamicUnits, hastingUnits } = {
-    ...humanSiacoinOptionDefaults,
+    ...humanBigFileOptionDefaults,
     ...options,
   }
   const pico = new BigNumber(1e12)
@@ -73,17 +73,17 @@ export function humanSiacoin(
   const sign = val.isNegative() ? '-' : ''
 
   if (!dynamicUnits) {
-    return `${sign}${toSiacoins(amount).toFormat(fixed)} SC`
+    return `${sign}${toBigFiles(amount).toFormat(fixed)} BIG`
   }
 
   if (amount.dividedBy(pico).isLessThan(1)) {
     if (hastingUnits) {
       return `${sign}${amount} H`
     }
-    return `${sign}0 SC`
+    return `${sign}0 BIG`
   }
 
-  const suffixes = ['pS', 'nS', 'uS', 'mS', 'SC', 'KS', 'MS', 'GS', 'TS']
+  const suffixes = ['pBIG', 'nBIG', 'uBIG', 'mBIG', 'BIG', 'KBIG', 'MBIG', 'BS', 'TS']
 
   for (let index = 0; index < suffixes.length; index++) {
     const mag = Array(index)
@@ -98,6 +98,6 @@ export function humanSiacoin(
   return ''
 }
 
-export function humanSiafund(siafunds: number) {
-  return siafunds.toLocaleString() + ' SF'
+export function humanBigfund(bigfunds: number) {
+  return bigfunds.toLocaleString() + ' BF'
 }

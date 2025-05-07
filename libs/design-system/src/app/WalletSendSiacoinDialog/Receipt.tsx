@@ -2,14 +2,14 @@ import { Text } from '../../core/Text'
 import { ValueSc } from '../../components/ValueSc'
 import BigNumber from 'bignumber.js'
 import { ValueCopyable } from '../../components/ValueCopyable'
-import { SendSiacoinParams } from './types'
+import { SendBigFileParams } from './types'
 
-type Props = SendSiacoinParams & {
+type Props = SendBigFileParams & {
   fee: BigNumber
   transactionId?: string
 }
 
-export function WalletSendSiacoinReceipt({
+export function WalletSendBigFileReceipt({
   address,
   hastings,
   fee,

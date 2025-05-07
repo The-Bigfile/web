@@ -38,7 +38,7 @@ export async function beforeTest(
 }
 
 // Helper that assumes a single renterd node is being used to test sending funds.
-export async function sendSiacoinFromRenterd(address: string, amount: string) {
+export async function sendBigFileFromRenterd(address: string, amount: string) {
   const renterdNode = clusterd.nodes.find((n) => n.type === 'renterd')
   const bus = Bus({
     api: renterdNode.apiAddress + '/api',
@@ -56,7 +56,7 @@ export async function sendSiacoinFromRenterd(address: string, amount: string) {
     })
     await mine(1)
   } catch (e) {
-    console.log('error sending siacoin', e)
+    console.log('error sending bigfile', e)
   }
 }
 

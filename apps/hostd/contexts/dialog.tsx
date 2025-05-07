@@ -9,7 +9,7 @@ import { VolumeCreateDialog } from '../dialogs/VolumeCreateDialog'
 import { VolumeResizeDialog } from '../dialogs/VolumeResizeDialog'
 import { VolumeDeleteDialog } from '../dialogs/VolumeDeleteDialog'
 import { useSyncerConnect, useWallet } from '@siafoundation/hostd-react'
-import { HostdSendSiacoinDialog } from '../dialogs/HostdSendSiacoinDialog'
+import { HostdSendBigFileDialog } from '../dialogs/HostdSendBigFileDialog'
 import { HostdTransactionDetailsDialog } from '../dialogs/HostdTransactionDetailsDialog'
 import { ContractsFilterContractIdDialog } from '../dialogs/ContractsFilterContractIdDialog'
 import { CmdKDialog } from '../components/CmdKDialog'
@@ -17,7 +17,7 @@ import { CmdKDialog } from '../components/CmdKDialog'
 export type DialogType =
   | 'cmdk'
   | 'settings'
-  | 'sendSiacoin'
+  | 'sendBigFile'
   | 'addWallet'
   | 'transactionDetails'
   | 'addressDetails'
@@ -121,7 +121,7 @@ export function Dialogs() {
         open={dialog === 'settings'}
         onOpenChange={onOpenChange}
       />
-      <HostdSendSiacoinDialog />
+      <HostdSendBigFileDialog />
       <WalletSingleAddressDetailsDialog
         open={dialog === 'addressDetails'}
         address={wallet.data?.address}

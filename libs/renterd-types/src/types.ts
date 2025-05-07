@@ -115,7 +115,7 @@ export type GougingSettingsPins = {
 
 // SettingsPinned holds the configuration for pinning certain settings to
 // a specific currency (e.g., USD). It uses a Forex API to fetch the current
-// exchange rate, allowing users to set prices in USD instead of SC.
+// exchange rate, allowing users to set prices in USD instead of BIG.
 export type SettingsPinned = {
   // Currency is the external three-letter currency code.
   currency: CurrencyId | ''
@@ -233,7 +233,7 @@ export type HostAutopilotChecks = {
   }
 }
 
-export type SiacoinElement = {
+export type BigFileElement = {
   value: Currency
   address: string
   id: string

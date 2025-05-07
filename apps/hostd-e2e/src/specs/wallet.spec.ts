@@ -13,22 +13,22 @@ test.afterEach(async () => {
   await afterTest()
 })
 
-test('send siacoin with include fee off', async ({ page }) => {
+test('send bigfile with include fee off', async ({ page }) => {
   const receiveAddress =
     '5739945c21e60afd70eaf97ccd33ea27836e0219212449f39e4b38acaa8b3119aa4150a9ef0f'
   const amount = String(random(1, 5))
-  const amountString = `${amount}.000 SC`
-  const amountWithFeeString = `${amount}.012 SC`
+  const amountString = `${amount}.000 BIG`
+  const amountWithFeeString = `${amount}.012 BIG`
 
   await navigateToWallet(page)
 
   // Setup.
   await page.getByLabel('send').click()
-  const sendDialog = page.getByRole('dialog', { name: 'Send siacoin' })
+  const sendDialog = page.getByRole('dialog', { name: 'Send bigfile' })
   await fillTextInputByName(page, 'address', receiveAddress)
-  await fillTextInputByName(page, 'siacoin', amount)
+  await fillTextInputByName(page, 'bigfile', amount)
   await expect(
-    sendDialog.getByTestId('networkFee').getByText('0.012 SC')
+    sendDialog.getByTestId('networkFee').getByText('0.012 BIG')
   ).toBeVisible()
   await expect(
     sendDialog.getByTestId('total').getByText(amountWithFeeString)
@@ -43,7 +43,7 @@ test('send siacoin with include fee off', async ({ page }) => {
     sendDialog.getByTestId('amount').getByText(amountString)
   ).toBeVisible()
   await expect(
-    sendDialog.getByTestId('networkFee').getByText('0.012 SC')
+    sendDialog.getByTestId('networkFee').getByText('0.012 BIG')
   ).toBeVisible()
   await expect(
     sendDialog.getByTestId('total').getByText(amountWithFeeString)
@@ -61,7 +61,7 @@ test('send siacoin with include fee off', async ({ page }) => {
     sendDialog.getByTestId('amount').getByText(amountString)
   ).toBeVisible()
   await expect(
-    sendDialog.getByTestId('networkFee').getByText('0.012 SC')
+    sendDialog.getByTestId('networkFee').getByText('0.012 BIG')
   ).toBeVisible()
   await expect(
     sendDialog.getByTestId('total').getByText(amountWithFeeString)
@@ -84,23 +84,23 @@ test('send siacoin with include fee off', async ({ page }) => {
   ).toBeVisible()
 })
 
-test('send siacoin with include fee on', async ({ page }) => {
+test('send bigfile with include fee on', async ({ page }) => {
   const receiveAddress =
     '5739945c21e60afd70eaf97ccd33ea27836e0219212449f39e4b38acaa8b3119aa4150a9ef0f'
   const amount = new BigNumber(random(1, 5))
-  const amountString = `${amount.toFixed(3)} SC`
-  const amountWithoutFeeString = `${amount.minus(0.012).toFixed(3)} SC`
+  const amountString = `${amount.toFixed(3)} BIG`
+  const amountWithoutFeeString = `${amount.minus(0.012).toFixed(3)} BIG`
 
   await navigateToWallet(page)
 
   // Setup.
   await page.getByLabel('send').click()
-  const sendDialog = page.getByRole('dialog', { name: 'Send siacoin' })
+  const sendDialog = page.getByRole('dialog', { name: 'Send bigfile' })
   await fillTextInputByName(page, 'address', receiveAddress)
-  await fillTextInputByName(page, 'siacoin', amount.toString())
+  await fillTextInputByName(page, 'bigfile', amount.toString())
   await setSwitchByLabel(page, 'includeFee', true)
   await expect(
-    sendDialog.getByTestId('networkFee').getByText('0.012 SC')
+    sendDialog.getByTestId('networkFee').getByText('0.012 BIG')
   ).toBeVisible()
   await expect(
     sendDialog.getByTestId('total').getByText(amountString)
@@ -115,7 +115,7 @@ test('send siacoin with include fee on', async ({ page }) => {
     sendDialog.getByTestId('amount').getByText(amountWithoutFeeString)
   ).toBeVisible()
   await expect(
-    sendDialog.getByTestId('networkFee').getByText('0.012 SC')
+    sendDialog.getByTestId('networkFee').getByText('0.012 BIG')
   ).toBeVisible()
   await expect(
     sendDialog.getByTestId('total').getByText(amountString)
@@ -133,7 +133,7 @@ test('send siacoin with include fee on', async ({ page }) => {
     sendDialog.getByTestId('amount').getByText(amountWithoutFeeString)
   ).toBeVisible()
   await expect(
-    sendDialog.getByTestId('networkFee').getByText('0.012 SC')
+    sendDialog.getByTestId('networkFee').getByText('0.012 BIG')
   ).toBeVisible()
   await expect(
     sendDialog.getByTestId('total').getByText(amountString)

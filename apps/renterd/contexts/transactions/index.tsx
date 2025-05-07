@@ -167,7 +167,7 @@ function useTransactionsMain() {
       (metrics.data || [])
         .map((t) => {
           return {
-            sc: new BigNumber(t.spendable).plus(t.unconfirmed).toNumber(),
+            big: new BigNumber(t.spendable).plus(t.unconfirmed).toNumber(),
             timestamp: new Date(t.timestamp).getTime(),
           }
         })

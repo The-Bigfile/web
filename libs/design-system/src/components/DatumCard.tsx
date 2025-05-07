@@ -10,7 +10,7 @@ import { cx } from 'class-variance-authority'
 import { Skeleton } from '../core/Skeleton'
 import { ValueScFiat } from './ValueScFiat'
 
-// entityType&entityValue | value | values | sc | sf
+// entityType&entityValue | value | values | big | sf
 type Props = {
   scaleSize?: React.ComponentProps<typeof Text>['scaleSize']
   label: React.ReactNode
@@ -19,7 +19,7 @@ type Props = {
   href?: string
   entityType?: EntityType
   entityValue?: string
-  sc?: BigNumber
+  big?: BigNumber
   scFixed?: number
   sf?: number
   comment?: React.ReactNode
@@ -39,7 +39,7 @@ export function DatumCard({
   value,
   extendedSuffix,
   hash,
-  sc,
+  big,
   scFixed = 2,
   sf,
   comment,
@@ -73,12 +73,12 @@ export function DatumCard({
           <div className="flex flex-col items-end md:items-start gap-2 md:flex-2">
             {!isLoading ? (
               <>
-                {sc !== undefined && (
+                {big !== undefined && (
                   <ValueScFiat
                     extendedSuffix={extendedSuffix}
                     scaleSize={scaleSize}
                     variant="value"
-                    value={sc}
+                    value={big}
                     fixed={scFixed}
                   />
                 )}

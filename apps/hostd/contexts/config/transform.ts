@@ -11,7 +11,7 @@ import {
   MBToBytes,
   monthsToBlocks,
   toHastings,
-  toSiacoins,
+  toBigFiles,
 } from '@siafoundation/units'
 import {
   humanBaseRpcPrice,
@@ -77,23 +77,23 @@ export function transformUpSettings(
     // Pricing
     contractPrice: toHastings(values.contractPrice).toString(),
     baseRPCPrice: values.baseRPCPrice
-      .div(toSiacoins(humanBaseRpcPrice(1)))
+      .div(toBigFiles(humanBaseRpcPrice(1)))
       .toFixed(0),
     sectorAccessPrice: values.sectorAccessPrice
-      .div(toSiacoins(humanSectorAccessPrice(1)))
+      .div(toBigFiles(humanSectorAccessPrice(1)))
       .toFixed(0),
 
     collateralMultiplier: values.collateralMultiplier.toNumber(),
     maxCollateral: toHastings(values.maxCollateral).toString(),
 
     storagePrice: values.storagePrice
-      .div(toSiacoins(humanStoragePrice(1)))
+      .div(toBigFiles(humanStoragePrice(1)))
       .toFixed(0),
     egressPrice: values.egressPrice
-      .div(toSiacoins(humanEgressPrice(1)))
+      .div(toBigFiles(humanEgressPrice(1)))
       .toFixed(0),
     ingressPrice: values.ingressPrice
-      .div(toSiacoins(humanIngressPrice(1)))
+      .div(toBigFiles(humanIngressPrice(1)))
       .toFixed(0),
 
     priceTableValidity: Number(
@@ -210,28 +210,28 @@ export function transformDown({
     ),
 
     // Pricing
-    contractPrice: toSiacoins(settings.contractPrice, scDecimalPlaces),
-    baseRPCPrice: toSiacoins(
+    contractPrice: toBigFiles(settings.contractPrice, scDecimalPlaces),
+    baseRPCPrice: toBigFiles(
       humanBaseRpcPrice(settings.baseRPCPrice),
       scDecimalPlaces
     ),
-    sectorAccessPrice: toSiacoins(
+    sectorAccessPrice: toBigFiles(
       humanSectorAccessPrice(settings.sectorAccessPrice),
       scDecimalPlaces
     ),
 
     collateralMultiplier: new BigNumber(settings.collateralMultiplier),
 
-    maxCollateral: toSiacoins(settings.maxCollateral, scDecimalPlaces),
-    storagePrice: toSiacoins(
+    maxCollateral: toBigFiles(settings.maxCollateral, scDecimalPlaces),
+    storagePrice: toBigFiles(
       humanStoragePrice(settings.storagePrice),
       scDecimalPlaces
     ),
-    egressPrice: toSiacoins(
+    egressPrice: toBigFiles(
       humanEgressPrice(settings.egressPrice),
       scDecimalPlaces
     ),
-    ingressPrice: toSiacoins(
+    ingressPrice: toBigFiles(
       humanIngressPrice(settings.ingressPrice),
       scDecimalPlaces
     ),
@@ -244,7 +244,7 @@ export function transformDown({
     accountExpiry: new BigNumber(settings.accountExpiry)
       .div(1_000_000_000) // nanoseconds to seconds
       .div(60 * 60 * 24), // seconds to days
-    maxAccountBalance: toSiacoins(settings.maxAccountBalance, scDecimalPlaces),
+    maxAccountBalance: toBigFiles(settings.maxAccountBalance, scDecimalPlaces),
 
     // Bandwidth limiter settings
     ingressLimit: bytesToMB(new BigNumber(settings.ingressLimit)),
