@@ -18,7 +18,7 @@ export function HomeCollateral() {
           category="collateral"
           label="Locked collateral"
           color={collateral.config.data['locked'].color}
-          sc={collateral.stats['locked']}
+          big={collateral.stats['locked']}
           defaultMode="latest"
           isLoading={collateral.isLoading}
           enabledModes={['latest', 'average']}
@@ -27,7 +27,7 @@ export function HomeCollateral() {
           category="collateral"
           label="Risked collateral"
           color={collateral.config.data['risked'].color}
-          sc={collateral.stats['risked']}
+          big={collateral.stats['risked']}
           defaultMode="latest"
           isLoading={collateral.isLoading}
           enabledModes={['latest', 'average']}

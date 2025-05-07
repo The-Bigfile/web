@@ -7,9 +7,9 @@ describe('currency', () => {
   it('converts from bigfiles to hastings correctly', () => {
     const maxSC = new BigNumber('100000000000000000000000')
     for (let i = 0; i < 100; i++) {
-      const sc = maxSC.times(Math.trunc(Math.random() * 10000) / 10000)
-      const expectedHastings = sc.times(HASTINGS_PER_BIGFILE)
-      expect(toHastings(sc).toString()).toBe(expectedHastings.toString())
+      const big = maxSC.times(Math.trunc(Math.random() * 10000) / 10000)
+      const expectedHastings = big.times(HASTINGS_PER_BIGFILE)
+      expect(toHastings(big).toString()).toBe(expectedHastings.toString())
     }
   })
 

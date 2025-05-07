@@ -113,7 +113,7 @@ function BigFilePinnedValue({
   rate: BigNumber
 }) {
   const available = value && !value.isZero() && rate && !rate.isZero()
-  const sc = available ? toHastings(value).div(rate) : new BigNumber(0)
+  const big = available ? toHastings(value).div(rate) : new BigNumber(0)
   return (
     <Panel className="flex gap-1 items-center justify-between relative overflow-hidden px-2 py-1.5 rounded-t-none">
       <Tooltip side="bottom" content="The pinned value's current bigfile value">
@@ -124,7 +124,7 @@ function BigFilePinnedValue({
       </Tooltip>
       {available ? (
         <ValueSc
-          value={sc}
+          value={big}
           size="12"
           variant="value"
           fixed={0}

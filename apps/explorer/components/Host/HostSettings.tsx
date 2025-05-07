@@ -258,7 +258,7 @@ export function HostSettings({ host }: Props) {
       !host.v2 && {
         label: 'max ephemeral account balance',
         copyable: false,
-        sc: new BigNumber(host.settings.maxephemeralaccountbalance),
+        big: new BigNumber(host.settings.maxephemeralaccountbalance),
       },
       !host.v2 && {
         label: 'sector size',

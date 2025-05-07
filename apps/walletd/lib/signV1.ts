@@ -2,7 +2,7 @@ import {
   BigFileElement,
   BigFileInput,
   BigfundElement,
-  SiafundInput,
+  BigfundInput,
   Transaction,
 } from '@siafoundation/types'
 import { stripPrefix } from '@siafoundation/design-system'
@@ -185,7 +185,7 @@ export function getToSignMetadataV1({
   bigfileUtxo?: BigFileElement
   bigfundUtxo?: BigfundElement
   bigfileInput?: BigFileInput
-  bigfundInput?: SiafundInput
+  bigfundInput?: BigfundInput
   error?: string
 } {
   const id = stripPrefix(idPrefixed)

@@ -105,7 +105,7 @@ export type StorageProof = {
   hashset?: Hash[]
 }
 
-export type SiafundInput = {
+export type BigfundInput = {
   parentID: string
   unlockConditions: UnlockConditions
   claimAddress: string
@@ -122,7 +122,7 @@ export type Transaction = {
   fileContracts?: FileContract[]
   fileContractRevisions?: FileContractRevision[]
   storageProofs?: StorageProof[]
-  bigfundInputs?: SiafundInput[]
+  bigfundInputs?: BigfundInput[]
   bigfundOutputs?: BigfundOutput[]
   minerFees?: Currency[]
   arbitraryData?: string[]

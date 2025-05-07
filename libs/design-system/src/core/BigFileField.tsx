@@ -12,8 +12,8 @@ type Props = Omit<
   React.ComponentProps<typeof BaseNumberField>,
   'onChange' | 'placeholder'
 > & {
-  sc?: BigNumber
-  onChange?: (sc?: BigNumber) => void
+  big?: BigNumber
+  onChange?: (big?: BigNumber) => void
   units?: string
   unitsFiatPostfix?: string
   decimalsLimitSc?: number
@@ -25,7 +25,7 @@ type Props = Omit<
 }
 
 export function BigFileField({
-  sc: _externalSc,
+  big: _externalSc,
   placeholder = new BigNumber(100),
   decimalsLimitFiat = 6,
   decimalsLimitSc = 6,
@@ -49,14 +49,14 @@ export function BigFileField({
   const { settings } = useAppSettings()
   const exchangeRate = useExternalActiveExchangeRate()
   const rate = exchangeRate ? exchangeRate.rate : undefined
-  const [active, setActive] = useState<'sc' | 'fiat'>()
+  const [active, setActive] = useState<'big' | 'fiat'>()
   const [localSc, setLocalSc] = useState<string>('')
   const [localFiat, setLocalFiat] = useState<string>('')
 
   const updateExternalSc = useCallback(
-    (sc: string) => {
+    (big: string) => {
       if (onChange) {
-        onChange(sc && !isNaN(Number(sc)) ? new BigNumber(sc) : undefined)
+        onChange(big && !isNaN(Number(big)) ? new BigNumber(big) : undefined)
       }
     },
     [onChange]
@@ -71,8 +71,8 @@ export function BigFileField({
   )
 
   const updateSc = useCallback(
-    (sc: BigNumber) => {
-      const usc = toFixedMaxString(sc, decimalsLimitSc)
+    (big: BigNumber) => {
+      const usc = toFixedMaxString(big, decimalsLimitSc)
       setLocalSc(usc)
       updateExternalSc(usc)
       return usc
@@ -81,18 +81,18 @@ export function BigFileField({
   )
 
   const onScChange = useCallback(
-    (sc: string) => {
-      setLocalSc(sc)
+    (big: string) => {
+      setLocalSc(big)
       if (active) {
-        updateExternalSc(sc)
+        updateExternalSc(big)
       }
     },
     [active, setLocalSc, updateExternalSc]
   )
 
   const syncFiatToSc = useCallback(
-    (sc: string) => {
-      const fiat = new BigNumber(sc).times(rate || 0)
+    (big: string) => {
+      const fiat = new BigNumber(big).times(rate || 0)
       updateFiat(fiat)
     },
     [updateFiat, rate]
@@ -100,8 +100,8 @@ export function BigFileField({
 
   const syncScToFiat = useCallback(
     (fiat: string) => {
-      const sc = new BigNumber(fiat).dividedBy(rate || 0)
-      updateSc(sc)
+      const big = new BigNumber(fiat).dividedBy(rate || 0)
+      updateSc(big)
     },
     [updateSc, rate]
   )
@@ -134,7 +134,7 @@ export function BigFileField({
   }, [rate])
 
   useEffect(() => {
-    if (active === 'sc') {
+    if (active === 'big') {
       syncFiatToSc(localSc)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -187,7 +187,7 @@ export function BigFileField({
           }
         }}
         onFocus={(e) => {
-          setActive('sc')
+          setActive('big')
           if (onFocus) {
             onFocus(e)
           }

@@ -97,7 +97,7 @@ export const chartConfigs = {
   },
 
   // general
-  sc: {
+  big: {
     color: colors.green[600],
   },
   sf: {

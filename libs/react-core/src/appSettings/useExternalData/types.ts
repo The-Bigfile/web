@@ -1,6 +1,6 @@
 import { CurrencyId, CurrencyOption, currencyOptions } from './currency'
 
-export type CurrencyDisplay = 'sc' | 'fiat' | 'bothPreferSc' | 'bothPreferFiat'
+export type CurrencyDisplay = 'big' | 'fiat' | 'bothPreferSc' | 'bothPreferFiat'
 
 export type ExternalDataSettings = {
   siascan: boolean

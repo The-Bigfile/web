@@ -22,7 +22,7 @@ export function ValueSf({
   variant = 'change',
 }: Props) {
   const formattedValue = humanNumber(String(value), {
-    units: 'SF',
+    units: 'BF',
   })
 
   return (

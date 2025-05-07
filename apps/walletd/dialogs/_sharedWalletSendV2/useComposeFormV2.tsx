@@ -184,12 +184,12 @@ export function useComposeFormV2({
 
   const onValid = useCallback(
     async (values: typeof defaultValues) => {
-      const sc = new BigNumber(values.bigfile || 0)
+      const big = new BigNumber(values.bigfile || 0)
       const sf = new BigNumber(values.bigfund || 0)
 
       const bigfile = values.includeFee
-        ? toHastings(sc).minus(fee)
-        : toHastings(sc)
+        ? toHastings(big).minus(fee)
+        : toHastings(big)
 
       const bigfund = sf.toNumber()
 
@@ -216,7 +216,7 @@ export function useComposeFormV2({
   const mode = form.watch('mode')
   const customChangeAddress = form.watch('customChangeAddress')
   const includeFee = form.watch('includeFee')
-  const sc = toHastings(bigfile || 0)
+  const big = toHastings(bigfile || 0)
 
   // Reset the bigfile or bigfund field when the mode changes.
   useEffect(() => {
@@ -310,7 +310,7 @@ export function useComposeFormV2({
             <div className="flex relative top-[-0.5px]">
               <ValueSc
                 size="14"
-                value={includeFee ? sc : sc.plus(fee)}
+                value={includeFee ? big : big.plus(fee)}
                 variant="value"
                 dynamicUnits={false}
               />

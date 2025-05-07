@@ -6,8 +6,8 @@ toolchain go1.23.4
 
 require (
 	go.sia.tech/cluster v0.1.3-0.20250428123059-c02be2f76b8a
-	go.thebigfile.com/core v0.0.6
-	go.thebigfile.com/coreutils v0.0.5
+	go.thebigfile.com/core v1.0.7
+	go.thebigfile.com/coreutils v1.0.1
 	go.sia.tech/explored v0.0.0-20250428115627-282104a23b4d
 	go.uber.org/zap v1.27.0
 )

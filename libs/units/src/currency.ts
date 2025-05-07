@@ -83,7 +83,7 @@ export function humanBigFile(
     return `${sign}0 BIG`
   }
 
-  const suffixes = ['pS', 'nS', 'uS', 'mS', 'BIG', 'KS', 'MS', 'GS', 'TS']
+  const suffixes = ['pBIG', 'nBIG', 'uBIG', 'mBIG', 'BIG', 'KBIG', 'MBIG', 'BS', 'TS']
 
   for (let index = 0; index < suffixes.length; index++) {
     const mag = Array(index)
@@ -98,6 +98,6 @@ export function humanBigFile(
   return ''
 }
 
-export function humanSiafund(bigfunds: number) {
-  return bigfunds.toLocaleString() + ' SF'
+export function humanBigfund(bigfunds: number) {
+  return bigfunds.toLocaleString() + ' BF'
 }

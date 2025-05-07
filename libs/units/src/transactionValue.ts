@@ -25,7 +25,7 @@ export function calculateSfValue(e: WalletEvent) {
   return undefined
 }
 
-// v1 sc
+// v1 big
 
 function v1TxnCalculateScValue(e: WalletEventTransactionV1) {
   return v1TxnCalculateScInflow(e).minus(v1TxnCalculateScOutflow(e))
@@ -51,7 +51,7 @@ function v1TxnCalculateScInflow(e: WalletEventTransactionV1) {
   }, new BigNumber(0))
 }
 
-// v2 sc
+// v2 big
 
 function v2TxnCalculateScValue(e: WalletEventTransactionV2) {
   return v2TxnCalculateScInflow(e).minus(v2TxnCalculateScOutflow(e))

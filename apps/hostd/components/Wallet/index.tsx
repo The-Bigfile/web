@@ -25,7 +25,7 @@ export function Wallet() {
 
   return (
     <div className="flex flex-col gap-4 px-6 py-7 min-w-fit">
-      {balances?.length && balances.find((b) => b.sc) ? (
+      {balances?.length && balances.find((b) => b.big) ? (
         <BalanceEvolution
           balances={balances}
           isLoading={metrics.isValidating}

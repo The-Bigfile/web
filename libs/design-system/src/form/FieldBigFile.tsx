@@ -54,7 +54,7 @@ export function FieldBigFile<
     <BigFileField
       name={name}
       size={size}
-      sc={value}
+      big={value}
       units={units}
       showFiat={showFiat}
       decimalsLimitSc={decimalsLimitSc}

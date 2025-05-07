@@ -1,4 +1,4 @@
-import { humanBigFile, humanSiafund } from '@siafoundation/units'
+import { humanBigFile, humanBigfund } from '@siafoundation/units'
 import { getOGImage } from '../../../components/OGImageEntity'
 import { truncate } from '@siafoundation/design-system'
 import { getExplored } from '../../../lib/explored'
@@ -31,7 +31,7 @@ export default async function Image({ params }) {
     if (balance.unspentBigfunds !== 0) {
       values.push({
         label: 'bigfund balance',
-        value: humanSiafund(balance.unspentBigfunds || 0),
+        value: humanBigfund(balance.unspentBigfunds || 0),
       })
     }
 

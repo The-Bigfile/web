@@ -255,7 +255,7 @@
 - 6ad3f2f9: Added formSetField and formSetFields convenience methods for working with ConfigFields form data.
 - 6ad3f2f9: The ConfigField type now supports a custom suggestionLabel property.
 - a64f40cc: Event and transaction utility methods have been moved to the units library.
-- a64f40cc: WalletBalance now supports an optional immature sc value.
+- a64f40cc: WalletBalance now supports an optional immature big value.
 
 ### Patch Changes
 

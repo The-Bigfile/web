@@ -37,7 +37,7 @@ describe('BigFileField', () => {
     const user = userEvent.setup()
     const onChange = jest.fn()
     const { scInput, fiatInput } = await renderNode({
-      sc: new BigNumber(33),
+      big: new BigNumber(33),
       onChange,
     })
 
@@ -68,7 +68,7 @@ describe('BigFileField', () => {
     const user = userEvent.setup()
     const onChange = jest.fn()
     const { scInput, fiatInput } = await renderNode({
-      sc: new BigNumber(33),
+      big: new BigNumber(33),
       onChange,
     })
 
@@ -87,7 +87,7 @@ describe('BigFileField', () => {
     const user = userEvent.setup()
     const onChange = jest.fn()
     const { scInput, fiatInput } = await renderNode({
-      sc: new BigNumber(33),
+      big: new BigNumber(33),
       locale: 'de-DE',
       onChange,
     })
@@ -107,7 +107,7 @@ describe('BigFileField', () => {
     const user = userEvent.setup()
     const onChange = jest.fn()
     const { scInput, fiatInput } = await renderNode({
-      sc: new BigNumber(3333),
+      big: new BigNumber(3333),
       locale: 'de-DE',
       onChange,
     })
@@ -134,7 +134,7 @@ describe('BigFileField', () => {
     const user = userEvent.setup()
     const onChange = jest.fn()
     const { scInput, fiatInput } = await renderNode({
-      sc: new BigNumber(3333),
+      big: new BigNumber(3333),
       locale: 'de-DE',
       prefix: '₽',
       onChange,
@@ -162,7 +162,7 @@ describe('BigFileField', () => {
     const user = userEvent.setup()
     const onChange = jest.fn()
     const { scInput, fiatInput } = await renderNode({
-      sc: new BigNumber(3333),
+      big: new BigNumber(3333),
       locale: 'es-ES',
       prefix: '₽',
       onChange,
@@ -190,7 +190,7 @@ describe('BigFileField', () => {
     const user = userEvent.setup()
     const onChange = jest.fn()
     const { scInput, fiatInput } = await renderNode({
-      sc: new BigNumber(0.123456789),
+      big: new BigNumber(0.123456789),
       onChange,
     })
 
@@ -222,12 +222,12 @@ describe('BigFileField', () => {
     )
   })
 
-  it('updates sc based on fiat change', async () => {
+  it('updates big based on fiat change', async () => {
     mockEndpoints('1')
     const user = userEvent.setup()
     const onChange = jest.fn()
     const { scInput, fiatInput } = await renderNode({
-      sc: new BigNumber(0.444),
+      big: new BigNumber(0.444),
       onChange,
     })
 
@@ -254,7 +254,7 @@ describe('BigFileField', () => {
     const user = userEvent.setup()
     const onChange = jest.fn()
     const { scInput, fiatInput } = await renderNode({
-      sc: new BigNumber(45.47473),
+      big: new BigNumber(45.47473),
       onChange,
     })
 
@@ -276,7 +276,7 @@ describe('BigFileField', () => {
     const user = userEvent.setup()
     const onChange = jest.fn()
     const { scInput, fiatInput } = await renderNode({
-      sc: new BigNumber(0.444),
+      big: new BigNumber(0.444),
       onChange,
     })
 
@@ -300,7 +300,7 @@ describe('BigFileField', () => {
     mockEndpoints('0.003623859876')
     const onChange = jest.fn()
     const { scInput, fiatInput } = await renderNode({
-      sc: new BigNumber(0.444),
+      big: new BigNumber(0.444),
       onChange,
     })
 
@@ -314,20 +314,20 @@ describe('BigFileField', () => {
 })
 
 function Component({
-  sc: initalSc,
+  big: initalSc,
   ...props
-}: { sc: BigNumber } & Partial<React.ComponentProps<typeof BigFileField>>) {
-  const [sc, setSc] = useState<BigNumber | undefined>(new BigNumber(initalSc))
-  return <BigFileField sc={sc} onChange={setSc} {...props} />
+}: { big: BigNumber } & Partial<React.ComponentProps<typeof BigFileField>>) {
+  const [big, setSc] = useState<BigNumber | undefined>(new BigNumber(initalSc))
+  return <BigFileField big={big} onChange={setSc} {...props} />
 }
 
 const daemonExplorerInfoRoute = '/explorer/info'
 
 async function renderNode({
-  sc,
+  big,
   locale = 'en',
   ...props
-}: { sc: BigNumber; locale?: 'en' | 'de-DE' | 'es-ES' } & Partial<
+}: { big: BigNumber; locale?: 'en' | 'de-DE' | 'es-ES' } & Partial<
   React.ComponentProps<typeof BigFileField>
 >) {
   jest.spyOn(window.navigator, 'language', 'get').mockReturnValue(locale)
@@ -335,7 +335,7 @@ async function renderNode({
   const node = render(
     <CoreProvider cacheProvider={() => new Map()}>
       <AppSettingsProvider daemonExplorerInfoRoute={daemonExplorerInfoRoute}>
-        <Component sc={sc} {...props} />
+        <Component big={big} {...props} />
       </AppSettingsProvider>
     </CoreProvider>
   )

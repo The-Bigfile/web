@@ -19,7 +19,7 @@ export function HomeRevenue() {
           category="revenue"
           label="potential - all"
           color={revenue.config.data['potential'].color}
-          sc={revenue.stats['potential']}
+          big={revenue.stats['potential']}
           defaultMode="total"
           isLoading={revenue.isLoading}
           showChange={false}
@@ -29,7 +29,7 @@ export function HomeRevenue() {
           category="revenue"
           label="earned - all"
           color={revenue.config.data['earned'].color}
-          sc={revenue.stats['earned']}
+          big={revenue.stats['earned']}
           defaultMode="total"
           isLoading={revenue.isLoading}
         />
@@ -37,7 +37,7 @@ export function HomeRevenue() {
           category="revenue"
           label="earned - storage"
           color={revenue.config.data['storage'].color}
-          sc={revenue.stats['storage']}
+          big={revenue.stats['storage']}
           defaultMode="total"
           isLoading={revenue.isLoading}
         />
@@ -45,7 +45,7 @@ export function HomeRevenue() {
           category="revenue"
           label="earned - egress"
           color={revenue.config.data['egress'].color}
-          sc={revenue.stats['egress']}
+          big={revenue.stats['egress']}
           defaultMode="total"
           isLoading={revenue.isLoading}
         />
@@ -53,7 +53,7 @@ export function HomeRevenue() {
           category="revenue"
           label="earned - ingress"
           color={revenue.config.data['ingress'].color}
-          sc={revenue.stats['ingress']}
+          big={revenue.stats['ingress']}
           defaultMode="total"
           isLoading={revenue.isLoading}
         />

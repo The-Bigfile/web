@@ -26,7 +26,7 @@ type OutputItem = {
   label: string
   addressHref: string
   address: string
-  sc?: BigNumber
+  big?: BigNumber
   sf?: number
   outputId: string
 }
@@ -49,7 +49,7 @@ export function Transaction({
           stripPrefix(o.address || o.parent.bigfileOutput.address)
         ),
         address: o.address || o.parent.bigfileOutput.address,
-        sc: new BigNumber(o.value || o.parent.bigfileOutput.value),
+        big: new BigNumber(o.value || o.parent.bigfileOutput.value),
         outputId: o.parentID || o.parent.id,
       })
     })
@@ -61,7 +61,7 @@ export function Transaction({
           stripPrefix(o.address || o.parent.bigfundOutput.address)
         ),
         address: o.address || o.parent.bigfundOutput.address,
-        sc: new BigNumber(o.value || o.parent.bigfundOutput.value),
+        big: new BigNumber(o.value || o.parent.bigfundOutput.value),
         outputId: o.parentID || o.parent.id,
       })
     })
@@ -84,7 +84,7 @@ export function Transaction({
           stripPrefix(o.bigfileOutput.address)
         ),
         address: o.bigfileOutput.address,
-        sc: new BigNumber(o.bigfileOutput.value),
+        big: new BigNumber(o.bigfileOutput.value),
         outputId: o.id,
       })
     })

@@ -55,13 +55,13 @@ export function Address({
     const list: DatumProps[] = [
       {
         label: 'BIG',
-        sc: new BigNumber(unspentBigFiles),
+        big: new BigNumber(unspentBigFiles),
       },
     ]
     if (unspentBigfunds !== 0) {
       list.push({
-        label: 'SF',
-        sf: Number(unspentBigfunds),
+        label: 'BF',
+        bf: Number(unspentBigfunds),
       })
     }
     return list
@@ -166,7 +166,7 @@ function formatV1TransactionEntity(
   const { transaction } = v1Transaction.data as EventV1Transaction
   return {
     hash: v1Transaction.id,
-    sc: getTotal({
+    big: getTotal({
       address: id,
       inputs: transaction.bigfileInputs,
       outputs: transaction.bigfileOutputs?.map((o) => o.bigfileOutput),
@@ -191,7 +191,7 @@ function formatV2TransactionEntity(
   const transaction = v2Transaction.data as ExplorerV2Transaction
   return {
     hash: v2Transaction.id,
-    sc: getTotal({
+    big: getTotal({
       address: id,
       inputs: transaction.bigfileInputs?.map((o) => o.parent.bigfileOutput),
       outputs: transaction.bigfileOutputs,
@@ -222,7 +222,7 @@ function formatV1ContractResolutionEntity(
     label: 'Contract Resolution',
     initials: 'CR',
     href: routes.contract.view.replace(':id', parent.id),
-    sc: new BigNumber(bigfileElement.bigfileOutput.value),
+    big: new BigNumber(bigfileElement.bigfileOutput.value),
     timestamp: new Date(v1ContractResolution.timestamp).getTime(),
   }
 }
@@ -237,7 +237,7 @@ function formatV2ContractResolutionEntity(
     label: 'Contract Resolution',
     initials: 'CR',
     href: routes.contract.view.replace(':id', resolution.parent.id),
-    sc: new BigNumber(bigfileElement.bigfileOutput.value),
+    big: new BigNumber(bigfileElement.bigfileOutput.value),
     timestamp: new Date(v1ContractResolution.timestamp).getTime(),
   }
 }
@@ -252,7 +252,7 @@ function formatPayoutEntity(payout: ExplorerEvent): EntityListItemProps {
     initials: `${capitalizedType.slice(0, 1)}P`,
     href: routes.address.view.replace(':id', bigfileElement.source),
     height: payout.index.height,
-    sc: new BigNumber(bigfileElement.bigfileOutput.value),
+    big: new BigNumber(bigfileElement.bigfileOutput.value),
     timestamp: new Date(payout.timestamp).getTime(),
   }
 }
@@ -262,7 +262,7 @@ function formatUnspentBigFileOutputEntity(
 ): EntityListItemProps {
   return {
     hash: bigfileOutput.id,
-    sc: new BigNumber(bigfileOutput.bigfileOutput.value),
+    big: new BigNumber(bigfileOutput.bigfileOutput.value),
     label: 'bigfile output',
     initials: 'SO',
     scVariant: 'value' as const,

@@ -8,11 +8,11 @@ import (
 	"time"
 
 	"go.sia.tech/cluster/nodes"
-	proto2 "go.sia.tech/core/rhp/v2"
-	proto4 "go.sia.tech/core/rhp/v4"
-	"go.sia.tech/core/types"
-	"go.sia.tech/coreutils/chain"
-	"go.sia.tech/explored/api"
+	proto2 "go.thebigfile.com/core/rhp/v2"
+	proto4 "go.thebigfile.com/core/rhp/v4"
+	"go.thebigfile.com/core/types"
+	"go.thebigfile.com/coreutils/chain"
+	"go.thebigfile.com/explored/api"
 	"go.uber.org/zap"
 )
 
@@ -55,8 +55,8 @@ func setupV1Contracts(nm *nodes.Manager, w *swallet, cm *chain.Manager) error {
 			WindowSize: 1,
 			Address:    types.StandardUnlockHash(hk),
 		}
-		sc := types.BigFiles(1)
-		fc := proto2.PrepareContractFormation(rk, hk, sc.Mul64(5), sc.Mul64(5), endHeight, hs, rAddr)
+		big := types.BigFiles(1)
+		fc := proto2.PrepareContractFormation(rk, hk, big.Mul64(5), big.Mul64(5), endHeight, hs, rAddr)
 		fc.UnlockHash = w.Address()
 		return fc
 	}

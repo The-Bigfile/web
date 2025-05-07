@@ -12,7 +12,7 @@ import { useTheme } from 'next-themes'
 import { colors } from '../lib/colors'
 
 type BalanceEvolution = {
-  sc: number
+  big: number
   timestamp: number
 }
 
@@ -22,7 +22,7 @@ type Props = {
   chartType?: 'area' | 'line'
 }
 
-type Key = 'sc'
+type Key = 'big'
 
 export function BalanceEvolution({
   balances,
@@ -34,13 +34,13 @@ export function BalanceEvolution({
     () =>
       resolvedTheme === 'light'
         ? {
-            sc: {
+            big: {
               label: 'bigfile',
               color: colors.accent[800],
             },
           }
         : {
-            sc: {
+            big: {
               label: 'bigfile',
               color: colors.accentdark[800],
             },
@@ -55,10 +55,10 @@ export function BalanceEvolution({
       data,
       stats,
       config: {
-        enabledGraph: ['sc'],
-        enabledTip: ['sc'],
+        enabledGraph: ['big'],
+        enabledTip: ['big'],
         data: {
-          sc: chartConfigs.sc,
+          big: chartConfigs.big,
         },
         format: (v) => humanBigFile(v),
         formatTimestamp: getDataIntervalLabelFormatter('default'),

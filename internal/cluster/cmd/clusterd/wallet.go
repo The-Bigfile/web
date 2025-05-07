@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"math"
 
-	"go.sia.tech/core/types"
-	"go.sia.tech/coreutils/chain"
-	"go.sia.tech/coreutils/testutil"
-	"go.sia.tech/coreutils/wallet"
+	"go.thebigfile.com/core/types"
+	"go.thebigfile.com/coreutils/chain"
+	"go.thebigfile.com/coreutils/testutil"
+	"go.thebigfile.com/coreutils/wallet"
 )
 
 type swallet struct {

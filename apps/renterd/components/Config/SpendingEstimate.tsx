@@ -105,7 +105,7 @@ export function SpendingEstimate() {
                 tabIndex={-1}
                 className="min-w-[250px]"
                 readOnly
-                sc={estimatedSpendingPerMonth}
+                big={estimatedSpendingPerMonth}
                 size="small"
                 units="BIG/month"
                 unitsFiatPostfix="/month"
@@ -121,7 +121,7 @@ export function SpendingEstimate() {
                 tabIndex={-1}
                 className="min-w-[250px]"
                 readOnly
-                sc={estimatedSpendingPerTB}
+                big={estimatedSpendingPerTB}
                 size="small"
                 units="BIG/month"
                 unitsFiatPostfix="/month"

@@ -228,7 +228,7 @@ function FormBigFileFieldFormik({
       readOnly={readOnly || formik.isSubmitting}
       tabIndex={tabIndex}
       onFocus={() => formik.setFieldTouched(name)}
-      sc={new BigNumber(formik.values[name])}
+      big={new BigNumber(formik.values[name])}
       placeholder={new BigNumber(placeholder)}
       onChange={(val) => formik.setFieldValue(name, val?.toString())}
       {...variants}

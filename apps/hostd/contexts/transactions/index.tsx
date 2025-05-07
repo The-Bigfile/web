@@ -153,7 +153,7 @@ function useTransactionsMain() {
       (metrics.data || [])
         .map((t) => {
           return {
-            sc: Number(t.wallet.balance),
+            big: Number(t.wallet.balance),
             timestamp: new Date(t.timestamp).getTime(),
           }
         })

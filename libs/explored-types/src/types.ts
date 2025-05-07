@@ -16,7 +16,7 @@ import type {
   BigFileOutput,
   BigFileOutputID,
   BigfundElement,
-  SiafundInput,
+  BigfundInput,
   BigfundOutputID,
   UnlockConditions,
   StorageProof,
@@ -267,7 +267,7 @@ export type ExplorerBigFileOutput = BigFileElement & {
 /**
  * An `ExplorerSiafundInput` is a core type BigFileInput with added `address` and `value` keys.
  */
-export type ExplorerSiafundInput = SiafundInput & {
+export type ExplorerSiafundInput = BigfundInput & {
   address: string
   value: string
 }
